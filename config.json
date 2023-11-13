@@ -1,0 +1,7 @@
+{
+    "host": "gfranz.ch",
+    "username": "gabriel",
+    "password": "password",
+    "database": "HordeImages",
+    "table": "Metadata"
+}
