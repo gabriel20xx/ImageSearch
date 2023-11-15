@@ -1,12 +1,11 @@
 <?php
-// Include the JSON data
-include 'json.data';
 
 // Access the values from the decoded data
-$host = $data['host'];
-$username = $data['username'];
-$password = $data['password'];
-$database = $data['database'];
+$host = '192.168.1.17';
+$username = 'gabriel';
+$password = 'KingPong31:)';
+$database = 'HordeImages';
+$table = 'Metadata';
 
 // Attempt to create a database connection
 $mysqli = @mysqli_connect($host, $username, $password, $database);
