@@ -83,7 +83,7 @@ $displayMode = 'cards';
                     echo '<div class="card-grid">';
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="card">';
-                        echo '<img src="'. "/var/www/html/images" . "/" . $row['Directory']. "/". $row['FileName'] . ".png".'" alt="Image">';
+                        echo '<img src="'. "images" . "/" . $row['Directory']. "/". $row['FileName'] . ".png".'" alt="Image">';
                         echo '<p>' . $row['PositivePrompt'] . '</p>';
                         echo '<p>' . $row['NegativePrompt'] . '</p>';
                         echo '<p>' . $row['Model'] . '</p>';
