@@ -1,5 +1,5 @@
 <?php
-//include 'includes/mysql.php';
+include 'includes/mysql.php';
 ?>
 <?php
 // Initialize $displayMode based on query parameter or user preference

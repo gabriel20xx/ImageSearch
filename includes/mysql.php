@@ -8,10 +8,10 @@ $database = 'HordeImages';
 $table = 'Metadata';
 
 // Attempt to create a database connection
-$mysqli = @mysqli_connect($host, $username, $password, $database);
+$conn = @mysqli_connect($host, $username, $password, $database);
 
 // Check if the connection was successful
-if (!$mysqli) {
+if (!$conn) {
     // Handle the connection error gracefully, e.g., by logging the error.
     // You can also provide a user-friendly message.
     error_log("Database connection error: " . mysqli_connect_error());
