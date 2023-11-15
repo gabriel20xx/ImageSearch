@@ -64,9 +64,9 @@ $displayMode = 'cards';
         $search = $_GET["search"];
         $filter = $_GET["filter"];
         $sort = $_GET["sort"];
-        $sql = "SELECT * FROM Metadata WHERE $filter LIKE ? ORDER BY ?";
+        $sql = "SELECT * FROM Metadata WHERE $filter LIKE ?";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "ss", $search, $sort);
+        mysqli_stmt_bind_param($stmt, "s", $search);
         mysqli_stmt_execute($stmt);
 
         $result = mysqli_query($conn, $sql);
