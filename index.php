@@ -64,7 +64,7 @@ $displayMode = 'cards';
         $search = '%' . $_GET["search"] . '%';
         $filter = $_GET["filter"];
 
-        $sql = "SELECT * FROM Metadata WHERE $filter LIKE ?";
+        $sql = "SELECT * FROM Metadata WHERE $filter LIKE ? LIMIT 100";
         $stmt = mysqli_prepare($conn, $sql);
 
         if ($stmt) {
