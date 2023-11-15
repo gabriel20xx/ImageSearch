@@ -63,7 +63,6 @@ $displayMode = 'cards';
     if (isset($_GET['search'])) {
         $search = $_GET["search"];
         $filter = $_GET["filter"];
-        $sort = $_GET["sort"];
 
         $sql = "SELECT * FROM Metadata WHERE $filter LIKE ?";
         $stmt = mysqli_prepare($conn, $sql);
@@ -89,6 +88,7 @@ $displayMode = 'cards';
                         echo '<p>' . $row['PositivePrompt'] . '</p>';
                         echo '<p>' . $row['NegativePrompt'] . '</p>';
                         echo '<p>' . $row['Model'] . '</p>';
+                        echo $result;
 
                         echo '</div>';
                     }
