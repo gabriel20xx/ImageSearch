@@ -4,14 +4,14 @@ include 'includes/mysql.php';
 <?php
 // Initialize $displayMode based on query parameter or user preference
 if (isset($_GET['display_mode'])) {
-    $displayMode = 'cards';
+$displayMode = 'cards';
 } else {
-    $displayMode = 'cards';
+    $displayMode ='cards';
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html>    
 
 <head>
     <link rel="stylesheet" type="text/css" href="style/style.css">
@@ -22,8 +22,8 @@ if (isset($_GET['display_mode'])) {
     <h1>Horde Image Indexer</h1>
 
     <div class="toggle-buttons">
-        <button class="<?= $displayMode === 'list' ? 'active' : ''; ?>" onclick="setDisplayMode('list')">List View</button>
-        <button class="<?= $displayMode === 'cards' ? 'active' : ''; ?>" onclick="setDisplayMode('cards')">Card View</button>
+        <button class="<?php echo $displayMode === 'list' ? 'active' : ''; ?>" onclick="setDisplayMode('list')">List View</button>
+        <button class="<?php echo $displayMode === 'cards' ? 'active' : ''; ?>" onclick="setDisplayMode('cards')">Card View</button>
     </div>
 
     <form method="get" action="index.php">
@@ -59,7 +59,7 @@ if (isset($_GET['display_mode'])) {
         </select>
         <input type="submit" value="Search">
     </form>
-    <?php
+    <?php 
     if (isset($_GET['search'])) {
         $search = '%' . $_GET["search"] . '%';
         $filter = $_GET["filter"];
@@ -83,22 +83,12 @@ if (isset($_GET['display_mode'])) {
                     echo '<div class="card-grid">';
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="card">';
-                        echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
-                        echo '<p class="short-text" data-full-text="' . htmlspecialchars($row['PositivePrompt']) . '">' . shortenText($row['PositivePrompt']) . '</p>';
-                        echo '<p class="short-text" data-full-text="' . htmlspecialchars($row['NegativePrompt']) . '">' . shortenText($row['NegativePrompt']) . '</p>';
+                        echo '<img src="'. "images" . "/" . $row['Directory']. "/". $row['FileName'] . ".png".'" alt="Image">';
+                        echo '<p>' . $row['PositivePrompt'] . '</p>';
+                        echo '<p>' . $row['NegativePrompt'] . '</p>';
                         echo '<p>' . $row['Model'] . '</p>';
                         echo '</div>';
                     }
-                    
-                    function shortenText($text, $maxLength = 50) {
-                        if (mb_strlen($text) > $maxLength) {
-                            $shortenedText = mb_substr($text, 0, $maxLength) . '...';
-                            return '<span class="expand-text" onclick="expandText(this)">' . htmlspecialchars($shortenedText) . '</span>';
-                        } else {
-                            return htmlspecialchars($text);
-                        }
-                    }
-                    
                     echo '</div>';
                 } else {
                     echo '<ul class="list-view">';
@@ -119,25 +109,7 @@ if (isset($_GET['display_mode'])) {
     ?>
     <script>
         function setDisplayMode(mode) {
-            const url = new URL(window.location.href);
-            url.searchParams.set('display_mode', mode);
-            history.pushState({}, '', url);
-            updateButtonStyles(mode);
-        }
-
-        function updateButtonStyles(activeMode) {
-            const buttons = document.querySelectorAll('.toggle-buttons button');
-            buttons.forEach(button => {
-                const mode = button.textContent.toLowerCase().replace(' ', '_');
-                button.classList.toggle('active', mode === activeMode);
-            });
-        }
-
-        function expandText(element) {
-            const fullText = element.dataset.fullText;
-            element.innerHTML = fullText;
-            element.classList.add('expanded');
-            element.onclick = null;
+            window.location.href = `index.php?display_mode=${mode}`;
         }
     </script>
 </body>
