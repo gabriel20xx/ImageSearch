@@ -64,41 +64,52 @@ $displayMode = 'cards';
         $search = $_GET["search"];
         $filter = $_GET["filter"];
         $sort = $_GET["sort"];
+
         $sql = "SELECT * FROM Metadata WHERE $filter LIKE ?";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "s", $search);
-        mysqli_stmt_execute($stmt);
 
-        $result = mysqli_query($conn, $sql);
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "ss", $search, $sort);
 
-        mysqli_close($conn);
+            mysqli_stmt_execute($stmt);
 
-        if (mysqli_num_rows($result) > 0) {
-            if ($displayMode === 'cards') {
-                echo '<div class="card-grid">';
+            $result = mysqli_stmt_get_result($stmt);
 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="card">';
-                    echo '<img src="' . $row['Directory']. "/". $row['FileName'] . '" alt="Image">';
-                    echo '<p>' . $row['PositivePrompt'] . '</p>';
-                    echo '<p>' . $row['NegativePrompt'] . '</p>';
-                    echo '<p>' . $row['Model'] . '</p>';
+            mysqli_stmt_close($stmt);
+
+            mysqli_close($conn);
+
+            if (mysqli_num_rows($result) > 0) {
+                if ($displayMode === 'cards') {
+                    echo '<div class="card-grid">';
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="card">';
+                        echo '<img src="' . $row['Directory']. "/". $row['FileName'] . '" alt="Image">';
+                        echo '<p>' . $row['PositivePrompt'] . '</p>';
+                        echo '<p>' . $row['NegativePrompt'] . '</p>';
+                        echo '<p>' . $row['Model'] . '</p>';
+
+                        echo '</div>';
+                    }
 
                     echo '</div>';
-                }
+                } else {
+                    echo '<ul class="list-view">';
 
-                echo '</div>';
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<li>' . $row['PositivePrompt'] . '</li>';
+                        echo '<li>' . $row['NegativePrompt'] . '</li>';
+                        echo '<li>' . $row['Model'] . '</li>';
+                    }
+
+                    echo '</ul>';
+                }
             } else {
-                echo '<ul class="list-view">';
-
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<li>' . $row['PositivePrompt'] . '</li>';
-                    echo '<li>' . $row['NegativePrompt'] . '</li>';
-                    echo '<li>' . $row['Model'] . '</li>';
-                }
-
-                echo '</ul>';
+                echo "No results found.";
             }
+        }  else {
+            echo "Prepare statement failed.";
         }
     }
     ?>
