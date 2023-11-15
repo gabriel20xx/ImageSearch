@@ -60,6 +60,15 @@ if (isset($_GET['display_mode'])) {
         <input type="submit" value="Search">
     </form>
     <?php
+    function shortenText($text, $maxLength = 50) {
+        if (mb_strlen($text) > $maxLength) {
+            $shortenedText = mb_substr($text, 0, $maxLength) . '...';
+            return '<span class="expand-text" onclick="expandText(this)">' . htmlspecialchars($shortenedText) . '</span>';
+        } else {
+            return htmlspecialchars($text);
+        }
+    }
+
     if (isset($_GET['search'])) {
         $search = '%' . $_GET["search"] . '%';
         $filter = $_GET["filter"];
@@ -81,14 +90,6 @@ if (isset($_GET['display_mode'])) {
 
                 if ($displayMode === 'cards') {
                     echo '<div class="card-grid">';
-                    function shortenText($text, $maxLength = 50) {
-                        if (mb_strlen($text) > $maxLength) {
-                            $shortenedText = mb_substr($text, 0, $maxLength) . '...';
-                            return '<span class="expand-text" onclick="expandText(this)">' . htmlspecialchars($shortenedText) . '</span>';
-                        } else {
-                            return htmlspecialchars($text);
-                        }
-                    }
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="card">';
                         echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
