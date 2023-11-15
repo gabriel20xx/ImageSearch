@@ -61,7 +61,7 @@ $displayMode = 'cards';
     </form>
     <?php 
     if (isset($_GET['search'])) {
-        $search = '%' + $_GET["search"] + '%';
+        $search = '%' . $_GET["search"] . '%';
         $filter = $_GET["filter"];
 
         $sql = "SELECT * FROM Metadata WHERE $filter LIKE ?";
