@@ -4,14 +4,14 @@ include 'includes/mysql.php';
 <?php
 // Initialize $displayMode based on query parameter or user preference
 if (isset($_GET['display_mode'])) {
-$displayMode = 'cards';
+    $displayMode = 'cards';
 } else {
-    $displayMode ='cards';
+    $displayMode = 'cards';
 }
 ?>
 
 <!DOCTYPE html>
-<html>    
+<html>
 
 <head>
     <link rel="stylesheet" type="text/css" href="style/style.css">
@@ -22,8 +22,8 @@ $displayMode = 'cards';
     <h1>Horde Image Indexer</h1>
 
     <div class="toggle-buttons">
-        <button class="<?php echo $displayMode === 'list' ? 'active' : ''; ?>" onclick="setDisplayMode('list')">List View</button>
-        <button class="<?php echo $displayMode === 'cards' ? 'active' : ''; ?>" onclick="setDisplayMode('cards')">Card View</button>
+        <button class="<?= $displayMode === 'list' ? 'active' : ''; ?>" onclick="setDisplayMode('list')">List View</button>
+        <button class="<?= $displayMode === 'cards' ? 'active' : ''; ?>" onclick="setDisplayMode('cards')">Card View</button>
     </div>
 
     <form method="get" action="index.php">
@@ -59,7 +59,7 @@ $displayMode = 'cards';
         </select>
         <input type="submit" value="Search">
     </form>
-    <?php 
+    <?php
     if (isset($_GET['search'])) {
         $search = '%' . $_GET["search"] . '%';
         $filter = $_GET["filter"];
@@ -83,7 +83,7 @@ $displayMode = 'cards';
                     echo '<div class="card-grid">';
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="card">';
-                        echo '<img src="'. "images2" . "/" . $row['Directory']. "/". $row['FileName'] . ".png".'" alt="Image">';
+                        echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
                         echo '<p>' . $row['PositivePrompt'] . '</p>';
                         echo '<p>' . $row['NegativePrompt'] . '</p>';
                         echo '<p>' . $row['Model'] . '</p>';
@@ -109,7 +109,18 @@ $displayMode = 'cards';
     ?>
     <script>
         function setDisplayMode(mode) {
-            window.location.href = `index.php?display_mode=${mode}`;
+            const url = new URL(window.location.href);
+            url.searchParams.set('display_mode', mode);
+            history.pushState({}, '', url);
+            updateButtonStyles(mode);
+        }
+
+        function updateButtonStyles(activeMode) {
+            const buttons = document.querySelectorAll('.toggle-buttons button');
+            buttons.forEach(button => {
+                const mode = button.textContent.toLowerCase().replace(' ', '_');
+                button.classList.toggle('active', mode === activeMode);
+            });
         }
     </script>
 </body>
