@@ -81,16 +81,6 @@ if (isset($_GET['display_mode'])) {
 
                 if ($displayMode === 'cards') {
                     echo '<div class="card-grid">';
-
-                    echo '<script>
-                        function expandText(element) {
-                            const fullText = element.dataset.fullText;
-                            element.innerHTML = fullText;
-                            element.classList.add("expanded");
-                            element.onclick = null;
-                        }
-                    </script>';
-
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="card">';
                         echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
@@ -99,7 +89,7 @@ if (isset($_GET['display_mode'])) {
                         echo '<p>' . $row['Model'] . '</p>';
                         echo '</div>';
                     }
-
+                    
                     function shortenText($text, $maxLength = 50) {
                         if (mb_strlen($text) > $maxLength) {
                             $shortenedText = mb_substr($text, 0, $maxLength) . '...';
@@ -141,6 +131,13 @@ if (isset($_GET['display_mode'])) {
                 const mode = button.textContent.toLowerCase().replace(' ', '_');
                 button.classList.toggle('active', mode === activeMode);
             });
+        }
+
+        function expandText(element) {
+            const fullText = element.dataset.fullText;
+            element.innerHTML = fullText;
+            element.classList.add('expanded');
+            element.onclick = null;
         }
     </script>
 </body>
