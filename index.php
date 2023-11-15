@@ -69,7 +69,7 @@ $displayMode = 'cards';
         $stmt = mysqli_prepare($conn, $sql);
 
         if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "ss", $search, $sort);
+            mysqli_stmt_bind_param($stmt, "s", $search);
 
             mysqli_stmt_execute($stmt);
 
