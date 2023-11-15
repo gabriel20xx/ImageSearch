@@ -69,46 +69,39 @@ $displayMode = 'cards';
 
         if ($stmt) {
             mysqli_stmt_bind_param($stmt, "s", $search);
-
             mysqli_stmt_execute($stmt);
-
             $result = mysqli_stmt_get_result($stmt);
-
             mysqli_stmt_close($stmt);
-
             mysqli_close($conn);
 
             if (mysqli_num_rows($result) > 0) {
+                // Reset the result pointer to the beginning of the result set
+                mysqli_data_seek($result, 0);
+
                 if ($displayMode === 'cards') {
                     echo '<div class="card-grid">';
-
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="card">';
                         echo '<img src="'. "/images" . "/" . $row['Directory']. "/". $row['FileName'] . ".png".'" alt="Image">';
                         echo '<p>' . $row['PositivePrompt'] . '</p>';
                         echo '<p>' . $row['NegativePrompt'] . '</p>';
                         echo '<p>' . $row['Model'] . '</p>';
-                        echo '<p>' . $result . '</p>';
-
                         echo '</div>';
                     }
-
                     echo '</div>';
                 } else {
                     echo '<ul class="list-view">';
-
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<li>' . $row['PositivePrompt'] . '</li>';
                         echo '<li>' . $row['NegativePrompt'] . '</li>';
                         echo '<li>' . $row['Model'] . '</li>';
                     }
-
                     echo '</ul>';
                 }
             } else {
                 echo "No results found.";
             }
-        }  else {
+        } else {
             echo "Prepare statement failed.";
         }
     }
