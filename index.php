@@ -20,7 +20,6 @@ $displayMode = 'cards';
 
 <body>
     <h1>Horde Image Indexer</h1>
-    <img src="dog.png">
 
     <div class="toggle-buttons">
         <button class="<?php echo $displayMode === 'list' ? 'active' : ''; ?>" onclick="setDisplayMode('list')">List View</button>
