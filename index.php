@@ -68,6 +68,12 @@ if (isset($_GET["page"])) {
         <input type="submit" value="Search">
     </form>
 
+    <!-- Fullscreen Image Container -->
+    <div class="fullscreen-container" id="fullscreenContainer" onclick="closeFullscreen">
+        <span class="close-button" onclick="closeFullscreen">&times;</span>
+        <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
+    </div>
+
     <?php
     if (isset($_GET['search'])) {
         $search = '%' . $_GET["search"] . '%';
@@ -167,12 +173,6 @@ if (isset($_GET["page"])) {
             }
             ?>
         </ul>
-    </div>
-
-    <!-- Fullscreen Image Container -->
-    <div class="fullscreen-container" id="fullscreenContainer" onclick="closeFullscreen">
-        <span class="close-button" onclick="closeFullscreen">&times;</span>
-        <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
     </div>
 
     <script>
