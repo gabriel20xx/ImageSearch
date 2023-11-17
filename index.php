@@ -95,37 +95,36 @@ if (isset($_GET["page"])) {
             mysqli_stmt_execute($stmtCount);
             $resultCount = mysqli_stmt_get_result($stmtCount);
             $row = mysqli_fetch_assoc($resultCount);
-            $count = $row["count"];
-            echo "Number of rows matching the query: $count";
+            $totalCount = $row["count"];
+            echo "Total number of rows matching the query: $totalCount";
 
-            if ($count > $countmax) {
-                $count = $countmax;
-            }
+            // Display data in sets of $countmax
+            for ($offset = 0; $offset < $totalCount; $offset += $countmax) {
+                // Define the SQL query for retrieving data with OFFSET
+                $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT $countmax OFFSET $offset";
 
-            // Define the SQL query for retrieving data
-            $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT 1 OFFSET ?";
+                // Prepare the statement for retrieving data
+                $stmtData = mysqli_prepare($conn, $sqlData);
 
-            // Prepare the statement for retrieving data
-            $stmtData = mysqli_prepare($conn, $sqlData);
+                if ($stmtData) {
+                    mysqli_stmt_bind_param($stmtData, "s", $search);
+                    mysqli_stmt_execute($stmtData);
+                    $resultData = mysqli_stmt_get_result($stmtData);
+                    mysqli_stmt_close($stmtData);
 
-            if ($stmtData) {
-                mysqli_stmt_bind_param($stmtData, "si", $search, $count);
-                mysqli_stmt_execute($stmtData);
-                $resultData = mysqli_stmt_get_result($stmtData);
-                mysqli_stmt_close($stmtData);
-
-                echo '<div class="card-grid">';
-                while ($row = mysqli_fetch_assoc($resultData)) {
-                    echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
-                    echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
-                    echo '<p>' . substr($row['PositivePrompt'], 0, 50) . '</p>';
-                    echo '<p>' . substr($row['NegativePrompt'], 0, 50) . '</p>';
-                    echo '<p>' . $row['Model'] . '</p>';
+                    echo '<div class="card-grid">';
+                    while ($row = mysqli_fetch_assoc($resultData)) {
+                        echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
+                        echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
+                        echo '<p>' . substr($row['PositivePrompt'], 0, 50) . '</p>';
+                        echo '<p>' . substr($row['NegativePrompt'], 0, 50) . '</p>';
+                        echo '<p>' . $row['Model'] . '</p>';
+                        echo '</div>';
+                    }
                     echo '</div>';
+                } else {
+                    echo "Prepare statement failed for data retrieval.";
                 }
-                echo '</div>';
-            } else {
-                echo "Prepare statement failed for data retrieval.";
             }
 
             // Close the database connection
@@ -135,8 +134,6 @@ if (isset($_GET["page"])) {
         }
     }
     ?>
-
-
 
 
     <!-- Page indicator -->
