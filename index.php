@@ -95,7 +95,7 @@ if (isset($_GET["page"])) {
                 $count = $countmax;
             }
 
-            $sqlData = "SELECT * FROM Metadata WHERE $filter LIKE ? LIMIT ?";
+            $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT ?";
             $stmtData = mysqli_prepare($conn, $sqlData);
 
             if ($stmtData) {
