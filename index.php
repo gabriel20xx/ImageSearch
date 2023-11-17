@@ -84,10 +84,7 @@ if (isset($_GET["page"])) {
             $countmax = 10;
         }
 
-        // Define the SQL query for counting rows
         $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ?";
-
-        // Prepare the statement for counting rows
         $stmtCount = mysqli_prepare($conn, $sqlCount);
 
         if ($stmtCount) {
@@ -99,11 +96,8 @@ if (isset($_GET["page"])) {
             echo "Total number of rows matching the query: $totalCount";
 
             // Display data in sets of $countmax
-            for ($offset = 0; $offset < $totalCount; $offset += $countmax) {
-                // Define the SQL query for retrieving data with OFFSET
+            for ($offset = 0; $offset < $countmax; $offset++) {
                 $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT $countmax OFFSET $offset";
-
-                // Prepare the statement for retrieving data
                 $stmtData = mysqli_prepare($conn, $sqlData);
 
                 if ($stmtData) {
