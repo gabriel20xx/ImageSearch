@@ -56,10 +56,24 @@ if (isset($_GET["page"])) {
             <option value="SHA1">SHA1</option>
             <option value="SHA256">SHA256</option>
             <option value="MD5">MD5</option>
-            <!-- Add more categories as needed -->
         </select>
-        <label for="search">Search:</label>
-        <input type="text" name="search" id="search" placeholder="Enter your search term">
+        <?php
+        // Conditionally show the search input
+        if (isset($_GET['filter']) && ($_GET['filter'] === 'PositivePrompt' || $_GET['filter'] === 'NegativePrompt')) {
+            echo '<label for="search">Search:</label>';
+            echo '<input type="text" name="search" id="search" placeholder="Enter your search term">';
+        }
+        ?>
+
+        <?php
+        // Conditionally show the model select
+        if (isset($_GET['filter']) && $_GET['filter'] === 'Model') {
+            echo '<select name="model">';
+            echo '<option value="URPM">URPM</option>';
+            echo '<option value="Hassanblend">Hassanblend</option>';
+            echo '</select>';
+        }
+        ?>
         <select name="count">
             <option value="10">10</option>
             <option value="25">25</option>
@@ -67,7 +81,7 @@ if (isset($_GET["page"])) {
         </select>
         <input type="submit" value="Search">
     </form>
-    
+
     <?php
     if (isset($_GET['search'])) {
         $search = '%' . $_GET["search"] . '%';
@@ -86,7 +100,7 @@ if (isset($_GET["page"])) {
             }
 
             for ($i = 0; $i < $count; $i++) {
-                $sql = "SELECT * FROM Metadata WHERE $filter LIKE ? LIMIT 1 OFFSET " . ($i+(($currentPage-1)*$count));
+                $sql = "SELECT * FROM Metadata WHERE $filter LIKE ? LIMIT 1 OFFSET " . ($i + (($currentPage - 1) * $count));
                 $stmt = mysqli_prepare($conn, $sql);
 
                 if ($stmt) {
@@ -191,9 +205,13 @@ if (isset($_GET["page"])) {
             document.body.appendChild(fullscreenContainer);
 
             // Close fullscreen on click
-            fullscreenContainer.addEventListener('click', function () {
+            fullscreenContainer.addEventListener('click', function() {
                 document.body.removeChild(fullscreenContainer);
             });
+        }
+
+        function handleFilterChange(selectedFilter) {
+            // Add any additional handling if needed
         }
     </script>
 </body>
