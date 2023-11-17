@@ -1,14 +1,6 @@
 <?php
 include 'includes/mysql.php';
 ?>
-<?php
-// Initialize $displayMode based on query parameter or user preference
-if (isset($_GET['display_mode'])) {
-    $displayMode = 'cards';
-} else {
-    $displayMode = 'cards';
-}
-?>
 
 <?php
 if (isset($_GET["page"])) {
@@ -54,7 +46,6 @@ if (isset($_GET["page"])) {
             <option value="MD5">MD5</option>
         </select>
         <?php
-        // Conditionally show the search input
         if (isset($_GET['filter']) && ($_GET['filter'] === 'PositivePrompt' || $_GET['filter'] === 'NegativePrompt')) {
             echo '<label for="search">Search:</label>';
             echo '<input type="text" name="search" id="search" placeholder="Enter your search term">';
@@ -62,7 +53,6 @@ if (isset($_GET["page"])) {
         ?>
 
         <?php
-        // Conditionally show the model select
         if (isset($_GET['filter']) && $_GET['filter'] === 'Model') {
             echo '<select name="model">';
             echo '<option value="URPM">URPM</option>';
@@ -77,11 +67,6 @@ if (isset($_GET["page"])) {
         </select>
         <input type="submit" value="Search">
     </form>
-
-    <div class="toggle-buttons">
-        <button class="<?php echo $displayMode === 'list' ? 'active' : ''; ?>" onclick="setDisplayMode('list')">List View</button>
-        <button class="<?php echo $displayMode === 'cards' ? 'active' : ''; ?>" onclick="setDisplayMode('cards')">Card View</button>
-    </div>
 
     <?php
     if (isset($_GET['search'])) {
