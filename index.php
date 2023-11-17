@@ -168,6 +168,27 @@ if (isset($_GET["page"])) {
             ?>
         </ul>
     </div>
+
+    <!-- Fullscreen Image Container -->
+    <div class="fullscreen-container" id="fullscreenContainer" onclick="closeFullscreen()">
+        <span class="close-button" onclick="closeFullscreen()">&times;</span>
+        <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
+    </div>
+
+    <script>
+        function openFullscreen(imageSrc) {
+            var fullscreenContainer = document.getElementById('fullscreenContainer');
+            var fullscreenImage = document.getElementById('fullscreenImage');
+
+            fullscreenImage.src = imageSrc;
+            fullscreenContainer.style.display = 'flex';
+        }
+
+        function closeFullscreen() {
+            var fullscreenContainer = document.getElementById('fullscreenContainer');
+            fullscreenContainer.style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>
