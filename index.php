@@ -24,49 +24,53 @@ if (isset($_GET["page"])) {
 
     <form method="get" action="index.php">
         <select name="filter" onchange="handleFilterChange(this.value)">
-            <option value="all">All</option>
-            <option value="FileName">Filename</option>
-            <option value="Directory">Directory</option>
-            <option value="FileSize">File Size</option>
-            <option value="PositivePrompt">Positive Prompt</option>
-            <option value="NegativePrompt">Negativ Prompt</option>
-            <option value="Steps">Steps</option>
-            <option value="Sampler">Sampler</option>
-            <option value="CFGScale">CFG Scale</option>
-            <option value="Seed">Seed</option>
-            <option value="ImageSize">Image Size</option>
-            <option value="ModelHash">Model Hash</option>
-            <option value="Model">Model</option>
-            <option value="SeedResizeFrom">Seed Resize From</option>
-            <option value="DenoisingStrength">Denoising Strength</option>
-            <option value="Version">Version</option>
-            <option value="NSFWProbability">NSFW Probability</option>
-            <option value="SHA1">SHA1</option>
-            <option value="SHA256">SHA256</option>
-            <option value="MD5">MD5</option>
+            <option value="all" <?php echo (!isset($_GET['filter']) || $_GET['filter'] === 'all') ? 'selected' : ''; ?>>All</option>
+            <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
+            <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
+            <option value="FileSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileSize') ? 'selected' : ''; ?>>File Size</option>
+            <option value="PositivePrompt" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'PositivePrompt') ? 'selected' : ''; ?>>Positive Prompt</option>
+            <option value="NegativePrompt" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'NegativePrompt') ? 'selected' : ''; ?>>Negative Prompt</option>
+            <option value="Steps" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Steps') ? 'selected' : ''; ?>>Steps</option>
+            <option value="Sampler" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Sampler') ? 'selected' : ''; ?>>Sampler</option>
+            <option value="CFGScale" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'CFGScale') ? 'selected' : ''; ?>>CFG Scale</option>
+            <option value="Seed" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Seed') ? 'selected' : ''; ?>>Seed</option>
+            <option value="ImageSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'ImageSize') ? 'selected' : ''; ?>>Image Size</option>
+            <option value="ModelHash" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'ModelHash') ? 'selected' : ''; ?>>Model Hash</option>
+            <option value="Model" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Model') ? 'selected' : ''; ?>>Model</option>
+            <option value="SeedResizeFrom" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'SeedResizeFrom') ? 'selected' : ''; ?>>Seed Resize From</option>
+            <option value="DenoisingStrength" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'DenoisingStrength') ? 'selected' : ''; ?>>Denoising Strength</option>
+            <option value="Version" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Version') ? 'selected' : ''; ?>>Version</option>
+            <option value="NSFWProbability" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'NSFWProbability') ? 'selected' : ''; ?>>NSFW Probability</option>
+            <option value="SHA1" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'SHA1') ? 'selected' : ''; ?>>SHA1</option>
+            <option value="SHA256" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'SHA256') ? 'selected' : ''; ?>>SHA256</option>
+            <option value="MD5" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'MD5') ? 'selected' : ''; ?>>MD5</option>
         </select>
+
         <?php
         if (isset($_GET['filter']) && ($_GET['filter'] === 'PositivePrompt' || $_GET['filter'] === 'NegativePrompt')) {
             echo '<label for="search">Search:</label>';
-            echo '<input type="text" name="search" id="search" placeholder="Enter your search term">';
+            echo '<input type="text" name="search" id="search" placeholder="Enter your search term" value="' . ($_GET['search'] ?? '') . '">';
         }
         ?>
 
         <?php
         if (isset($_GET['filter']) && $_GET['filter'] === 'Model') {
             echo '<select name="model">';
-            echo '<option value="URPM">URPM</option>';
-            echo '<option value="Hassanblend">Hassanblend</option>';
+            echo '<option value="URPM" ' . (isset($_GET['model']) && $_GET['model'] === 'URPM' ? 'selected' : '') . '>URPM</option>';
+            echo '<option value="Hassanblend" ' . (isset($_GET['model']) && $_GET['model'] === 'Hassanblend' ? 'selected' : '') . '>Hassanblend</option>';
             echo '</select>';
         }
         ?>
+
         <select name="count">
             <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
             <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
             <option value="100" <?php echo (isset($_GET['count']) && $_GET['count'] === '100') ? 'selected' : ''; ?>>100</option>
         </select>
+
         <input type="submit" value="Search">
     </form>
+
 
     <!-- Fullscreen Image Container -->
     <div class="fullscreen-container" id="fullscreenContainer" onclick="closeFullscreen">
