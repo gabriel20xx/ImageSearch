@@ -24,6 +24,7 @@ if (isset($_GET["page"])) {
 <head>
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <title>Horde Image Indexer</title>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
@@ -184,34 +185,6 @@ if (isset($_GET["page"])) {
             ?>
         </ul>
     </div>
-    <script>
-        function setDisplayMode(mode) {
-            console.log('setDisplayMode called with mode:', mode);
-            window.location.href = `index.php?display_mode=${mode}`;
-        }
-
-        function openFullscreen(imageSrc) {
-            console.log('openFullscreen called with imageSrc:', imageSrc);
-            var fullscreenContainer = document.createElement('div');
-            fullscreenContainer.className = 'fullscreen';
-
-            var imgElement = document.createElement('img');
-            imgElement.src = imageSrc;
-
-            fullscreenContainer.appendChild(imgElement);
-
-            document.body.appendChild(fullscreenContainer);
-
-            // Close fullscreen on click
-            fullscreenContainer.addEventListener('click', function() {
-                document.body.removeChild(fullscreenContainer);
-            });
-        }
-
-        function handleFilterChange(selectedFilter) {
-            // Add any additional handling if needed
-        }
-    </script>
 </body>
 
 </html>
