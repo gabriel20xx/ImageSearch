@@ -89,10 +89,13 @@ if (isset($_GET["page"])) {
         $filter = $_GET["filter"];
         $countmax = $_GET["count"];
 
-        $sqlCount = "SELECT COUNT(*) as count FROM Metadata";
-        $resultCount = mysqli_query($conn, $sqlCount);
+        $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter LIKE ?";
+        $stmtCount = mysqli_prepare($conn, $sqlCount);
 
-        if (mysqli_num_rows($resultCount) > 0) {
+        if ($stmtCount) {
+            mysqli_stmt_bind_param($stmtCount, "s", $search);
+            mysqli_stmt_execute($stmtCount);
+            $resultCount = mysqli_stmt_get_result($stmtCount);
             $row = mysqli_fetch_assoc($resultCount);
             $count = $row["count"];
             echo "Number of rows matching the query: $count";
@@ -101,46 +104,47 @@ if (isset($_GET["page"])) {
                 $count = $countmax;
             }
 
-            for ($i = 0; $i < $count; $i++) {
-                $sqlData = "SELECT * FROM Metadata WHERE $filter LIKE ? LIMIT 1 OFFSET " . ($i + (($currentPage - 1) * $count));
-                $stmt = mysqli_prepare($conn, $sqlData);
+            $sqlData = "SELECT * FROM Metadata WHERE $filter LIKE ? LIMIT ?";
+            $stmtData = mysqli_prepare($conn, $sqlData);
 
-                if ($stmt) {
-                    mysqli_stmt_bind_param($stmt, "s", $search);
-                    mysqli_stmt_execute($stmt);
-                    $resultData = mysqli_stmt_get_result($stmt);
-                    mysqli_stmt_close($stmt);
+            if ($stmtData) {
+                mysqli_stmt_bind_param($stmtData, "si", $search, $count);
+                mysqli_stmt_execute($stmtData);
+                $resultData = mysqli_stmt_get_result($stmtData);
+                mysqli_stmt_close($stmtData);
 
-                    if ($displayMode === 'cards') {
-                        echo '<div class="card-grid">';
-                        while ($row = mysqli_fetch_assoc($resultData)) {
-                            echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
-                            echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
-                            echo '<p>' . substr($row['PositivePrompt'], 0, 50) . '</p>';
-                            echo '<p>' . substr($row['NegativePrompt'], 0, 50) . '</p>';
-                            echo '<p>' . $row['Model'] . '</p>';
-                            echo '</div>';
-                        }
+                if ($displayMode === 'cards') {
+                    echo '<div class="card-grid">';
+                    while ($row = mysqli_fetch_assoc($resultData)) {
+                        echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
+                        echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
+                        echo '<p>' . substr($row['PositivePrompt'], 0, 50) . '</p>';
+                        echo '<p>' . substr($row['NegativePrompt'], 0, 50) . '</p>';
+                        echo '<p>' . $row['Model'] . '</p>';
                         echo '</div>';
-                    } else {
-                        echo '<ul class="list-view">';
-                        while ($row = mysqli_fetch_assoc($resultData)) {
-                            echo '<li>' . $row['PositivePrompt'] . '</li>';
-                            echo '<li>' . $row['NegativePrompt'] . '</li>';
-                            echo '<li>' . $row['Model'] . '</li>';
-                        }
-                        echo '</ul>';
                     }
+                    echo '</div>';
                 } else {
-                    echo "Prepare statement failed.";
+                    echo '<ul class="list-view">';
+                    while ($row = mysqli_fetch_assoc($resultData)) {
+                        echo '<li>' . $row['PositivePrompt'] . '</li>';
+                        echo '<li>' . $row['NegativePrompt'] . '</li>';
+                        echo '<li>' . $row['Model'] . '</li>';
+                    }
+                    echo '</ul>';
                 }
+            } else {
+                echo "Prepare statement failed for data retrieval.";
             }
 
-            // Close the database connection outside of the loop
+            // Close the database connection
             mysqli_close($conn);
+        } else {
+            echo "Prepare statement failed for count retrieval.";
         }
     }
     ?>
+
 
 
     <!-- Page indicator -->
