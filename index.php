@@ -80,7 +80,7 @@ if (isset($_GET["page"])) {
             $countmax = $_GET["count"];
         }
 
-        $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE ? LIKE ?";
+        $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT 1 OFFSET ?";
         $stmtCount = mysqli_prepare($conn, $sqlCount);
 
         if ($stmtCount) {
