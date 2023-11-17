@@ -94,6 +94,7 @@ if (isset($_GET["page"])) {
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             $count = $row["count"];
+            echo "Number of rows matching the query: $count";
 
             if ($count > $countmax) {
                 $count = $countmax;
@@ -110,33 +111,25 @@ if (isset($_GET["page"])) {
                     mysqli_stmt_close($stmt);
                     mysqli_close($conn);
 
-                    $numRows = mysqli_num_rows($result);
-
-                    if ($numRows > 0) {
-                        echo "Number of rows matching the query: $numRows";
-
-                        if ($displayMode === 'cards') {
-                            echo '<div class="card-grid">';
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
-                                echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
-                                echo '<p>' . substr($row['PositivePrompt'], 0, 50) . '</p>';
-                                echo '<p>' . substr($row['NegativePrompt'], 0, 50) . '</p>';
-                                echo '<p>' . $row['Model'] . '</p>';
-                                echo '</div>';
-                            }
+                    if ($displayMode === 'cards') {
+                        echo '<div class="card-grid">';
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
+                            echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
+                            echo '<p>' . substr($row['PositivePrompt'], 0, 50) . '</p>';
+                            echo '<p>' . substr($row['NegativePrompt'], 0, 50) . '</p>';
+                            echo '<p>' . $row['Model'] . '</p>';
                             echo '</div>';
-                        } else {
-                            echo '<ul class="list-view">';
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<li>' . $row['PositivePrompt'] . '</li>';
-                                echo '<li>' . $row['NegativePrompt'] . '</li>';
-                                echo '<li>' . $row['Model'] . '</li>';
-                            }
-                            echo '</ul>';
                         }
+                        echo '</div>';
                     } else {
-                        echo "No results found.";
+                        echo '<ul class="list-view">';
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<li>' . $row['PositivePrompt'] . '</li>';
+                            echo '<li>' . $row['NegativePrompt'] . '</li>';
+                            echo '<li>' . $row['Model'] . '</li>';
+                        }
+                        echo '</ul>';
                     }
                 } else {
                     echo "Prepare statement failed.";
