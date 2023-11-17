@@ -71,8 +71,14 @@ if (isset($_GET["page"])) {
     <?php
     if (isset($_GET['search'])) {
         $search = '%' . $_GET["search"] . '%';
-        $filter = $_GET["filter"];
-        $countmax = $_GET["count"];
+
+        if (isset($_GET['filter'])) {
+            $filter = $_GET["filter"];
+        }
+
+        if (isset($_GET['count'])) {
+            $countmax = $_GET["count"];
+        }
 
         $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter LIKE ?";
         $stmtCount = mysqli_prepare($conn, $sqlCount);
