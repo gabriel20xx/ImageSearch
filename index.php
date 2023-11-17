@@ -170,8 +170,8 @@ if (isset($_GET["page"])) {
     </div>
 
     <!-- Fullscreen Image Container -->
-    <div class="fullscreen-container" id="fullscreenContainer" onclick="closeFullscreen()">
-        <span class="close-button" onclick="closeFullscreen()">&times;</span>
+    <div class="fullscreen-container" id="fullscreenContainer" onclick="closeFullscreen">
+        <span class="close-button" onclick="closeFullscreen">&times;</span>
         <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
     </div>
 
