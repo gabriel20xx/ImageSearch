@@ -35,8 +35,6 @@ if (isset($_GET["page"])) {
     </div>
 
     <form method="get" action="index.php">
-        <label for="search">Search:</label>
-        <input type="text" name="search" id="search" placeholder="Enter your search term">
         <select name="filter">
             <option value="all">All</option>
             <option value="FileName">Filename</option>
@@ -60,11 +58,8 @@ if (isset($_GET["page"])) {
             <option value="MD5">MD5</option>
             <!-- Add more categories as needed -->
         </select>
-        <select name="sort">
-            <option value="relevance">Relevance</option>
-            <option value="date">Date</option>
-            <option value="rating">Rating</option>
-        </select>
+        <label for="search">Search:</label>
+        <input type="text" name="search" id="search" placeholder="Enter your search term">
         <select name="count">
             <option value="10">10</option>
             <option value="25">25</option>
@@ -145,7 +140,7 @@ if (isset($_GET["page"])) {
         $previousPage = "None";
     }
 
-    if ($count > 12 * ($currentPage)) {
+    if ($count > $countmax * ($currentPage)) {
         $nextPage = $currentPage + 1;
     } else {
         $nextPage = "None";
@@ -155,7 +150,7 @@ if (isset($_GET["page"])) {
     <div>
         <ul class="pagination justify-content-center">
             <?php
-            if ($count > 12 && $currentPage != 1) {
+            if ($count > $countmax && $currentPage != 1) {
                 echo "<li class='page-item'>
                 <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "' aria-label='Previous'>
                     <span aria-hidden='true'>«</span>
@@ -167,7 +162,7 @@ if (isset($_GET["page"])) {
 
             echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $currentPage))) . "'>$currentPage</a></li>";
 
-            if ($count > 12 * ($currentPage)) {
+            if ($count > $countmax * ($currentPage)) {
                 echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "'>$nextPage</a></li>
 
             <li class='page-item'>
