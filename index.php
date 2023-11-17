@@ -97,7 +97,7 @@ if (isset($_GET["page"])) {
 
             // Display data in sets of $countmax
             for ($offset = 0; $offset < $countmax; $offset++) {
-                $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT $countmax OFFSET $offset";
+                $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT 1 OFFSET $offset";
                 $stmtData = mysqli_prepare($conn, $sqlData);
 
                 if ($stmtData) {
