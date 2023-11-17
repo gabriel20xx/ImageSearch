@@ -80,11 +80,11 @@ if (isset($_GET["page"])) {
             $countmax = $_GET["count"];
         }
 
-        $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter LIKE ?";
+        $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE ? LIKE ?";
         $stmtCount = mysqli_prepare($conn, $sqlCount);
 
         if ($stmtCount) {
-            mysqli_stmt_bind_param($stmtCount, "s", $search);
+            mysqli_stmt_bind_param($stmtCount, "ss", $filter ,$search);
             mysqli_stmt_execute($stmtCount);
             $resultCount = mysqli_stmt_get_result($stmtCount);
             $row = mysqli_fetch_assoc($resultCount);
