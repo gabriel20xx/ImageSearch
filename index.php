@@ -113,26 +113,16 @@ if (isset($_GET["page"])) {
                 $resultData = mysqli_stmt_get_result($stmtData);
                 mysqli_stmt_close($stmtData);
 
-                if ($displayMode === 'cards') {
-                    echo '<div class="card-grid">';
-                    while ($row = mysqli_fetch_assoc($resultData)) {
-                        echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
-                        echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
-                        echo '<p>' . substr($row['PositivePrompt'], 0, 50) . '</p>';
-                        echo '<p>' . substr($row['NegativePrompt'], 0, 50) . '</p>';
-                        echo '<p>' . $row['Model'] . '</p>';
-                        echo '</div>';
-                    }
+                echo '<div class="card-grid">';
+                while ($row = mysqli_fetch_assoc($resultData)) {
+                    echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
+                    echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
+                    echo '<p>' . substr($row['PositivePrompt'], 0, 50) . '</p>';
+                    echo '<p>' . substr($row['NegativePrompt'], 0, 50) . '</p>';
+                    echo '<p>' . $row['Model'] . '</p>';
                     echo '</div>';
-                } else {
-                    echo '<ul class="list-view">';
-                    while ($row = mysqli_fetch_assoc($resultData)) {
-                        echo '<li>' . $row['PositivePrompt'] . '</li>';
-                        echo '<li>' . $row['NegativePrompt'] . '</li>';
-                        echo '<li>' . $row['Model'] . '</li>';
-                    }
-                    echo '</ul>';
                 }
+                echo '</div>';
             } else {
                 echo "Prepare statement failed for data retrieval.";
             }
