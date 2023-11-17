@@ -74,10 +74,14 @@ if (isset($_GET["page"])) {
 
         if (isset($_GET['filter'])) {
             $filter = $_GET["filter"];
+        } else {
+            $filter = 'PositivePrompt';
         }
 
         if (isset($_GET['count'])) {
             $countmax = $_GET["count"];
+        } else {
+            $countmax = 10;
         }
 
         $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT 1 OFFSET ?";
