@@ -29,11 +29,6 @@ if (isset($_GET["page"])) {
 <body>
     <h1>Horde Image Indexer</h1>
 
-    <div class="toggle-buttons">
-        <button class="<?php echo $displayMode === 'list' ? 'active' : ''; ?>" onclick="setDisplayMode('list')">List View</button>
-        <button class="<?php echo $displayMode === 'cards' ? 'active' : ''; ?>" onclick="setDisplayMode('cards')">Card View</button>
-    </div>
-
     <form method="get" action="index.php">
         <select name="filter">
             <option value="all">All</option>
@@ -81,6 +76,11 @@ if (isset($_GET["page"])) {
         </select>
         <input type="submit" value="Search">
     </form>
+
+    <div class="toggle-buttons">
+        <button class="<?php echo $displayMode === 'list' ? 'active' : ''; ?>" onclick="setDisplayMode('list')">List View</button>
+        <button class="<?php echo $displayMode === 'cards' ? 'active' : ''; ?>" onclick="setDisplayMode('cards')">Card View</button>
+    </div>
 
     <?php
     if (isset($_GET['search'])) {
@@ -186,10 +186,12 @@ if (isset($_GET["page"])) {
     </div>
     <script>
         function setDisplayMode(mode) {
+            console.log('setDisplayMode called with mode:', mode);
             window.location.href = `index.php?display_mode=${mode}`;
         }
 
         function openFullscreen(imageSrc) {
+            console.log('openFullscreen called with imageSrc:', imageSrc);
             var fullscreenContainer = document.createElement('div');
             fullscreenContainer.className = 'fullscreen';
 
