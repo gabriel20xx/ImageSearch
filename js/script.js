@@ -22,5 +22,18 @@ function openFullscreen(imageSrc) {
 }
 
 function handleFilterChange(selectedFilter) {
-    // Add any additional handling if needed
+    var searchElement = document.getElementById('search');
+    var modelElement = document.getElementsByName('model')[0]; // Assuming there is only one element with the name 'model'
+
+    if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt') {
+        searchElement.style.display = 'block';
+    } else {
+        searchElement.style.display = 'none';
+    }
+
+    if (selectedFilter === 'Model') {
+        modelElement.style.display = 'block';
+    } else {
+        modelElement.style.display = 'none';
+    }
 }

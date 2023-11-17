@@ -31,7 +31,7 @@ if (isset($_GET["page"])) {
     <h1>Horde Image Indexer</h1>
 
     <form method="get" action="index.php">
-        <select name="filter">
+        <select name="filter" onchange="handleFilterChange(this.value)">
             <option value="all">All</option>
             <option value="FileName">Filename</option>
             <option value="Directory">Directory</option>
