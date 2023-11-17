@@ -88,11 +88,11 @@ if (isset($_GET["page"])) {
         $filter = $_GET["filter"];
         $countmax = $_GET["count"];
 
-        $sql = "SELECT COUNT(*) as count FROM Metadata";
-        $result = mysqli_query($conn, $sql);
+        $sqlCount = "SELECT COUNT(*) as count FROM Metadata";
+        $resultCount = mysqli_query($conn, $sqlCount);
 
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
+        if (mysqli_num_rows($resultCount) > 0) {
+            $row = mysqli_fetch_assoc($resultCount);
             $count = $row["count"];
             echo "Number of rows matching the query: $count";
 
@@ -101,19 +101,18 @@ if (isset($_GET["page"])) {
             }
 
             for ($i = 0; $i < $count; $i++) {
-                $sql = "SELECT * FROM Metadata WHERE $filter LIKE ? LIMIT 1 OFFSET " . ($i + (($currentPage - 1) * $count));
-                $stmt = mysqli_prepare($conn, $sql);
+                $sqlData = "SELECT * FROM Metadata WHERE $filter LIKE ? LIMIT 1 OFFSET " . ($i + (($currentPage - 1) * $count));
+                $stmt = mysqli_prepare($conn, $sqlData);
 
                 if ($stmt) {
                     mysqli_stmt_bind_param($stmt, "s", $search);
                     mysqli_stmt_execute($stmt);
-                    $result = mysqli_stmt_get_result($stmt);
+                    $resultData = mysqli_stmt_get_result($stmt);
                     mysqli_stmt_close($stmt);
-                    mysqli_close($conn);
 
                     if ($displayMode === 'cards') {
                         echo '<div class="card-grid">';
-                        while ($row = mysqli_fetch_assoc($result)) {
+                        while ($row = mysqli_fetch_assoc($resultData)) {
                             echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
                             echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
                             echo '<p>' . substr($row['PositivePrompt'], 0, 50) . '</p>';
@@ -124,7 +123,7 @@ if (isset($_GET["page"])) {
                         echo '</div>';
                     } else {
                         echo '<ul class="list-view">';
-                        while ($row = mysqli_fetch_assoc($result)) {
+                        while ($row = mysqli_fetch_assoc($resultData)) {
                             echo '<li>' . $row['PositivePrompt'] . '</li>';
                             echo '<li>' . $row['NegativePrompt'] . '</li>';
                             echo '<li>' . $row['Model'] . '</li>';
@@ -135,9 +134,13 @@ if (isset($_GET["page"])) {
                     echo "Prepare statement failed.";
                 }
             }
+
+            // Close the database connection outside of the loop
+            mysqli_close($conn);
         }
     }
     ?>
+
 
     <!-- Page indicator -->
     <?php
