@@ -1,26 +1,21 @@
 function setDisplayMode(mode) {
-    console.log('setDisplayMode called with mode:', mode);
     window.location.href = `index.php?display_mode=${mode}`;
 }
 
 function openFullscreen(imageSrc) {
-    console.log('openFullscreen called with imageSrc:', imageSrc);
-    var fullscreenContainer = document.createElement('div');
-    fullscreenContainer.className = 'fullscreen';
+    var fullscreenContainer = document.getElementById('fullscreenContainer');
+    var fullscreenImage = document.getElementById('fullscreenImage');
 
-    var imgElement = document.createElement('img');
-    imgElement.src = imageSrc;
-
-    fullscreenContainer.appendChild(imgElement);
-
-    document.body.appendChild(fullscreenContainer);
-
-    // Close fullscreen on click
-    fullscreenContainer.addEventListener('click', function() {
-        document.body.removeChild(fullscreenContainer);
-    });
+    fullscreenImage.src = imageSrc;
+    fullscreenContainer.style.display = 'flex';
 }
 
+function closeFullscreen() {
+    var fullscreenContainer = document.getElementById('fullscreenContainer');
+    fullscreenContainer.style.display = 'none';
+}
+
+// Working
 function handleFilterChange(selectedFilter) {
     var searchElement = document.getElementById('search');
     var modelElement = document.getElementsByName('model')[0]; // Assuming there is only one element with the name 'model'
@@ -37,3 +32,12 @@ function handleFilterChange(selectedFilter) {
         modelElement.style.display = 'none';
     }
 }
+
+$(".add").click(function() {
+    $("form > p:first-child").clone(true).insertBefore("form > p:last-child");
+    return false;
+});
+
+$(".remove").click(function() {
+    $(this).parent().remove();
+});

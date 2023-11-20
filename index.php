@@ -171,34 +171,5 @@ if (isset($_GET["page"])) {
             ?>
         </ul>
     </div>
-
-    <script>
-        function setDisplayMode(mode) {
-            window.location.href = `index.php?display_mode=${mode}`;
-        }
-
-        function openFullscreen(imageSrc) {
-            var fullscreenContainer = document.getElementById('fullscreenContainer');
-            var fullscreenImage = document.getElementById('fullscreenImage');
-
-            fullscreenImage.src = imageSrc;
-            fullscreenContainer.style.display = 'flex';
-        }
-
-        function closeFullscreen() {
-            var fullscreenContainer = document.getElementById('fullscreenContainer');
-            fullscreenContainer.style.display = 'none';
-        }
-
-        $(".add").click(function() {
-            $("form > p:first-child").clone(true).insertBefore("form > p:last-child");
-            return false;
-        });
-
-        $(".remove").click(function() {
-            $(this).parent().remove();
-        });
-    </script>
 </body>
-
 </html>
