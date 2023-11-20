@@ -51,19 +51,19 @@ if (isset($_GET["page"])) {
                     <option value="MD5" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'MD5') ? 'selected' : ''; ?>>MD5</option>
                 </select>
 
-                <div id="search" class="col" onchange="handleFilterChange(this.value)">
+                <div id="search" class="col">
                     <label for="search">Search:</label>
                     <input type="text" name="search" placeholder="Enter your search term">
                 </div>
 
-                <div id="slider" class="col" onchange="handleFilterChange(this.value)">
+                <div id="slider" class="col">
                     <label for="range">Select a range:</label>
                     <input type="range" id="range" name="range" min="0" max="100" step="1" value="25">
                     <input type="range" id="range2" name="range2" min="0" max="100" step="1" value="75">
                     <p>Selected Range: <span id="rangeValues"></span></p>
                 </div>
 
-                <select name="model" class="col" onchange="handleFilterChange(this.value)">
+                <select name="model" class="col">
                     <option value="URPM">URPM</option>
                 </select>
             </div>

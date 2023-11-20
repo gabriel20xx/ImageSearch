@@ -22,21 +22,21 @@ function handleFilterChange(selectedFilter) {
     var sliderElement = document.getElementById('slider');
 
     if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
-        searchElement.classList.remove("invisible");
+        searchElement.classList.remove("d-none");
     } else {
-        searchElement.classList.add("invisible");
+        searchElement.classList.add("d-none");
     }
 
     if (selectedFilter === 'ModelHash' || selectedFilter === 'Model' || selectedFilter === 'SeedResizeFrom' || selectedFilter === 'DenoisingStrength') {
-        modelElement.classList.remove("invisible");
+        modelElement.classList.remove("d-none");
     } else {
-        modelElement.classList.add("invisible");
+        modelElement.classList.add("d-none");
     }
 
     if (selectedFilter === 'NSFWProbability') {
-        sliderElement.classList.remove("invisible");
+        sliderElement.classList.remove("d-none");
     } else {
-        sliderElement.classList.add("invisible");
+        sliderElement.classList.add("d-none");
     }
 }
 
