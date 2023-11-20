@@ -28,12 +28,13 @@ function handleFilterChange(selectedFilter) {
         searchElement.classList.remove("visible");
     }
 
-    if (selectedFilter === 'Model') {
+    if (selectedFilter === 'ModelHash' || selectedFilter === 'Model' || selectedFilter === 'SeedResizeFrom' || selectedFilter === 'DenoisingStrength') {
         modelElement.classList.remove("invisible");
     } else {
         modelElement.classList.add("invisible");
     }
 }
+
 
 $("form").on("click", ".remove", function() {
     $(this).parent().remove();
