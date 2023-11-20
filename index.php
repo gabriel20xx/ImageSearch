@@ -86,9 +86,11 @@ if (isset($_GET["page"])) {
             <div class="mb-3">
                 <label for="count">Results per page</label>
                 <select name="count" class="form-select">
-                    <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
-                    <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
-                    <option value="100" <?php echo (isset($_GET['count']) && $_GET['count'] === '100') ? 'selected' : ''; ?>>100</option>
+                    <option value="12" <?php echo (isset($_GET['count']) && $_GET['count'] === '12') ? 'selected' : ''; ?>>12</option>
+                    <option value="24" <?php echo (isset($_GET['count']) && $_GET['count'] === '24') ? 'selected' : ''; ?>>24</option>
+                    <option value="48" <?php echo (isset($_GET['count']) && $_GET['count'] === '48') ? 'selected' : ''; ?>>48</option>
+                    <option value="96" <?php echo (isset($_GET['count']) && $_GET['count'] === '96') ? 'selected' : ''; ?>>96</option>
+                    <option value="192" <?php echo (isset($_GET['count']) && $_GET['count'] === '192') ? 'selected' : ''; ?>>192</option>
                 </select>
             </div>
         </div>
@@ -155,7 +157,7 @@ if (isset($_GET["page"])) {
                 while ($row = mysqli_fetch_assoc($resultData)) {
                     $images[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
                     echo
-                    '<div class="col-md-2">
+                    '<div class="col-sm-4 col-md-2 col-lg-1">
                         <div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">
                             <img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" class="card-img-top" alt="Image">
                             <div class="card-body">
