@@ -1,3 +1,35 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // Set up event listeners
+    document.querySelector('form').addEventListener('submit', function (event) {
+        // Call the updateFormAction function on form submit
+        updateFormAction();
+    });
+
+    // Use event delegation to handle change events on the filter select element
+    document.getElementById('filter').addEventListener('change', function () {
+        const selectedFilter = this.value;
+        // Call the handleFilterChange function on filter change
+        handleFilterChange(selectedFilter);
+    });
+
+    // Use event delegation to handle click events on the form
+    document.querySelector('form').addEventListener('click', function (event) {
+        const target = event.target;
+
+        if (target.classList.contains('remove')) {
+            console.log('Remove button clicked');
+            target.closest('.row').remove();
+        }
+
+        if (target.classList.contains('add')) {
+            console.log('Add button clicked');
+            const clonedElement = document.querySelector('form > .container:first-child').cloneNode(true);
+            clonedElement.innerHTML += '<button type="button" class="remove-row btn btn-danger">Remove</button>';
+            document.querySelector('form > .container:last-child').insertAdjacentElement('afterend', clonedElement);
+        }
+    });
+});
+
 // Use const and let for variable declarations
 const images = []; // assuming you have an array of images
 
@@ -41,7 +73,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function handleFilterChange(selectedFilter) {
+// Existing updateFormAction function
+function updateFormAction() {
+    const form = document.querySelector('form');
     const searchElement = document.querySelector('.search-form');
     const modelElement = document.querySelector('.model-form');
     const sliderElement = document.querySelector('.slider-form');
@@ -51,7 +85,8 @@ function handleFilterChange(selectedFilter) {
     let modelVisible = false;
     let sliderVisible = false;
 
-    // Use a switch statement for better readability
+    // Determine visibility based on the selected filter
+    const selectedFilter = form.filter.value;
     switch (selectedFilter) {
         case 'PositivePrompt':
         case 'NegativePrompt':
@@ -75,7 +110,6 @@ function handleFilterChange(selectedFilter) {
     }
 
     // Update the form's action URL based on visibility
-    const form = document.querySelector('form');
     form.action = 'index.php?' + [
         searchVisible ? 'search=' + encodeURIComponent(form.search.value) : '',
         modelVisible ? 'model=' + encodeURIComponent(form.model.value) : '',
@@ -84,30 +118,43 @@ function handleFilterChange(selectedFilter) {
         'filter=' + encodeURIComponent(selectedFilter)
     ].filter(Boolean).join('&');
 
-    // Update the visibility of form elements
-    searchElement.style.display = searchVisible ? 'block' : 'none';
-    modelElement.style.display = modelVisible ? 'block' : 'none';
-    sliderElement.style.display = sliderVisible ? 'block' : 'none';
+    return true; // Allow the form to be submitted
+}
+
+// Modified handleFilterChange function to toggle visibility
+function handleFilterChange(selectedFilter) {
+    const searchElement = document.querySelector('.search-form');
+    const modelElement = document.querySelector('.model-form');
+    const sliderElement = document.querySelector('.slider-form');
+
+    // Set default visibility to false
+    searchElement.style.display = 'none';
+    modelElement.style.display = 'none';
+    sliderElement.style.display = 'none';
+
+    // Set visibility based on the selected filter
+    switch (selectedFilter) {
+        case 'PositivePrompt':
+        case 'NegativePrompt':
+        case 'Filename':
+            searchElement.style.display = 'block';
+            break;
+
+        case 'ModelHash':
+        case 'Model':
+        case 'SeedResizeFrom':
+        case 'DenoisingStrength':
+            modelElement.style.display = 'block';
+            break;
+
+        case 'NSFWProbability':
+            sliderElement.style.display = 'block';
+            break;
+
+        default:
+            break;
+    }
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('Script is running');
 
-    // Use event delegation to handle click events on the form
-    document.querySelector('form').addEventListener('click', function (event) {
-        const target = event.target;
-
-        if (target.classList.contains('remove')) {
-            console.log('Remove button clicked');
-            target.closest('.row').remove();
-        }
-
-        if (target.classList.contains('add')) {
-            console.log('Add button clicked');
-            const clonedElement = document.querySelector('form > .container:first-child').cloneNode(true);
-            clonedElement.innerHTML += '<button type="button" class="remove-row btn btn-danger">Remove</button>';
-            document.querySelector('form > .container:last-child').insertAdjacentElement('afterend', clonedElement);
-        }
-    });
-});
