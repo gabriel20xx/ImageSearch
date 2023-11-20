@@ -51,16 +51,6 @@ if (isset($_GET["page"])) {
             <label for="search">Search:</label>
             <input type="text" name="search" id="search" placeholder="Enter your search term">
 
-            <?php
-            /**if (isset($_GET['filter']) && $_GET['filter'] === 'Model') {
-                echo '<select name="model">';
-                echo '<option value="URPM" ' . (isset($_GET['model']) && $_GET['model'] === 'URPM' ? 'selected' : '') . '>URPM</option>';
-                echo '<option value="Hassanblend" ' . (isset($_GET['model']) && $_GET['model'] === 'Hassanblend' ? 'selected' : '') . '>Hassanblend</option>';
-                echo '</select>';
-            }**/
-            ?>
-
-
             <span class="remove">Remove</span>
         </p>
         <p>
