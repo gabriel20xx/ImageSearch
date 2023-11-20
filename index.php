@@ -78,7 +78,7 @@ if (isset($_GET["page"])) {
             </div>
         </div>
         <div>
-            <button type="button" class="btn btn-success add-row">Add Row</button>
+            <input type="button" class="btn btn-success add-row" value="Add Row">
             <input class="btn btn-primary" type="submit" value="Search">
 
             <div class="mb-3">
