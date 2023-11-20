@@ -151,7 +151,7 @@ if (isset($_GET["page"])) {
                 echo '<div class="card-grid">';
                 while ($row = mysqli_fetch_assoc($resultData)) {
                     $images[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
-                    echo '<div class="card" style="width: 18rem;" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
+                    echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
                     echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" class="card-img-top" alt="Image">';
                     echo '<ul class="list-group list-group-flush">';
                     echo '<li class="list-group-item">' . substr($row['PositivePrompt'], 0, 50) . '</li>';
