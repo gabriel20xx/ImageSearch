@@ -24,9 +24,9 @@ if (isset($_GET["page"])) {
     <h1>Horde Image Indexer</h1>
 
     <form method="get" action="index.php">
-        <p>
+        <div>
             <select name="filter" onchange="handleFilterChange(this.value)">
-                <option value="All" <?php echo (!isset($_GET['filter']) || $_GET['filter'] === 'All') ? 'selected' : ''; ?>>All</option>
+                <option value="All" <?php echo (!isset($_GET['filter']) || isset($_GET['filter']) || $_GET['filter'] === 'All') ? 'selected' : ''; ?>>All</option>
                 <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
                 <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
                 <option value="FileSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileSize') ? 'selected' : ''; ?>>File Size</option>
@@ -48,16 +48,16 @@ if (isset($_GET["page"])) {
                 <option value="MD5" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'MD5') ? 'selected' : ''; ?>>MD5</option>
             </select>
 
-        <p id="search">
-            <label for="search">Search:</label>
-            <input type="text" name="search" placeholder="Enter your search term">
-        </p>
+            <div id="search">
+                <label for="search">Search:</label>
+                <input type="text" name="search" placeholder="Enter your search term">
+            </div>
 
-        <select name="model" class="display-none">
-            <option value="URPM">URPM</option>
-        </select>
-        </p>
-        <p>
+            <select name="model" class="display-none">
+                <option value="URPM">URPM</option>
+            </select>
+        </div>
+        <div>
             <span class="add">Add fields</span>
             <input type="submit" value="Search">
             <select name="count">
@@ -65,7 +65,7 @@ if (isset($_GET["page"])) {
                 <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
                 <option value="100" <?php echo (isset($_GET['count']) && $_GET['count'] === '100') ? 'selected' : ''; ?>>100</option>
             </select>
-        </p>
+        </div>
     </form>
 
 

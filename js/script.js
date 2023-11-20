@@ -21,22 +21,22 @@ function handleFilterChange(selectedFilter) {
     var modelElement = document.getElementsByName('model');
 
     if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
-        searchElement.style.display = 'grid';
+        searchElement.style.display = 'block';
     } else {
         searchElement.style.display = 'none';
     }
 
     if (selectedFilter === 'Model') {
-        modelElement.style.display = 'grid';
+        modelElement.style.display = 'block';
     } else {
         modelElement.style.display = 'none';
     }
 }
 
 $(".add").click(function() {
-    var clonedElement = $("form > p:first-child").clone(true);
+    var clonedElement = $("form > div:first-child").clone(true);
     clonedElement.append('<span class="remove">Remove</span>');
-    clonedElement.insertBefore("form > p:last-child");
+    clonedElement.insertBefore("form > div:last-child");
     return false;
 });
 
