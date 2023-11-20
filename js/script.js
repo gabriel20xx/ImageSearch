@@ -17,9 +17,9 @@ function closeFullscreen() {
 
 // Working
 function handleFilterChange(selectedFilter) {
-    var searchElement = document.getElementById('search');
-    var modelElement = document.getElementsByName('model')[0];
-    var sliderElement = document.getElementById('slider');
+    var searchElement = document.getElementsByClassName('search-form');
+    var modelElement = document.getElementsByClassName('model-form');
+    var sliderElement = document.getElementsByClassName('slider-form');
 
     if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
         searchElement.classList.remove("d-none");
