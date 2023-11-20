@@ -189,7 +189,7 @@ if (isset($_GET["page"])) {
     <div>
         <ul class="pagination justify-content-center">
             <?php
-            if ($count > $countmax && $currentPage != 1) {
+            if ($count > $countmax && $currentPage != 1 && isset($_GET['search'])) {
                 echo "<li class='page-item'>
             <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $firstPage))) . "' aria-label='First'>
                 <span aria-hidden='true'>«</span>
