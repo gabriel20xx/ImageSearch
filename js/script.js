@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (target.classList.contains("add")) {
             console.log("Add button clicked");
             var clonedElement = document.querySelector("form > .container:first-child").cloneNode(true);
-            clonedElement.innerHTML += '<button type="button" class="remove btn btn-danger">Remove</button>';
+            clonedElement.innerHTML += '<button type="button" class="remove-row btn btn-danger">Remove</button>';
             document.querySelector("form > .container:last-child").insertAdjacentElement('afterend', clonedElement);
         }
     });
