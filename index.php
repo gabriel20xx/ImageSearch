@@ -71,9 +71,10 @@ if (isset($_GET["page"])) {
             </select>
             <span class="remove">Remove</span>
         </p>
-        <span class="add">Add fields</span>
-
-        <input type="submit" value="Search">
+        <p>
+            <span class="add">Add fields</span>
+            <input type="submit" value="Search">
+        </p>
     </form>
 
 
