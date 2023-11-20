@@ -46,29 +46,50 @@ function handleFilterChange(selectedFilter) {
     const modelElement = document.querySelector('.model-form');
     const sliderElement = document.querySelector('.slider-form');
 
+    // Set default values for form elements
+    let searchVisible = false;
+    let modelVisible = false;
+    let sliderVisible = false;
+
     // Use a switch statement for better readability
     switch (selectedFilter) {
         case 'PositivePrompt':
         case 'NegativePrompt':
         case 'Filename':
-            searchElement.style.display = 'block';
+            searchVisible = true;
             break;
 
         case 'ModelHash':
         case 'Model':
         case 'SeedResizeFrom':
         case 'DenoisingStrength':
-            modelElement.style.display = 'block';
+            modelVisible = true;
             break;
 
         case 'NSFWProbability':
-            sliderElement.style.display = 'block';
+            sliderVisible = true;
             break;
 
         default:
             break;
     }
+
+    // Update the form's action URL based on visibility
+    const form = document.querySelector('form');
+    form.action = 'index.php?' + [
+        searchVisible ? 'search=' + encodeURIComponent(form.search.value) : '',
+        modelVisible ? 'model=' + encodeURIComponent(form.model.value) : '',
+        sliderVisible ? 'range=' + encodeURIComponent(form.range.value) : '',
+        sliderVisible ? 'range2=' + encodeURIComponent(form.range2.value) : '',
+        'filter=' + encodeURIComponent(selectedFilter)
+    ].filter(Boolean).join('&');
+
+    // Update the visibility of form elements
+    searchElement.style.display = searchVisible ? 'block' : 'none';
+    modelElement.style.display = modelVisible ? 'block' : 'none';
+    sliderElement.style.display = sliderVisible ? 'block' : 'none';
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Script is running');
