@@ -29,7 +29,6 @@ if (isset($_GET["page"])) {
         <div class="container text-center">
             <div class="row">
                 <select name="filter" class="col" onchange="handleFilterChange(this.value)">
-                    <option value="All" <?php echo (!isset($_GET['filter']) || isset($_GET['filter']) || $_GET['filter'] === 'All') ? 'selected' : ''; ?>>All</option>
                     <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
                     <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
                     <option value="FileSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileSize') ? 'selected' : ''; ?>>File Size</option>
