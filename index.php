@@ -256,7 +256,7 @@ if (isset($_GET["page"])) {
         </ul>
     </div>
     <script>
-        var images = <?php echo json_encode($images); ?>;
+        const images = <?php echo json_encode($images); ?>;
     </script>
 </body>
 
