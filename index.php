@@ -49,12 +49,12 @@ if (isset($_GET["page"])) {
                 <option value="MD5" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'MD5') ? 'selected' : ''; ?>>MD5</option>
             </select>
 
-            <div id="search" class="col">
+            <div id="search" class="visually-hidden col">
                 <label for="search">Search:</label>
                 <input type="text" name="search" placeholder="Enter your search term">
             </div>
 
-            <select name="model" class="display-none col">
+            <select name="model" class="visually-hidden col">
                 <option value="URPM">URPM</option>
             </select>
         </div>

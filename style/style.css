@@ -141,7 +141,3 @@ h2 {
     cursor: pointer;
     z-index: 10001; /* Ensure close button is on top */
 }
-
-.display-none {
-    display: none;
-}
