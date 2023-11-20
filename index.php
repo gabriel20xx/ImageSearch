@@ -50,6 +50,10 @@ if (isset($_GET["page"])) {
 
             <label for="search">Search:</label>
             <input type="text" name="search" id="search" placeholder="Enter your search term">
+
+            <select name="model" class="display-none">
+                <option value="URPM">URPM</option>
+            </select>
         </p>
         <p>
             <span class="add">Add fields</span>

@@ -18,9 +18,9 @@ function closeFullscreen() {
 // Working
 function handleFilterChange(selectedFilter) {
     var searchElement = document.getElementById('search');
-    var modelElement = document.getElementsByName('model')[0]; // Assuming there is only one element with the name 'model'
+    var modelElement = document.getElementsByName('model');
 
-    if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt') {
+    if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
         searchElement.style.display = 'grid';
     } else {
         searchElement.style.display = 'none';
