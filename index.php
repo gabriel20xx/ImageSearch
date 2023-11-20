@@ -25,10 +25,10 @@ if (isset($_GET["page"])) {
 <body>
     <h1>Horde Image Indexer</h1>
 
-    <form method="get" action="index.php">
+    <form method="get" action="index.php" onchange="handleFilterChange(this.value)">
         <div class="container text-center">
             <div class="row">
-                <select name="filter" class="col" onchange="handleFilterChange(this.value)">
+                <select name="filter" class="col">
                     <option value="All" <?php echo (!isset($_GET['filter']) || isset($_GET['filter']) || $_GET['filter'] === 'All') ? 'selected' : ''; ?>>All</option>
                     <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
                     <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
