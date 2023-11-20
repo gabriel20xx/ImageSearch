@@ -137,7 +137,6 @@ if (isset($_GET["page"])) {
                 <div class="row">';
                 while ($row = mysqli_fetch_assoc($resultData)) {
                     $images[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
-                    echo 'images.push("images/' . $row['Directory'] . '/' . $row['FileName'] . '.png");';
                     echo
                     '<div class="col-sm-6 col-md-4 col-lg-2 col-xl-1 mb-4">
                         <div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">
@@ -152,12 +151,10 @@ if (isset($_GET["page"])) {
                         </div>
                     </div>';
                 }
-                echo
-                '</div>
-                </div>
-                <script>
-                var images = ' . json_encode($images) . ';
-                </script>';
+                echo '</div>
+                <script>';
+                echo 'var images = ' . json_encode($images) . ';';
+                echo '</script>';
             } else {
                 echo '<p class="text-center">Prepare statement failed for data retrieval.</p>';
             }
