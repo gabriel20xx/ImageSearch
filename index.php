@@ -58,10 +58,12 @@ if (isset($_GET["page"])) {
                 </select>
             </div>
 
-            <div id="search" class="search-form mb-3">
-                <label for="search" class="form-label">Search</label>
-                <input type="text" name="search" class="form-control" placeholder="Enter your search term">
-            </div>
+            <?php if (isset($_GET['filter']) && $_GET['filter'] === 'PositivePrompt' || isset($_GET['search']) && !empty($_GET['search'])) : ?>
+                <div id="search" class="search-form mb-3">
+                    <label for="search" class="form-label">Search</label>
+                    <input type="text" name="search" class="form-control" placeholder="Enter your search term">
+                </div>
+            <?php endif; ?>
 
             <div id="slider" class="slider-form mb-3">
                 <label for="range" class="form-label">Select Range</label>

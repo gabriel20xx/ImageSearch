@@ -74,11 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Existing updateFormAction function
-function updateFormAction() {
+/**function updateFormAction() {
     const form = document.querySelector('form');
-    const searchElement = document.querySelector('.search-form');
-    const modelElement = document.querySelector('.model-form');
-    const sliderElement = document.querySelector('.slider-form');
 
     // Set default values for form elements
     let searchVisible = false;
