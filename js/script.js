@@ -1,5 +1,5 @@
 // Use const and let for variable declarations
-//const images = []; // assuming you have an array of images
+const images = []; // assuming you have an array of images
 
 function setDisplayMode(mode) {
     window.location.href = `index.php?display_mode=${mode}`;
@@ -12,7 +12,6 @@ function openFullscreen(imageSrc) {
     const fullscreenContainer = document.getElementById('fullscreenContainer');
     const fullscreenImage = document.getElementById('fullscreenImage');
 
-    currentImageIndex = images.indexOf(imageSrc); // Set the current index based on the clicked image
     fullscreenImage.src = imageSrc;
     fullscreenContainer.style.display = 'grid';
 }
