@@ -151,8 +151,6 @@ if (isset($_GET["page"])) {
 
         // Close the database connection
         mysqli_close($conn);
-    } else {
-        echo '<p class="text-center">Prepare statement failed for count retrieval.</p>';
     }
     ?>
 
