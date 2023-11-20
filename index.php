@@ -155,7 +155,7 @@ if (isset($_GET["page"])) {
                 while ($row = mysqli_fetch_assoc($resultData)) {
                     $images[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
                     echo
-                    '<div class="col-md-1">
+                    '<div class="col-md-2">
                         <div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">
                             <img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" class="card-img-top" alt="Image">
                             <div class="card-body">
