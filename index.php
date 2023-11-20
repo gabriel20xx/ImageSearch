@@ -152,7 +152,7 @@ if (isset($_GET["page"])) {
                 $images = [];
 
                 echo '
-                <div class="container">
+                <div class="container-fluid">
                 <div class="row">';
                 while ($row = mysqli_fetch_assoc($resultData)) {
                     $images[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
