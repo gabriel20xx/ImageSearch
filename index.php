@@ -96,25 +96,6 @@ if (isset($_GET["page"])) {
         </div>
     </form>
 
-
-    <!-- Fullscreen Image Container -->
-    <div class="fullscreen-container" id="fullscreenContainer" style="display: none;">
-        <span class="close-button" onclick="closeFullscreen()">&times;</span>
-        <div class="row">
-            <div class="col-12">
-                <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-6">
-                <button class="btn btn-primary btn-block" onclick="prevImage()">Previous</button>
-            </div>
-            <div class="col-6">
-                <button class="btn btn-primary btn-block" onclick="nextImage()">Next</button>
-            </div>
-        </div>
-    </div>
-
     <?php
     if (isset($_GET['search'])) {
         $search = '%' . $_GET["search"] . '%';
@@ -185,6 +166,24 @@ if (isset($_GET["page"])) {
         mysqli_close($conn);
     }
     ?>
+
+    <!-- Fullscreen Image Container -->
+    <div class="fullscreen-container" id="fullscreenContainer" style="display: none;">
+        <span class="close-button" onclick="closeFullscreen()">&times;</span>
+        <div class="row">
+            <div class="col-12">
+                <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6">
+                <button class="btn btn-primary btn-block" onclick="prevImage()">Previous</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-primary btn-block" onclick="nextImage()">Next</button>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Page indicator -->
