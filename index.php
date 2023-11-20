@@ -34,7 +34,7 @@ if (isset($_GET["page"])) {
     <form method="get" action="index.php" class="container">
         <div>
             <div class="mb-3">
-                <label for="filter" class="form-label"></label>
+                <label for="filter" class="form-label">Select Filter</label>
                 <select id="filter" class="form-select" name="filter" onchange="handleFilterChange(this.value)">
                     <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
                     <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
@@ -59,32 +59,32 @@ if (isset($_GET["page"])) {
             </div>
 
             <div id="search" class="d-none mb-3">
-                <label for="search" class="form-label">Search:</label>
+                <label for="search" class="form-label">Search</label>
                 <input type="text" name="search" class="form-control" placeholder="Enter your search term">
             </div>
 
             <div id="slider" class="d-none mb-3">
-                <label for="range" class="form-label">Select a range:</label>
+                <label for="range" class="form-label">Select Range</label>
                 <input type="range" id="range" name="range" min="0" max="100" step="1" value="25">
                 <input type="range" id="range2" name="range2" min="0" max="100" step="1" value="75">
                 <p>Selected Range: <span id="rangeValues"></span></p>
             </div>
 
             <div class="d-none mb-3">
-                <label for="model" class="form-label">Choose Model:</label>
+                <label for="model" class="form-label">Choose Model</label>
                 <select class="form-control" id="model" name="model">
                     <option value="URPM">URPM</option>
                 </select>
             </div>
         </div>
         <div>
-            <div>
+            <div class="mb-3">
                 <input type="button" class="btn btn-success add-row" value="Add Row">
                 <input type="submit" class="btn btn-primary" value="Search">
             </div>
 
             <div class="mb-3">
-                <label for="count">Results per page: </label>
+                <label for="count">Results per page</label>
                 <select name="count" class="form-select">
                     <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
                     <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
