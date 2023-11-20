@@ -22,39 +22,6 @@ h1 {
     color: #fff;
 }
 
-/* Styling for search results (customize as needed) */
-h2 {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.5em;
-    color: #333;
-}
-
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 20px;
-}
-
-.card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-.card img {
-    max-width: 100%;
-    height: auto;
-}
-
-.card h2 {
-    font-size: 18px;
-}
-
-.card p {
-    font-size: 14px;
-}
-
 #fullscreenContainer {
     display: none;
     position: fixed;
