@@ -57,8 +57,10 @@ if (isset($_GET["page"])) {
                 </div>
 
                 <div>
-                    <label for="slider">Select a value between 0 and 1:</label>
-                    <input type="range" id="slider" name="slider" min="0" max="1" step="0.01" value="0.5">
+                    <label for="range">Select a range:</label>
+                    <input type="range" id="range" name="range" min="0" max="100" step="1" value="25">
+                    <input type="range" id="range2" name="range2" min="0" max="100" step="1" value="75">
+                    <p>Selected Range: <span id="rangeValues"></span></p>
                 </div>
 
                 <select name="model" class="invisible col">
