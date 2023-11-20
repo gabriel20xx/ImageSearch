@@ -184,6 +184,8 @@ if (isset($_GET["page"])) {
             </a>
         </li>";
 
+                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "' aria-label='Previous'><</a></li>";
+
                 echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "' aria-label='Previous'>$previousPage</a></li>";
             }
 
@@ -191,6 +193,8 @@ if (isset($_GET["page"])) {
 
             if ($count > $countmax * ($currentPage)) {
                 echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "' aria-label='Next'>$nextPage</a></li>";
+
+                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "' aria-label='Next'>></a></li>";
 
                 echo "<li class='page-item'>
             <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $lastPage))) . "' aria-label='Last'>
