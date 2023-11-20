@@ -36,15 +36,23 @@ function handleFilterChange(selectedFilter) {
 }
 
 
-$(document).ready(function() {
-    $("form").on("click", ".remove", function() {
-        $(this).closest('.row').remove();
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("Script is running");
 
-    $(document).on("click", ".add-row", function() {
-        var clonedElement = $("form > .container:first-child").clone(true);
-        clonedElement.append('<button type="button" class="remove btn btn-danger">Remove</button>');
-        clonedElement.insertAfter("form > .container:last-child");
-        return false;
+    document.querySelector("form").addEventListener("click", function (event) {
+        var target = event.target;
+
+        if (target.classList.contains("remove")) {
+            console.log("Remove button clicked");
+            target.closest('.row').remove();
+        }
+
+        if (target.classList.contains("add")) {
+            console.log("Add button clicked");
+            var clonedElement = document.querySelector("form > .container:first-child").cloneNode(true);
+            clonedElement.innerHTML += '<button type="button" class="remove btn btn-danger">Remove</button>';
+            document.querySelector("form > .container:last-child").insertAdjacentElement('afterend', clonedElement);
+        }
     });
 });
+
