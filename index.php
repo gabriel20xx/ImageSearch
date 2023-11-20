@@ -26,7 +26,7 @@ if (isset($_GET["page"])) {
     <form method="get" action="index.php">
         <p>
             <select name="filter" onchange="handleFilterChange(this.value)">
-                <option value="all" <?php echo (!isset($_GET['filter']) || $_GET['filter'] === 'all') ? 'selected' : ''; ?>>All</option>
+                <option value="All" <?php echo (!isset($_GET['filter']) || $_GET['filter'] === 'All') ? 'selected' : ''; ?>>All</option>
                 <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
                 <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
                 <option value="FileSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileSize') ? 'selected' : ''; ?>>File Size</option>
@@ -48,12 +48,14 @@ if (isset($_GET["page"])) {
                 <option value="MD5" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'MD5') ? 'selected' : ''; ?>>MD5</option>
             </select>
 
+        <p id="search">
             <label for="search">Search:</label>
-            <input type="text" name="search" id="search" placeholder="Enter your search term">
+            <input type="text" name="search" placeholder="Enter your search term">
+        </p>
 
-            <select name="model" class="display-none">
-                <option value="URPM">URPM</option>
-            </select>
+        <select name="model" class="display-none">
+            <option value="URPM">URPM</option>
+        </select>
         </p>
         <p>
             <span class="add">Add fields</span>
@@ -174,4 +176,5 @@ if (isset($_GET["page"])) {
         </ul>
     </div>
 </body>
+
 </html>
