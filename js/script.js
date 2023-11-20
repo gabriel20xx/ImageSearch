@@ -31,17 +31,6 @@ function nextImage() {
     openFullscreen(images[currentImageIndex]);
 }
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    var searchElement = document.querySelector('.search-form');
-    var modelElement = document.querySelector('.model-form');
-    var sliderElement = document.querySelector('.slider-form');
-
-    searchElement.style.display = 'none';
-    modelElement.style.display = 'none';
-    sliderElement.style.display = 'none';
-});
-
 function handleFilterChange(selectedFilter) {
     var searchElement = document.querySelector('.search-form');
     var modelElement = document.querySelector('.model-form');
@@ -64,22 +53,33 @@ function handleFilterChange(selectedFilter) {
     }
 }
 
-
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
+    var searchElement = document.querySelector('.search-form');
+    var modelElement = document.querySelector('.model-form');
+    var sliderElement = document.querySelector('.slider-form');
+
+    searchElement.style.display = 'none';
+    modelElement.style.display = 'none';
+    sliderElement.style.display = 'none';
+
+
     console.log("Script is running");
 
     document.querySelector("form").addEventListener("click", function (event) {
         var target = event.target;
+        if (target.type === 'submit' && target.classList.contains('btn-primary')) {
+            event.preventDefault();
+            if (target.tagName === 'IMG') {
+                openFullscreen(target.src);
+            }
+        }
 
-        if (target.classList.contains("remove")) {
+        if (target.classList.contains("remove-row")) {
             console.log("Remove button clicked");
             target.closest('.row').remove();
         }
 
-        if (target.classList.contains("add")) {
+        if (target.classList.contains("add-row")) {
             console.log("Add button clicked");
             var clonedElement = document.querySelector("form > .container:first-child").cloneNode(true);
             clonedElement.innerHTML += '<button type="button" class="remove-row btn btn-danger">Remove</button>';
@@ -87,4 +87,3 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
