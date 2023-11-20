@@ -18,7 +18,7 @@ function closeFullscreen() {
 // Working
 function handleFilterChange(selectedFilter) {
     var searchElement = document.getElementById('search');
-    var modelElement = document.getElementsByName('model');
+    var modelElement = document.getElementsByName('model')[0];
 
     if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
         searchElement.classList.add("visually-hidden");
@@ -33,13 +33,13 @@ function handleFilterChange(selectedFilter) {
     }
 }
 
+$("form").on("click", ".remove", function() {
+    $(this).parent().remove();
+});
+
 $(".add").click(function() {
     var clonedElement = $("form > div:first-child").clone(true);
     clonedElement.append('<button type="button" class="remove btn btn-danger">Danger</button>');
     clonedElement.insertBefore("form > div:last-child");
     return false;
-});
-
-$(".remove").click(function() {
-    $(this).parent().remove();
 });
