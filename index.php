@@ -123,7 +123,7 @@ if (isset($_GET["page"])) {
             $resultCount = mysqli_stmt_get_result($stmtCount);
             $row = mysqli_fetch_assoc($resultCount);
             $totalCount = $row["count"];
-            echo "Total number of rows matching the query: $totalCount";
+            echo '<p class="text-center">Total number of rows matching the query: $totalCount</p>';
 
             $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT $countmax OFFSET " . $countmax * ($page - 1);
             $stmtData = mysqli_prepare($conn, $sqlData);
@@ -145,14 +145,14 @@ if (isset($_GET["page"])) {
                 }
                 echo '</div>';
             } else {
-                echo "Prepare statement failed for data retrieval.";
+                echo '<p class="text-center">Prepare statement failed for data retrieval.</p>';
             }
         }
 
         // Close the database connection
         mysqli_close($conn);
     } else {
-        echo "Prepare statement failed for count retrieval.";
+        echo '<p class="text-center">Prepare statement failed for count retrieval.</p>';
     }
     ?>
 
