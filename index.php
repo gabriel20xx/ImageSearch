@@ -78,8 +78,10 @@ if (isset($_GET["page"])) {
             </div>
         </div>
         <div>
-            <input type="button" class="btn btn-success add-row" value="Add Row">
-            <input class="btn btn-primary" type="submit" value="Search">
+            <div>
+                <input type="button" class="btn btn-success add-row" value="Add Row">
+                <input type="submit" class="btn btn-primary" value="Search">
+            </div>
 
             <div class="mb-3">
                 <label for="count">Results per page: </label>
