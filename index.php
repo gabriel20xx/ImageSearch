@@ -5,7 +5,7 @@ include 'includes/mysql.php';
 <?php
     $page = 1;
     $countmax = 25;
-    $count;
+    $count = 10;
 ?>
 
 <?php
