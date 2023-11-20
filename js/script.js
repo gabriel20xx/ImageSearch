@@ -35,7 +35,7 @@ function handleFilterChange(selectedFilter) {
 
 $(".add").click(function() {
     var clonedElement = $("form > div:first-child").clone(true);
-    clonedElement.append('<span class="remove">Remove</span>');
+    clonedElement.append('<button type="button" class="remove btn btn-danger">Danger</button>');
     clonedElement.insertBefore("form > div:last-child");
     return false;
 });

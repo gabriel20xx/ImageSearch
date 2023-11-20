@@ -59,8 +59,8 @@ if (isset($_GET["page"])) {
             </select>
         </div>
         <div class="row">
-            <span class="add col">Add fields</span>
-            <input class="col" type="submit" value="Search">
+            <button type="button" class="add btn btn-success">Success</button>
+            <input class="col btn btn-primary" type="submit" value="Search">
             <select class="col" name="count">
                 <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
                 <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
