@@ -85,9 +85,3 @@ h2 {
     cursor: pointer;
     z-index: 10001;
 }
-
-.nav-button > * {
-    margin: 10px;
-    z-index: 10002;
-    
-}
