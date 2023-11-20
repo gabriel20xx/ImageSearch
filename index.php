@@ -48,32 +48,29 @@ if (isset($_GET["page"])) {
                 <option value="MD5" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'MD5') ? 'selected' : ''; ?>>MD5</option>
             </select>
 
-            <?php
-            if (isset($_GET['filter']) && ($_GET['filter'] === 'PositivePrompt' || $_GET['filter'] === 'NegativePrompt')) {
-                echo '<label for="search">Search:</label>';
-                echo '<input type="text" name="search" id="search" placeholder="Enter your search term" value="' . ($_GET['search'] ?? '') . '">';
-            }
-            ?>
+            <label for="search">Search:</label>
+            <input type="text" name="search" id="search" placeholder="Enter your search term" value="' . ($_GET['search'] ?? '') . '">
 
             <?php
-            if (isset($_GET['filter']) && $_GET['filter'] === 'Model') {
+            /**if (isset($_GET['filter']) && $_GET['filter'] === 'Model') {
                 echo '<select name="model">';
                 echo '<option value="URPM" ' . (isset($_GET['model']) && $_GET['model'] === 'URPM' ? 'selected' : '') . '>URPM</option>';
                 echo '<option value="Hassanblend" ' . (isset($_GET['model']) && $_GET['model'] === 'Hassanblend' ? 'selected' : '') . '>Hassanblend</option>';
                 echo '</select>';
-            }
+            }**/
             ?>
 
-            <select name="count">
-                <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
-                <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
-                <option value="100" <?php echo (isset($_GET['count']) && $_GET['count'] === '100') ? 'selected' : ''; ?>>100</option>
-            </select>
+
             <span class="remove">Remove</span>
         </p>
         <p>
             <span class="add">Add fields</span>
             <input type="submit" value="Search">
+            <select name="count">
+                <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
+                <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
+                <option value="100" <?php echo (isset($_GET['count']) && $_GET['count'] === '100') ? 'selected' : ''; ?>>100</option>
+            </select>
         </p>
     </form>
 
