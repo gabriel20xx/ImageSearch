@@ -151,7 +151,9 @@ if (isset($_GET["page"])) {
                         </div>
                     </div>';
                 }
-                echo '</div>';
+                echo 
+                '</div>
+                </div>';
             } else {
                 echo '<p class="text-center">Prepare statement failed for data retrieval.</p>';
             }
