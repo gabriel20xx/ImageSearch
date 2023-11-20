@@ -55,7 +55,11 @@ h1 {
 
 .button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center the buttons horizontally */
     width: 100%;
     margin-top: 10px;
+}
+
+.button-container .col-6 {
+    flex: 0 0 50%; /* Make each column take up 50% of the container width */
 }
