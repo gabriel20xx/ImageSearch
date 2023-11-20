@@ -132,29 +132,28 @@ if (isset($_GET["page"])) {
 
                 $images = [];
 
-                echo '<div class="container-fluid"';
-                echo '<div class="row">';
+                echo '
+                <div class="container-fluid">
+                <div class="row">';
                 while ($row = mysqli_fetch_assoc($resultData)) {
                     $images[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
-                    echo '<div class="col-sm-6 col-md-4 col-lg-2 col-xl-1 mb-4">';
-                    echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
-                    echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" class="card-img-top" alt="Image">';
-                    echo '<div class="card-body">';
-                    echo '<ul class="list-group list-group-flush">';
-                    echo '<li class="list-group-item">' . substr($row['PositivePrompt'], 0, 50) . '</li>';
-                    echo '<li class="list-group-item">' . substr($row['NegativePrompt'], 0, 50) . '</li>';
-                    echo '<li class="list-group-item">' . $row['Model'] . '</li>';
-                    echo '</ul>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
+                    echo
+                    '<div class="col-sm-6 col-md-4 col-lg-2 col-xl-1 mb-4">
+                        <div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">
+                            <img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" class="card-img-top" alt="Image">
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">' . substr($row['PositivePrompt'], 0, 50) . '</li>
+                                    <li class="list-group-item">' . substr($row['NegativePrompt'], 0, 50) . '</li>
+                                    <li class="list-group-item">' . $row['Model'] . '</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>';
                 }
-                echo '</div>';
-                echo '</div>';
-
-                echo '<script>';
-                echo 'var images = ' . json_encode($images) . ';';
-                echo '</script>';
+                echo
+                '</div>
+                </div>';
             } else {
                 echo '<p class="text-center">Prepare statement failed for data retrieval.</p>';
             }
@@ -166,14 +165,14 @@ if (isset($_GET["page"])) {
     ?>
 
     <!-- Fullscreen Image Container -->
-    <div class="fullscreen-container" id="fullscreenContainer" style="display: none;">
+    <div class="fullscreen-container text-center" id="fullscreenContainer" style="display: none;">
         <span class="close-button" onclick="closeFullscreen()">&times;</span>
         <div class="row">
             <div class="col-12">
                 <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
             </div>
         </div>
-        <div class="row mt-2">
+        <div class="row mt-2 d-flex justify-content-center">
             <div class="col-6">
                 <button class="btn btn-primary btn-block" onclick="prevImage()">Previous</button>
             </div>
