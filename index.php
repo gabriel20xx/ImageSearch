@@ -189,7 +189,7 @@ if (isset($_GET["page"])) {
     <div>
         <ul class="pagination justify-content-center">
             <?php
-            if ($count > $countmax && $currentPage != 1 && isset($_GET['search'])) {
+            if ($count > $countmax && $currentPage != 1) {
                 echo "<li class='page-item'>
             <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $firstPage))) . "' aria-label='First'>
                 <span aria-hidden='true'>«</span>
@@ -205,7 +205,9 @@ if (isset($_GET["page"])) {
                 echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "' aria-label='Previous'>$previousPage</a></li>";
             }
 
-            echo "<li class='page-item active'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $currentPage))) . "'>$currentPage</a></li>";
+            if (isset($_GET['search'])) {
+                echo "<li class='page-item active'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $currentPage))) . "'>$currentPage</a></li>";
+            }
 
             if ($count > $countmax * ($currentPage)) {
                 echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "' aria-label='Next'>$nextPage</a></li>";
