@@ -165,14 +165,14 @@ if (isset($_GET["page"])) {
     ?>
 
     <!-- Fullscreen Image Container -->
-    <div class="fullscreen-container" id="fullscreenContainer" style="display: none;">
+    <div class="fullscreen-container text-center" id="fullscreenContainer" style="display: none;">
         <span class="close-button" onclick="closeFullscreen()">&times;</span>
         <div class="row">
             <div class="col-12">
                 <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
             </div>
         </div>
-        <div class="row mt-2">
+        <div class="row mt-2 d-flex justify-content-center">
             <div class="col-6">
                 <button class="btn btn-primary btn-block" onclick="prevImage()">Previous</button>
             </div>
@@ -181,6 +181,7 @@ if (isset($_GET["page"])) {
             </div>
         </div>
     </div>
+
 
 
     <!-- Page indicator -->
