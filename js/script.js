@@ -22,8 +22,10 @@ function handleFilterChange(selectedFilter) {
 
     if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
         searchElement.classList.remove("invisible");
+        searchElement.classList.add("visible");
     } else {
         searchElement.classList.add("invisible");
+        searchElement.classList.remove("visible");
     }
 
     if (selectedFilter === 'Model') {
