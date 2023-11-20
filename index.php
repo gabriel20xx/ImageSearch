@@ -3,6 +3,12 @@ include 'includes/mysql.php';
 ?>
 
 <?php
+    $page = 1;
+    $countmax = 25;
+    $count;
+?>
+
+<?php
 if (isset($_GET["page"])) {
     $currentPage = $_GET["page"];
 } else {
@@ -92,9 +98,7 @@ if (isset($_GET["page"])) {
     <?php
     if (isset($_GET['search'])) {
         $search = '%' . $_GET["search"] . '%';
-        $page = 1;
         $filter = 'PositivePrompt';
-        $countmax = 25;
 
         if (isset($_GET['filter'])) {
             $filter = $_GET["filter"];
