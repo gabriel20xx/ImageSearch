@@ -95,7 +95,7 @@ if (isset($_GET["page"])) {
 
 
     <!-- Fullscreen Image Container -->
-    <div class="fullscreen-container" id="fullscreenContainer">
+    <div class="fullscreen-container" id="fullscreenContainer" style="display: none;">
         <span class="close-button" onclick="closeFullscreen()">&times;</span>
         <div class="row">
             <div class="col-12">
