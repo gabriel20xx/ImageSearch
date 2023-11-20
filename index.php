@@ -102,6 +102,7 @@ if (isset($_GET["page"])) {
                 <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
             </div>
         </div>
+        <br>
         <div class="row mt-2">
             <div class="col-6">
                 <button class="btn btn-primary btn-block" onclick="prevImage()">Previous</button>
