@@ -32,7 +32,7 @@ if (isset($_GET["page"])) {
     <h1>Horde Image Indexer</h1>
 
     <form method="get" action="index.php">
-        <div class="container text-center">
+        <div>
             <div class="mb-3">
                 <label for="filter" class="form-label"></label>
                 <select id="filter" class="form-select" name="filter" onchange="handleFilterChange(this.value)">
@@ -77,7 +77,7 @@ if (isset($_GET["page"])) {
                 </select>
             </div>
         </div>
-        <div class="container text-center">
+        <div>
             <button type="button" class="btn btn-success add-row">Add Row</button>
             <input class="btn btn-primary" type="submit" value="Search">
 
