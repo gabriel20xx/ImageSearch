@@ -149,23 +149,31 @@ if (isset($_GET["page"])) {
 
                 $images = [];
 
-                echo '<div class="card-grid">';
+                echo '
+                <div class="container">
+                <div class="row">';
                 while ($row = mysqli_fetch_assoc($resultData)) {
                     $images[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
-                    echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
-                    echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" class="card-img-top" alt="Image">';
-                    echo '<ul class="list-group list-group-flush">';
-                    echo '<li class="list-group-item">' . substr($row['PositivePrompt'], 0, 50) . '</li>';
-                    echo '<li class="list-group-item">' . substr($row['NegativePrompt'], 0, 50) . '</li>';
-                    echo '<li class="list-group-item">' . $row['Model'] . '</li>';
-                    echo '</ul>';
-                    echo '</div>';
+                    echo
+                    '<div class="col-md-4">
+                        <div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">
+                            <img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" class="card-img-top" alt="Image">
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">' . substr($row['PositivePrompt'], 0, 50) . '</li>
+                                    <li class="list-group-item">' . substr($row['NegativePrompt'], 0, 50) . '</li>
+                                    <li class="list-group-item">' . $row['Model'] . '</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>';
                 }
-                echo '</div>';
-
-                echo '<script>';
-                echo 'var images = ' . json_encode($images) . ';';
-                echo '</script>';
+                echo
+                '</div>
+                </div>
+                <script>
+                var images = ' . json_encode($images) . ';
+                </script>';
             } else {
                 echo '<p class="text-center">Prepare statement failed for data retrieval.</p>';
             }
