@@ -55,7 +55,7 @@ h2 {
     font-size: 14px;
 }
 
-.fullscreen-container {
+#fullscreenContainer {
     display: none;
     position: fixed;
     top: 0;
@@ -87,4 +87,11 @@ h2 {
     font-size: 20px;
     cursor: pointer;
     z-index: 10001; /* Ensure close button is on top */
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2; /* Ensure buttons appear on top of the image */
 }
