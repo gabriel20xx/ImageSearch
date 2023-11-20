@@ -4,14 +4,14 @@ include 'includes/mysql.php';
 <?php
 // Initialize $displayMode based on query parameter or user preference
 if (isset($_GET['display_mode'])) {
-$displayMode = 'cards';
+    $displayMode = 'cards';
 } else {
-    $displayMode ='cards';
+    $displayMode = 'cards';
 }
 ?>
 
 <!DOCTYPE html>
-<html>    
+<html>
 
 <head>
     <link rel="stylesheet" type="text/css" href="style/style.css">
@@ -27,39 +27,43 @@ $displayMode = 'cards';
     </div>
 
     <form method="get" action="index.php">
-        <label for="search">Search:</label>
-        <input type="text" name="search" id="search" placeholder="Enter your search term">
-        <select name="filter">
-            <option value="all">All</option>
-            <option value="FileName">Filename</option>
-            <option value="Directory">Directory</option>
-            <option value="FileSize">File Size</option>
-            <option value="PositivePrompt">Positive Prompt</option>
-            <option value="NegativePrompt">Negativ Prompt</option>
-            <option value="Steps">Steps</option>
-            <option value="Sampler">Sampler</option>
-            <option value="CFGScale">CFG Scale</option>
-            <option value="Seed">Seed</option>
-            <option value="ImageSize">Image Size</option>
-            <option value="ModelHash">Model Hash</option>
-            <option value="Model">Model</option>
-            <option value="SeedResizeFrom">Seed Resize From</option>
-            <option value="DenoisingStrength">Denoising Strength</option>
-            <option value="Version">Version</option>
-            <option value="NSFWProbability">NSFW Probability</option>
-            <option value="SHA1">SHA1</option>
-            <option value="SHA256">SHA256</option>
-            <option value="MD5">MD5</option>
-            <!-- Add more categories as needed -->
-        </select>
-        <select name="sort">
-            <option value="relevance">Relevance</option>
-            <option value="date">Date</option>
-            <option value="rating">Rating</option>
-        </select>
-        <input type="submit" value="Search">
+        <p>
+            <label for="search">Search:</label>
+            <input type="text" name="search" id="search" placeholder="Enter your search term">
+            <select name="filter">
+                <option value="all">All</option>
+                <option value="FileName">Filename</option>
+                <option value="Directory">Directory</option>
+                <option value="FileSize">File Size</option>
+                <option value="PositivePrompt">Positive Prompt</option>
+                <option value="NegativePrompt">Negativ Prompt</option>
+                <option value="Steps">Steps</option>
+                <option value="Sampler">Sampler</option>
+                <option value="CFGScale">CFG Scale</option>
+                <option value="Seed">Seed</option>
+                <option value="ImageSize">Image Size</option>
+                <option value="ModelHash">Model Hash</option>
+                <option value="Model">Model</option>
+                <option value="SeedResizeFrom">Seed Resize From</option>
+                <option value="DenoisingStrength">Denoising Strength</option>
+                <option value="Version">Version</option>
+                <option value="NSFWProbability">NSFW Probability</option>
+                <option value="SHA1">SHA1</option>
+                <option value="SHA256">SHA256</option>
+                <option value="MD5">MD5</option>
+                <!-- Add more categories as needed -->
+            </select>
+            <select name="sort">
+                <option value="relevance">Relevance</option>
+                <option value="date">Date</option>
+                <option value="rating">Rating</option>
+            </select>
+            <input type="submit" value="Search">
+            <span class="remove">Remove</span>
+        </p>
+        <span class="add">Add fields</span>
     </form>
-    <?php 
+    <?php
     if (isset($_GET['search'])) {
         $search = '%' . $_GET["search"] . '%';
         $filter = $_GET["filter"];
@@ -83,7 +87,7 @@ $displayMode = 'cards';
                     echo '<div class="card-grid">';
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="card">';
-                        echo '<img src="'. "images" . "/" . $row['Directory']. "/". $row['FileName'] . ".png".'" alt="Image">';
+                        echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" alt="Image">';
                         echo '<p>' . substr($row['PositivePrompt'], 0, 50) . '</p>';
                         echo '<p>' . substr($row['NegativePrompt'], 0, 50) . '</p>';
                         echo '<p>' . $row['Model'] . '</p>';
@@ -111,6 +115,15 @@ $displayMode = 'cards';
         function setDisplayMode(mode) {
             window.location.href = `index.php?display_mode=${mode}`;
         }
+
+        $(".add").click(function() {
+            $("form > p:first-child").clone(true).insertBefore("form > p:last-child");
+            return false;
+        });
+
+        $(".remove").click(function() {
+            $(this).parent().remove();
+        });
     </script>
 </body>
 
