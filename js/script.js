@@ -2,6 +2,9 @@ function setDisplayMode(mode) {
     window.location.href = `index.php?display_mode=${mode}`;
 }
 
+var currentImageIndex = 0; // Index of the currently displayed image
+
+// Function to open fullscreen with a specific image
 function openFullscreen(imageSrc) {
     var fullscreenContainer = document.getElementById('fullscreenContainer');
     var fullscreenImage = document.getElementById('fullscreenImage');
@@ -10,9 +13,22 @@ function openFullscreen(imageSrc) {
     fullscreenContainer.style.display = 'flex';
 }
 
+// Function to close fullscreen
 function closeFullscreen() {
     var fullscreenContainer = document.getElementById('fullscreenContainer');
     fullscreenContainer.style.display = 'none';
+}
+
+// Function to show the previous image
+function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    openFullscreen(images[currentImageIndex]);
+}
+
+// Function to show the next image
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    openFullscreen(images[currentImageIndex]);
 }
 
 document.addEventListener('DOMContentLoaded', function() {

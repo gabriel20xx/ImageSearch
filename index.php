@@ -98,7 +98,10 @@ if (isset($_GET["page"])) {
     <div class="fullscreen-container" id="fullscreenContainer" onclick="closeFullscreen()">
         <span class="close-button" onclick="closeFullscreen()">&times;</span>
         <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
+        <button class="nav-button" onclick="prevImage()">Previous</button>
+        <button class="nav-button" onclick="nextImage()">Next</button>
     </div>
+
 
     <?php
     if (isset($_GET['search'])) {
@@ -134,8 +137,11 @@ if (isset($_GET["page"])) {
                 $resultData = mysqli_stmt_get_result($stmtData);
                 mysqli_stmt_close($stmtData);
 
+                $images = [];
+
                 echo '<div class="card-grid">';
                 while ($row = mysqli_fetch_assoc($resultData)) {
+                    $images[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
                     echo '<div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">';
                     echo '<img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" class="card-img-top" alt="Image">';
                     echo '<ul class="list-group list-group-flush">';
@@ -146,6 +152,10 @@ if (isset($_GET["page"])) {
                     echo '</div>';
                 }
                 echo '</div>';
+
+                echo '<script>';
+                echo 'var images = ' . json_encode($images) . ';';
+                echo '</script>';
             } else {
                 echo '<p class="text-center">Prepare statement failed for data retrieval.</p>';
             }
