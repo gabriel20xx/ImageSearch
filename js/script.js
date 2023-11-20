@@ -21,13 +21,13 @@ function handleFilterChange(selectedFilter) {
     var modelElement = document.getElementsByName('model')[0]; // Assuming there is only one element with the name 'model'
 
     if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt') {
-        searchElement.style.display = 'block';
+        searchElement.style.display = 'grid';
     } else {
         searchElement.style.display = 'none';
     }
 
     if (selectedFilter === 'Model') {
-        modelElement.style.display = 'block';
+        modelElement.style.display = 'grid';
     } else {
         modelElement.style.display = 'none';
     }
