@@ -21,23 +21,19 @@ function handleFilterChange(selectedFilter) {
     var modelElement = document.querySelector('.model-form');
     var sliderElement = document.querySelector('.slider-form');
 
-    // Reset all elements to default display
     searchElement.style.display = 'none';
     modelElement.style.display = 'none';
     sliderElement.style.display = 'none';
 
     if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
-        // Show the search element for specific filters
         searchElement.style.display = 'block';
     }
 
     if (selectedFilter === 'ModelHash' || selectedFilter === 'Model' || selectedFilter === 'SeedResizeFrom' || selectedFilter === 'DenoisingStrength') {
-        // Show the model element for specific filters
         modelElement.style.display = 'block';
     }
 
     if (selectedFilter === 'NSFWProbability') {
-        // Show the slider element for NSFWProbability
         sliderElement.style.display = 'block';
     }
 }
