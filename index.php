@@ -24,7 +24,7 @@ if (isset($_GET["page"])) {
 <body>
     <h1>Horde Image Indexer</h1>
 
-    <form method="get" action="index.php">
+    <form class="container text-center" method="get" action="index.php">
         <div class="row">
             <select name="filter" class="col" onchange="handleFilterChange(this.value)">
                 <option value="All" <?php echo (!isset($_GET['filter']) || isset($_GET['filter']) || $_GET['filter'] === 'All') ? 'selected' : ''; ?>>All</option>
