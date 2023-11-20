@@ -25,48 +25,52 @@ if (isset($_GET["page"])) {
 <body>
     <h1>Horde Image Indexer</h1>
 
-    <form class="container text-center" method="get" action="index.php">
-        <div class="row">
-            <select name="filter" class="col" onchange="handleFilterChange(this.value)">
-                <option value="All" <?php echo (!isset($_GET['filter']) || isset($_GET['filter']) || $_GET['filter'] === 'All') ? 'selected' : ''; ?>>All</option>
-                <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
-                <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
-                <option value="FileSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileSize') ? 'selected' : ''; ?>>File Size</option>
-                <option value="PositivePrompt" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'PositivePrompt') ? 'selected' : ''; ?>>Positive Prompt</option>
-                <option value="NegativePrompt" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'NegativePrompt') ? 'selected' : ''; ?>>Negative Prompt</option>
-                <option value="Steps" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Steps') ? 'selected' : ''; ?>>Steps</option>
-                <option value="Sampler" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Sampler') ? 'selected' : ''; ?>>Sampler</option>
-                <option value="CFGScale" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'CFGScale') ? 'selected' : ''; ?>>CFG Scale</option>
-                <option value="Seed" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Seed') ? 'selected' : ''; ?>>Seed</option>
-                <option value="ImageSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'ImageSize') ? 'selected' : ''; ?>>Image Size</option>
-                <option value="ModelHash" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'ModelHash') ? 'selected' : ''; ?>>Model Hash</option>
-                <option value="Model" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Model') ? 'selected' : ''; ?>>Model</option>
-                <option value="SeedResizeFrom" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'SeedResizeFrom') ? 'selected' : ''; ?>>Seed Resize From</option>
-                <option value="DenoisingStrength" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'DenoisingStrength') ? 'selected' : ''; ?>>Denoising Strength</option>
-                <option value="Version" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Version') ? 'selected' : ''; ?>>Version</option>
-                <option value="NSFWProbability" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'NSFWProbability') ? 'selected' : ''; ?>>NSFW Probability</option>
-                <option value="SHA1" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'SHA1') ? 'selected' : ''; ?>>SHA1</option>
-                <option value="SHA256" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'SHA256') ? 'selected' : ''; ?>>SHA256</option>
-                <option value="MD5" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'MD5') ? 'selected' : ''; ?>>MD5</option>
-            </select>
+    <form method="get" action="index.php">
+        <div class="container text-center">
+            <div class="row">
+                <select name="filter" class="col" onchange="handleFilterChange(this.value)">
+                    <option value="All" <?php echo (!isset($_GET['filter']) || isset($_GET['filter']) || $_GET['filter'] === 'All') ? 'selected' : ''; ?>>All</option>
+                    <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
+                    <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
+                    <option value="FileSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileSize') ? 'selected' : ''; ?>>File Size</option>
+                    <option value="PositivePrompt" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'PositivePrompt') ? 'selected' : ''; ?>>Positive Prompt</option>
+                    <option value="NegativePrompt" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'NegativePrompt') ? 'selected' : ''; ?>>Negative Prompt</option>
+                    <option value="Steps" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Steps') ? 'selected' : ''; ?>>Steps</option>
+                    <option value="Sampler" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Sampler') ? 'selected' : ''; ?>>Sampler</option>
+                    <option value="CFGScale" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'CFGScale') ? 'selected' : ''; ?>>CFG Scale</option>
+                    <option value="Seed" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Seed') ? 'selected' : ''; ?>>Seed</option>
+                    <option value="ImageSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'ImageSize') ? 'selected' : ''; ?>>Image Size</option>
+                    <option value="ModelHash" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'ModelHash') ? 'selected' : ''; ?>>Model Hash</option>
+                    <option value="Model" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Model') ? 'selected' : ''; ?>>Model</option>
+                    <option value="SeedResizeFrom" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'SeedResizeFrom') ? 'selected' : ''; ?>>Seed Resize From</option>
+                    <option value="DenoisingStrength" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'DenoisingStrength') ? 'selected' : ''; ?>>Denoising Strength</option>
+                    <option value="Version" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Version') ? 'selected' : ''; ?>>Version</option>
+                    <option value="NSFWProbability" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'NSFWProbability') ? 'selected' : ''; ?>>NSFW Probability</option>
+                    <option value="SHA1" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'SHA1') ? 'selected' : ''; ?>>SHA1</option>
+                    <option value="SHA256" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'SHA256') ? 'selected' : ''; ?>>SHA256</option>
+                    <option value="MD5" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'MD5') ? 'selected' : ''; ?>>MD5</option>
+                </select>
 
-            <div id="search" class="visually-hidden col">
-                <label for="search">Search:</label>
-                <input type="text" name="search" placeholder="Enter your search term">
+                <div id="search" class="visually-hidden col">
+                    <label for="search">Search:</label>
+                    <input type="text" name="search" placeholder="Enter your search term">
+                </div>
+
+                <select name="model" class="visually-hidden col">
+                    <option value="URPM">URPM</option>
+                </select>
             </div>
-
-            <select name="model" class="visually-hidden col">
-                <option value="URPM">URPM</option>
-            </select>
         </div>
-        <div class="row">
-            <button type="button" class="btn btn-success add">Add Row</button>
-            <input class="col btn btn-primary" type="submit" value="Search">
-            <select class="col" name="count">
-                <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
-                <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
-                <option value="100" <?php echo (isset($_GET['count']) && $_GET['count'] === '100') ? 'selected' : ''; ?>>100</option>
-            </select>
+        <div class="container text-center">
+            <div class="row">
+                <button type="button" class="btn btn-success add">Add Row</button>
+                <input class="col btn btn-primary" type="submit" value="Search">
+                <select class="col" name="count">
+                    <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
+                    <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
+                    <option value="100" <?php echo (isset($_GET['count']) && $_GET['count'] === '100') ? 'selected' : ''; ?>>100</option>
+                </select>
+            </div>
         </div>
     </form>
 
@@ -178,4 +182,5 @@ if (isset($_GET["page"])) {
         </ul>
     </div>
 </body>
+
 </html>
