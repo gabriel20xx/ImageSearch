@@ -50,8 +50,6 @@ if (isset($_GET["page"])) {
 
             <label for="search">Search:</label>
             <input type="text" name="search" id="search" placeholder="Enter your search term">
-
-            <span class="remove">Remove</span>
         </p>
         <p>
             <span class="add">Add fields</span>

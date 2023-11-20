@@ -34,7 +34,9 @@ function handleFilterChange(selectedFilter) {
 }
 
 $(".add").click(function() {
-    $("form > p:first-child").clone(true).insertBefore("form > p:last-child");
+    var clonedElement = $("form > p:first-child").clone(true);
+    clonedElement.append('<span class="remove">Remove</span>');
+    clonedElement.insertBefore("form > p:last-child");
     return false;
 });
 
