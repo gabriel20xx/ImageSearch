@@ -18,14 +18,15 @@ if (isset($_GET["page"])) {
     <title>Horde Image Indexer</title>
     <script src="js/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <h1>Horde Image Indexer</h1>
 
     <form method="get" action="index.php">
-        <div>
-            <select name="filter" onchange="handleFilterChange(this.value)">
+        <div class="row">
+            <select name="filter" class="col" onchange="handleFilterChange(this.value)">
                 <option value="All" <?php echo (!isset($_GET['filter']) || isset($_GET['filter']) || $_GET['filter'] === 'All') ? 'selected' : ''; ?>>All</option>
                 <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
                 <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
@@ -48,19 +49,19 @@ if (isset($_GET["page"])) {
                 <option value="MD5" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'MD5') ? 'selected' : ''; ?>>MD5</option>
             </select>
 
-            <div id="search">
+            <div id="search" class="col">
                 <label for="search">Search:</label>
                 <input type="text" name="search" placeholder="Enter your search term">
             </div>
 
-            <select name="model" class="display-none">
+            <select name="model" class="display-none col">
                 <option value="URPM">URPM</option>
             </select>
         </div>
-        <div>
-            <span class="add">Add fields</span>
-            <input type="submit" value="Search">
-            <select name="count">
+        <div class="row">
+            <span class="add col">Add fields</span>
+            <input class="col" type="submit" value="Search">
+            <select class="col" name="count">
                 <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
                 <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
                 <option value="100" <?php echo (isset($_GET['count']) && $_GET['count'] === '100') ? 'selected' : ''; ?>>100</option>
