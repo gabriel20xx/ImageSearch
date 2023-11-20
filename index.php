@@ -35,7 +35,7 @@ if (isset($_GET["page"])) {
         <div class="container text-center">
             <div class="mb-3">
                 <label for="filter" class="form-label"></label>
-                <select id="filter" name="filter" onchange="handleFilterChange(this.value)">
+                <select id="filter" class="form-select" name="filter" onchange="handleFilterChange(this.value)">
                     <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
                     <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
                     <option value="FileSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileSize') ? 'selected' : ''; ?>>File Size</option>
@@ -60,7 +60,7 @@ if (isset($_GET["page"])) {
 
             <div id="search" class="d-none mb-3">
                 <label for="search" class="form-label">Search:</label>
-                <input type="text" name="search" placeholder="Enter your search term">
+                <input type="text" name="search" class="form-control" placeholder="Enter your search term">
             </div>
 
             <div id="slider" class="d-none mb-3">
@@ -72,7 +72,7 @@ if (isset($_GET["page"])) {
 
             <div class="d-none mb-3">
                 <label for="model" class="form-label">Choose Model:</label>
-                <select id="model" name="model">
+                <select class="form-control" id="model" name="model">
                     <option value="URPM">URPM</option>
                 </select>
             </div>
@@ -83,7 +83,7 @@ if (isset($_GET["page"])) {
 
             <div class="mb-3">
                 <label for="count">Results per page: </label>
-                <select name="count">
+                <select name="count" class="form-select">
                     <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
                     <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
                     <option value="100" <?php echo (isset($_GET['count']) && $_GET['count'] === '100') ? 'selected' : ''; ?>>100</option>
