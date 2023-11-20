@@ -78,8 +78,8 @@ if (isset($_GET["page"])) {
             <input class="btn btn-primary" type="submit" value="Search">
 
             <div class="row">
-                <label for="count">Results per page: </label>
-                <select name="count">
+                <label class="col" for="count">Results per page: </label>
+                <select class="col" name="count">
                     <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>
                     <option value="25" <?php echo (isset($_GET['count']) && $_GET['count'] === '25') ? 'selected' : ''; ?>>25</option>
                     <option value="100" <?php echo (isset($_GET['count']) && $_GET['count'] === '100') ? 'selected' : ''; ?>>100</option>
