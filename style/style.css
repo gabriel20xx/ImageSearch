@@ -85,29 +85,6 @@ h2 {
     font-size: 14px;
 }
 
-/* Add your custom styles here */
-.toggle-buttons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.toggle-buttons button {
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.toggle-buttons button.active {
-    background-color: #007bb5;
-}
-
 .fullscreen-container {
     display: none;
     position: fixed;
