@@ -17,6 +17,7 @@ if (isset($_GET["page"])) {
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <title>Horde Image Indexer</title>
     <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -77,8 +78,8 @@ if (isset($_GET["page"])) {
 
 
     <!-- Fullscreen Image Container -->
-    <div class="fullscreen-container" id="fullscreenContainer" onclick="closeFullscreen">
-        <span class="close-button" onclick="closeFullscreen">&times;</span>
+    <div class="fullscreen-container" id="fullscreenContainer" onclick="closeFullscreen()">
+        <span class="close-button" onclick="closeFullscreen()">&times;</span>
         <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
     </div>
 
