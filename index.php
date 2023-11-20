@@ -168,6 +168,10 @@ if (isset($_GET["page"])) {
     } else {
         $nextPage = "None";
     }
+
+    $firstPage = 1;
+
+    $lastPage = ceil($count / $countmax);
     ?>
 
     <div>
@@ -175,27 +179,42 @@ if (isset($_GET["page"])) {
             <?php
             if ($count > $countmax && $currentPage != 1) {
                 echo "<li class='page-item'>
-                <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "' aria-label='Previous'>
-                    <span aria-hidden='true'>«</span>
-                </a>
-            </li>
-            
-            <li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "'>$previousPage</a></li>";
+            <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $firstPage))) . "' aria-label='First'>
+                <span aria-hidden='true'>«</span>
+            </a>
+        </li>";
+
+                echo "<li class='page-item'>
+            <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "' aria-label='Previous'>
+                <span aria-hidden='true'>&lt;</span>
+            </a>
+        </li>";
+
+                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "'>$previousPage</a></li>";
             }
 
-            echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $currentPage))) . "'>$currentPage</a></li>";
+            echo "<li class='page-item active'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $currentPage))) . "'>$currentPage</a></li>";
 
             if ($count > $countmax * ($currentPage)) {
-                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "'>$nextPage</a></li>
+                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "'>$nextPage</a></li>";
 
-            <li class='page-item'>
-                <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "' aria-label='Next'>
-                    <span aria-hidden='true'>»</span>
-                </a>
-            </li>";
+                echo "<li class='page-item'>
+            <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "' aria-label='Next'>
+                <span aria-hidden='true'>&gt;</span>
+            </a>
+        </li>";
+
+                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $lastPage))) . "'>$lastPage</a></li>";
+
+                echo "<li class='page-item'>
+            <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $lastPage))) . "' aria-label='Last'>
+                <span aria-hidden='true'>»</span>
+            </a>
+        </li>";
             }
             ?>
         </ul>
+
     </div>
 </body>
 
