@@ -21,15 +21,15 @@ function handleFilterChange(selectedFilter) {
     var modelElement = document.getElementsByName('model');
 
     if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
-        searchElement.style.display = 'block';
+        searchElement.classList.add("visually-hidden");
     } else {
-        searchElement.style.display = 'none';
+        searchElement.classList.remove("visually-hidden");
     }
 
     if (selectedFilter === 'Model') {
-        modelElement.style.display = 'block';
+        modelElement.classList.add("visually-hidden");
     } else {
-        modelElement.style.display = 'none';
+        modelElement.classList.remove("visually-hidden");
     }
 }
 
