@@ -22,25 +22,26 @@ function handleFilterChange(selectedFilter) {
     var sliderElement = document.querySelector('.slider-form');
 
     // Reset all elements to default display
-    searchElement.classList.add("d-none");
-    modelElement.classList.add("d-none");
-    sliderElement.classList.add("d-none");
+    searchElement.style.display = 'none';
+    modelElement.style.display = 'none';
+    sliderElement.style.display = 'none';
 
-    if (selectedFilter === 'FileName' || selectedFilter === 'Directory' || selectedFilter === 'FileSize' || selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All' || selectedFilter === 'Steps' || selectedFilter === 'Sampler' || selectedFilter === 'CFGScale' || selectedFilter === 'Seed' || selectedFilter === 'ImageSize' || selectedFilter === 'Version' || selectedFilter === 'NSFWProbability' || selectedFilter === 'SHA1' || selectedFilter === 'SHA256' || selectedFilter === 'MD5') {
+    if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
         // Show the search element for specific filters
-        searchElement.classList.remove("d-none");
+        searchElement.style.display = 'block';
     }
 
     if (selectedFilter === 'ModelHash' || selectedFilter === 'Model' || selectedFilter === 'SeedResizeFrom' || selectedFilter === 'DenoisingStrength') {
         // Show the model element for specific filters
-        modelElement.classList.remove("d-none");
+        modelElement.style.display = 'block';
     }
 
     if (selectedFilter === 'NSFWProbability') {
         // Show the slider element for NSFWProbability
-        sliderElement.classList.remove("d-none");
+        sliderElement.style.display = 'block';
     }
 }
+
 
 
 
