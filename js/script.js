@@ -90,7 +90,7 @@ function updateFormAction() {
     switch (selectedFilter) {
         case 'PositivePrompt':
         case 'NegativePrompt':
-        case 'Filename':
+        case 'FileName':
             searchVisible = true;
             break;
 
