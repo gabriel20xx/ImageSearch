@@ -73,7 +73,7 @@ h2 {
     max-width: 90%;
     max-height: 90%;
     cursor: pointer;
-    position: relative; /* Change from absolute to relative */
+    position: relative;
 }
 
 .close-button {
@@ -87,10 +87,6 @@ h2 {
 }
 
 .nav-button {
-    position: absolute;
-    bottom: 15px; /* Adjust positioning to be at the bottom */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center horizontally */
+    margin-right: 10px;
     z-index: 10002;
 }
-
