@@ -22,36 +22,6 @@ h1 {
     color: #fff;
 }
 
-/* Form styling */
-form {
-    text-align: center;
-    margin: 20px;
-}
-
-/* Input and select box styling */
-input[type="text"], select {
-    padding: 10px;
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-/* Submit button styling */
-input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Dropdown styling */
-select {
-    background-color: #fff;
-}
-
 /* Styling for search results (customize as needed) */
 h2 {
     text-align: center;
