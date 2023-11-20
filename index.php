@@ -36,6 +36,7 @@ if (isset($_GET["page"])) {
             <div class="mb-3">
                 <label for="filter" class="form-label">Select Filter</label>
                 <select id="filter" class="form-select" name="filter" onchange="handleFilterChange(this.value)">
+                    <option>Select Filter</option>
                     <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
                     <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
                     <option value="FileSize" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileSize') ? 'selected' : ''; ?>>File Size</option>
@@ -58,12 +59,10 @@ if (isset($_GET["page"])) {
                 </select>
             </div>
 
-            <?php if (isset($_GET['filter']) && $_GET['filter'] === 'PositivePrompt' || isset($_GET['search']) && !empty($_GET['search'])) : ?>
-                <div id="search" class="search-form mb-3">
-                    <label for="search" class="form-label">Search</label>
-                    <input type="text" name="search" class="form-control" placeholder="Enter your search term">
-                </div>
-            <?php endif; ?>
+            <div id="search" class="search-form mb-3">
+                <label for="search" class="form-label">Search</label>
+                <input type="text" name="search" class="form-control" placeholder="Enter your search term">
+            </div>
 
             <div id="slider" class="slider-form mb-3">
                 <label for="range" class="form-label">Select Range</label>

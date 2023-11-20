@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Existing updateFormAction function
-/**function updateFormAction() {
+function updateFormAction() {
     const form = document.querySelector('form');
 
     // Set default values for form elements
