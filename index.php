@@ -98,7 +98,7 @@ if (isset($_GET["page"])) {
     <div class="fullscreen-container" id="fullscreenContainer">
         <span class="close-button" onclick="closeFullscreen()">&times;</span>
         <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
-        <div class="nav-button d-grid gap-2 row-6 mx-auto">
+        <div class="nav-button d-grid gap-2 d-md-flex mx-auto">
             <button class="btn btn-primary" onclick="prevImage()">Previous</button>
             <button class="btn btn-primary" onclick="nextImage()">Next</button>
         </div>
