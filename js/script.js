@@ -34,7 +34,7 @@ function handleFilterChange(selectedFilter) {
     modelElement.style.display = 'none';
     sliderElement.style.display = 'none';
 
-    if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
+    if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'Filename') {
         searchElement.style.display = 'block';
     }
 
