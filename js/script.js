@@ -13,7 +13,7 @@ function openFullscreen(imageSrc) {
     const fullscreenImage = document.getElementById('fullscreenImage');
 
     fullscreenImage.src = imageSrc;
-    fullscreenContainer.style.display = 'flex';
+    fullscreenContainer.style.display = 'grid';
 }
 
 // Function to close fullscreen
