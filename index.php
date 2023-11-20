@@ -25,10 +25,10 @@ if (isset($_GET["page"])) {
 <body>
     <h1>Horde Image Indexer</h1>
 
-    <form method="get" action="index.php" onchange="handleFilterChange(this.value)">
+    <form method="get" action="index.php">
         <div class="container text-center">
             <div class="row">
-                <select name="filter" class="col">
+                <select name="filter" class="col" onchange="handleFilterChange(this.value)">
                     <option value="All" <?php echo (!isset($_GET['filter']) || isset($_GET['filter']) || $_GET['filter'] === 'All') ? 'selected' : ''; ?>>All</option>
                     <option value="FileName" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'FileName') ? 'selected' : ''; ?>>Filename</option>
                     <option value="Directory" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'Directory') ? 'selected' : ''; ?>>Directory</option>
@@ -51,19 +51,19 @@ if (isset($_GET["page"])) {
                     <option value="MD5" <?php echo (isset($_GET['filter']) && $_GET['filter'] === 'MD5') ? 'selected' : ''; ?>>MD5</option>
                 </select>
 
-                <div id="search" class="col">
+                <div id="search" class="col" onchange="handleFilterChange(this.value)">
                     <label for="search">Search:</label>
                     <input type="text" name="search" placeholder="Enter your search term">
                 </div>
 
-                <div id="slider" class="col">
+                <div id="slider" class="col" onchange="handleFilterChange(this.value)">
                     <label for="range">Select a range:</label>
                     <input type="range" id="range" name="range" min="0" max="100" step="1" value="25">
                     <input type="range" id="range2" name="range2" min="0" max="100" step="1" value="75">
                     <p>Selected Range: <span id="rangeValues"></span></p>
                 </div>
 
-                <select name="model" class="col">
+                <select name="model" class="col" onchange="handleFilterChange(this.value)">
                     <option value="URPM">URPM</option>
                 </select>
             </div>
