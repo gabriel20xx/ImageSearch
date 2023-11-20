@@ -31,7 +31,7 @@ if (isset($_GET["page"])) {
 <body>
     <h1>Horde Image Indexer</h1>
 
-    <form method="get" action="index.php">
+    <form method="get" action="index.php" class="form-container">
         <div>
             <div class="mb-3">
                 <label for="filter" class="form-label"></label>
