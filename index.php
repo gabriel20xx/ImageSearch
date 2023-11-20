@@ -3,7 +3,6 @@ include 'includes/mysql.php';
 ?>
 
 <?php
-$page = 1;
 $countmax = 25;
 $count = 10;
 ?>
@@ -126,7 +125,7 @@ if (isset($_GET["page"])) {
             $count = $totalCount;
             echo '<p class="text-center">Total number of rows matching the query: ' . $totalCount . '</p>';
 
-            $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT $countmax OFFSET " . $countmax * ($page - 1);
+            $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT $countmax OFFSET " . $countmax * ($currentPage - 1);
             $stmtData = mysqli_prepare($conn, $sqlData);
 
             if ($stmtData) {
