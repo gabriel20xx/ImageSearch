@@ -178,38 +178,19 @@ if (isset($_GET["page"])) {
         <ul class="pagination justify-content-center">
             <?php
             if ($count > $countmax && $currentPage != 1) {
-                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $firstPage))) . "'>$firstPage</a></li>";
-
                 echo "<li class='page-item'>
             <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $firstPage))) . "' aria-label='First'>
                 <span aria-hidden='true'>«</span>
             </a>
         </li>";
 
-                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "'>$previousPage</a></li>";
-
-                echo "<li class='page-item'>
-            <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "' aria-label='Previous'>
-                <span aria-hidden='true'>&lt;</span>
-            </a>
-        </li>";
+                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "' aria-label='Previous'>$previousPage</a></li>";
             }
-
-
 
             echo "<li class='page-item active'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $currentPage))) . "'>$currentPage</a></li>";
 
-            
             if ($count > $countmax * ($currentPage)) {
-                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "'>$nextPage</a></li>";
-
-                echo "<li class='page-item'>
-            <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "' aria-label='Next'>
-                <span aria-hidden='true'>&gt;</span>
-            </a>
-        </li>";
-
-                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $lastPage))) . "'>$lastPage</a></li>";
+                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "' aria-label='Next'>$nextPage</a></li>";
 
                 echo "<li class='page-item'>
             <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $lastPage))) . "' aria-label='Last'>
@@ -219,6 +200,7 @@ if (isset($_GET["page"])) {
             }
             ?>
         </ul>
+
 
     </div>
 </body>
