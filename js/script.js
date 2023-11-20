@@ -31,6 +31,7 @@ function nextImage() {
     openFullscreen(images[currentImageIndex]);
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
     var searchElement = document.querySelector('.search-form');
     var modelElement = document.querySelector('.model-form');
