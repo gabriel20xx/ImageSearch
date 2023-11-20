@@ -154,6 +154,10 @@ if (isset($_GET["page"])) {
                 echo
                 '</div>
                 </div>';
+
+                echo '<script>';
+                echo 'var images = ' . json_encode($images) . ';';
+                echo '</script>';
             } else {
                 echo '<p class="text-center">Prepare statement failed for data retrieval.</p>';
             }
@@ -256,9 +260,6 @@ if (isset($_GET["page"])) {
             ?>
         </ul>
     </div>
-    <script>
-        const images = <?php echo json_encode($images); ?>;
-    </script>
 </body>
 
 </html>
