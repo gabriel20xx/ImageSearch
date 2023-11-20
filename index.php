@@ -56,7 +56,7 @@ if (isset($_GET["page"])) {
                     <input type="text" name="search" placeholder="Enter your search term">
                 </div>
 
-                <div class="col">
+                <div id="slider" class="col">
                     <label for="range">Select a range:</label>
                     <input type="range" id="range" name="range" min="0" max="100" step="1" value="25">
                     <input type="range" id="range2" name="range2" min="0" max="100" step="1" value="75">

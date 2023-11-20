@@ -19,19 +19,24 @@ function closeFullscreen() {
 function handleFilterChange(selectedFilter) {
     var searchElement = document.getElementById('search');
     var modelElement = document.getElementsByName('model')[0];
+    var sliderElement = document.getElementById('slider');
 
     if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
         searchElement.classList.remove("invisible");
-        searchElement.classList.add("visible");
     } else {
         searchElement.classList.add("invisible");
-        searchElement.classList.remove("visible");
     }
 
     if (selectedFilter === 'ModelHash' || selectedFilter === 'Model' || selectedFilter === 'SeedResizeFrom' || selectedFilter === 'DenoisingStrength') {
         modelElement.classList.remove("invisible");
     } else {
         modelElement.classList.add("invisible");
+    }
+
+    if (selectedFilter === 'NSFWProbability') {
+        sliderElement.classList.remove("invisible");
+    } else {
+        sliderElement.classList.add("invisible");
     }
 }
 
