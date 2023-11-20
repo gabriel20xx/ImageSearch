@@ -86,7 +86,7 @@ h2 {
     z-index: 10001;
 }
 
-.nav-button {
-    margin-right: 10px;
+.nav-button > * {
+    margin: 10px;
     z-index: 10002;
 }
