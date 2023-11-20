@@ -137,6 +137,7 @@ if (isset($_GET["page"])) {
                 <div class="row">';
                 while ($row = mysqli_fetch_assoc($resultData)) {
                     $images[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
+                    echo 'images.push("images/' . $row['Directory'] . '/' . $row['FileName'] . '.png");';
                     echo
                     '<div class="col-sm-6 col-md-4 col-lg-2 col-xl-1 mb-4">
                         <div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">
