@@ -123,6 +123,7 @@ if (isset($_GET["page"])) {
             $resultCount = mysqli_stmt_get_result($stmtCount);
             $row = mysqli_fetch_assoc($resultCount);
             $totalCount = $row["count"];
+            $count = $totalCount;
             echo '<p class="text-center">Total number of rows matching the query: $totalCount</p>';
 
             $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT $countmax OFFSET " . $countmax * ($page - 1);
