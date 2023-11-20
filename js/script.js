@@ -15,7 +15,16 @@ function closeFullscreen() {
     fullscreenContainer.style.display = 'none';
 }
 
-// Working
+document.addEventListener('DOMContentLoaded', function() {
+    var searchElement = document.querySelector('.search-form');
+    var modelElement = document.querySelector('.model-form');
+    var sliderElement = document.querySelector('.slider-form');
+
+    searchElement.style.display = 'none';
+    modelElement.style.display = 'none';
+    sliderElement.style.display = 'none';
+});
+
 function handleFilterChange(selectedFilter) {
     var searchElement = document.querySelector('.search-form');
     var modelElement = document.querySelector('.model-form');
