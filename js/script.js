@@ -17,9 +17,9 @@ function closeFullscreen() {
 
 // Working
 function handleFilterChange(selectedFilter) {
-    var searchElement = document.getElementsByClassName('search-form');
-    var modelElement = document.getElementsByClassName('model-form');
-    var sliderElement = document.getElementsByClassName('slider-form');
+    var searchElement = document.querySelector('.search-form');
+    var modelElement = document.querySelector('.model-form');
+    var sliderElement = document.querySelector('.slider-form');
 
     if (selectedFilter === 'PositivePrompt' || selectedFilter === 'NegativePrompt' || selectedFilter === 'All') {
         searchElement.classList.remove("d-none");
@@ -39,6 +39,7 @@ function handleFilterChange(selectedFilter) {
         sliderElement.classList.add("d-none");
     }
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
