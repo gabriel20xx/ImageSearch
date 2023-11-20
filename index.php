@@ -49,7 +49,7 @@ if (isset($_GET["page"])) {
             </select>
 
             <label for="search">Search:</label>
-            <input type="text" name="search" id="search" placeholder="Enter your search term" value="<?php echo (isset($_GET['search'])) ? $_GET['search'] : ''; ?>">
+            <input type="text" name="search" id="search" placeholder="Enter your search term">
 
             <?php
             /**if (isset($_GET['filter']) && $_GET['filter'] === 'Model') {
