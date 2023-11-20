@@ -70,7 +70,7 @@ if (isset($_GET["page"])) {
         </div>
         <div class="container text-center">
             <div class="row">
-                <button type="button" class="btn btn-success add">Add Row</button>
+                <button type="button" class="btn btn-success add-row">Add Row</button>
                 <input class="col btn btn-primary" type="submit" value="Search">
                 <select class="col" name="count">
                     <option value="10" <?php echo (isset($_GET['count']) && $_GET['count'] === '10') ? 'selected' : ''; ?>>10</option>

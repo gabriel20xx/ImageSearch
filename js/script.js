@@ -36,13 +36,15 @@ function handleFilterChange(selectedFilter) {
 }
 
 
-$("form").on("click", ".remove", function() {
-    $(this).parent().remove();
-});
+$(document).ready(function() {
+    $("form").on("click", ".remove", function() {
+        $(this).closest('.row').remove();
+    });
 
-$(".add").click(function() {
-    var clonedElement = $("form > div:first-child").clone(true);
-    clonedElement.append('<button type="button" class="remove btn btn-danger">Danger</button>');
-    clonedElement.insertBefore("form > div:last-child");
-    return false;
+    $(document).on("click", ".add-row", function() {
+        var clonedElement = $("form > .container:first-child").clone(true);
+        clonedElement.append('<button type="button" class="remove btn btn-danger">Remove</button>');
+        clonedElement.insertAfter("form > .container:last-child");
+        return false;
+    });
 });
