@@ -41,12 +41,37 @@ include 'includes/mysql.php';
             <div id="search" class="search-form mb-3">
                 <label for="search" class="form-label">Search</label>
                 <input type="text" name="search" class="form-control search-input" placeholder="Enter your search term..." value="<?php echo isset($_GET['search']) ? htmlentities($_GET['search']) : ''; ?>">
-
             </div>
 
+            <div id="min-max-range">
+                <label for="min-max-range" class="form-label">Min, Max or Range?</label>
+                <select id="min-max-range" class="minmaxrange-input form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
+                    <option value="Min">Min</option>
+                    <option value="Max">Max</option>
+                    <option value="Range">Range</option>
+                </select>
+            </div>
+
+            <div class="oneValueForm">
+                <label for="first-value" class="form-label">Type in your Number...</label>
+                <input class="oneValueInput" id="first-value" name="first-value" type="number" step="0.01">
+            </div>
+
+            <div class="twoValueForm">
+                <div>
+                    <label for="lower-value" class="form-label">Type in your lower Number...</label>
+                    <input class="lowerValueInput" id="lower-value" name="lower-value" type="number" step="0.01">
+                </div>
+                <div>
+                    <label for="upper-value" class="form-label">Type in your higher Number...</label>
+                    <input class="upperValueInput" id="upper-value" name="upper-value" type="number" step="0.01">
+                </div>
+            </div>
+
+            <!-- Remove this block -->
             <div id="slider" class="slider-form mb-3">
                 <label for="range" class="form-label">Select Range</label>
-                <input class="slider-input" type="range" id="range" name="range" min="0" max="100" step="1" value="25">
+                <input class="slider-input" type="range" id="range" name="range" min="0" max="100" step="1" value="<?php echo isset($_GET['range']) ? htmlentities($_GET['range']) : "25"; ?>">
             </div>
 
             <div class="model-form mb-3">
