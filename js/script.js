@@ -177,12 +177,12 @@ function handleFilterChange(selectedFilter) {
   }
 }
 
-function disableInput(input) {
+/*function disableInput(input) {
   if (input) {
     input.disabled = true;
     input.readOnly = true;
   }
-}
+}*/
 
 function enableInput(input) {
   if (input) {
