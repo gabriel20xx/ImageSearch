@@ -86,14 +86,6 @@ include 'includes/mysql.php';
         </div>
     </form>
 
-    <!-- Search results -->
-    <?php
-    if (isset($_GET['search'])) {
-        $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
-        require 'includes/search.php';
-    }
-    ?>
-
     <!-- Fullscreen Image Container -->
     <div class="fullscreen-container text-center" id="fullscreenContainer" style="display: none;">
         <span class="close-button" onclick="closeFullscreen()">&times;</span>
