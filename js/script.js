@@ -44,13 +44,13 @@ function closeFullscreen() {
 }
 
 function prevImage() {
-  currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-  openFullscreen(images[currentImageIndex]);
+  currentImageIndex = (currentImageIndex - 1 + jsImages.length) % jsImages.length;
+  openFullscreen(jsImages[currentImageIndex]);
 }
 
 function nextImage() {
-  currentImageIndex = (currentImageIndex + 1) % images.length;
-  openFullscreen(images[currentImageIndex]);
+  currentImageIndex = (currentImageIndex + 1) % jsImages.length;
+  openFullscreen(jsImages[currentImageIndex]);
 }
 
 
