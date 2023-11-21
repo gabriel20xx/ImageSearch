@@ -66,15 +66,15 @@ if (isset($_GET['search'])) {
     $firstPage = 1;
     $previousPage = ($currentPage != 1) ? $currentPage - 1 : "None";
     $overPreviousPage = ($currentPage > 2) ? $currentPage - 2 : "None";
-    $nextPage = ($count > $countmax * $currentPage) ? $currentPage + 1 : "None";
-    $overNextPage = ($count > $countmax * ($currentPage - 1)) ? $currentPage + 2 : "None";
-    $lastPage = ceil($count / $countmax);
+    $nextPage = ($totalCount > $countmax * $currentPage) ? $currentPage + 1 : "None";
+    $overNextPage = ($totalCount > $countmax * ($currentPage - 1)) ? $currentPage + 2 : "None";
+    $lastPage = ceil($totalCount / $countmax);
     ?>
 
     <!-- Page indicator -->
     <div>
         <ul class="pagination justify-content-center">
-            <?php if ($count > $countmax && $currentPage != 1) : ?>
+            <?php if ($totalCount > $countmax && $currentPage != 1) : ?>
                 <li class='page-item'>
                     <a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $firstPage))) ?>' aria-label='First'>
                         <span aria-hidden='true'>&lt;&lt;</span>
@@ -96,7 +96,7 @@ if (isset($_GET['search'])) {
                 <li class='page-item active'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $currentPage))) ?>'><?= $currentPage ?></a></li>
             <?php endif; ?>
 
-            <?php if ($count > $countmax * $currentPage) : ?>
+            <?php if ($totalCount > $countmax * $currentPage) : ?>
                 <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $nextPage))) ?>' aria-label='Next'><?= $nextPage ?></a></li>
 
                 <?php if ($overNextPage != "None") : ?>
