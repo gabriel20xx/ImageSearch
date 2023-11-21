@@ -71,6 +71,24 @@ if (isset($_GET['search'])) {
     $lastPage = ceil($totalCount / $countmax);
     ?>
 
+    <!-- Fullscreen Image Container -->
+    <div class="fullscreen-container text-center" id="fullscreenContainer" style="display: none;">
+        <span class="close-button" onclick="closeFullscreen()">&times;</span>
+        <div class="row">
+            <div class="col-12">
+                <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
+            </div>
+        </div>
+        <div class="row mt-2 d-flex justify-content-center">
+            <div class="col-6">
+                <button class="btn btn-primary btn-block" onclick="prevImage()">Previous</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-primary btn-block" onclick="nextImage()">Next</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Page indicator -->
     <div>
         <ul class="pagination justify-content-center">
