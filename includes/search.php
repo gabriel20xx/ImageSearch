@@ -27,6 +27,8 @@ if (isset($_GET['search'])) {
             $resultData = mysqli_stmt_get_result($stmtData);
             mysqli_stmt_close($stmtData);
 
+            $images = [];
+
             echo '
             <div class="container-fluid">
             <div class="row">';
