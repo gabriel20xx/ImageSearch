@@ -27,13 +27,13 @@ if (isset($_GET['search'])) {
             $resultData = mysqli_stmt_get_result($stmtData);
             mysqli_stmt_close($stmtData);
 
-            $images = [];
+            $phpImages = [];
 
             echo '
             <div class="container-fluid">
             <div class="row">';
             while ($row = mysqli_fetch_assoc($resultData)) {
-                $images[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
+                $phpImages[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
                 echo
                 '<div class="col-sm-6 col-md-4 col-lg-2 col-xl-1 mb-4">
                     <div class="card" onclick="openFullscreen(\'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png\')">
@@ -53,7 +53,7 @@ if (isset($_GET['search'])) {
             </div>';
 
             echo '<script>';
-            echo 'var images = ' . json_encode($images) . ';';
+            echo 'var images = ' . json_encode($phpImages) . ';';
             echo '</script>';
         } else {
             echo '<p class="text-center">Prepare statement failed for data retrieval.</p>';
