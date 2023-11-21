@@ -3,7 +3,10 @@ let currentImageIndex = 0;
 // Execute this on page load
 document.addEventListener("DOMContentLoaded", function () {
   var initialFilter = document.getElementById("filter").value;
+  var initialMinMax = document.getElementById("min-max-range").value;
+
   handleFilterChange(initialFilter);
+  handleMinMaxRangeChange(initialMinMax);
 
   document.querySelector("form").addEventListener("click", function (event) {
     const target = event.target;
