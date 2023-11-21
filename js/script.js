@@ -112,16 +112,16 @@ function handleFilterChange(selectedFilter) {
   const sliderInput1 = document.querySelector(".slider-input1");
   const sliderInput2 = document.querySelector(".slider-input2");
 
-  // Set default visibility to false
-  searchElement.style.display = "none";
-  modelElement.style.display = "none";
-  sliderElement.style.display = "none";
-
   // Disable and make readonly by default
   searchInput.setAttribute('disabled', 'true');
   modelInput.setAttribute('disabled', 'true');
   sliderInput1.setAttribute('disabled', 'true');
   sliderInput2.setAttribute('disabled', 'true');
+
+  // Set default visibility to false
+  searchElement.style.display = "none";
+  modelElement.style.display = "none";
+  sliderElement.style.display = "none";
 
   // Set visibility based on the selected filter
   switch (selectedFilter) {
