@@ -112,6 +112,11 @@ function handleFilterChange(selectedFilter) {
   const sliderInput1 = document.querySelector(".first-slider-input");
   const sliderInput2 = document.querySelector(".second-slider-input");
 
+  console.log("searchInput:", searchInput);
+  console.log("modelInput:", modelInput);
+  console.log("sliderInput1:", sliderInput1);
+  console.log("sliderInput2:", sliderInput2);
+
   // Disable and make readonly by default
   searchInput.disabled = true;
   modelInput.disabled = true;
