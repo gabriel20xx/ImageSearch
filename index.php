@@ -40,7 +40,7 @@ include 'includes/mysql.php';
 
             <div id="search" class="search-form mb-3">
                 <label for="search" class="form-label">Search</label>
-                <input type="text" name="search" class="form-control search-input" placeholder="Enter your search term..." ="<?php echo isset($_GET['search']) ? htmlentities($_GET['search']) : ''; ?>">
+                <input type="text" name="search" class="form-control search-input" placeholder="Enter your search term..." value="<?php echo isset($_GET['search']) ? htmlentities($_GET['search']) : ''; ?>">
 
             </div>
 
