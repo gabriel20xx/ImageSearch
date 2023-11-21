@@ -1,22 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Get the selected filter on page load
   var initialFilter = document.getElementById("filter").value;
-
-  // Call the handleFilterChange function with the initial filter
   handleFilterChange(initialFilter);
-
-  // Set up event listeners
-  document.querySelector("form").addEventListener("submit", function (event) {
-    // Call the updateFormAction function on form submit
-    updateFormAction();
-  });
-
-  // Use event delegation to handle change events on the filter select element
-  document.getElementById("filter").addEventListener("change", function () {
-    const selectedFilter = this.value;
-    // Call the handleFilterChange function on filter change
-    handleFilterChange(selectedFilter);
-  });
 
   // Use event delegation to handle click events on the form
   document.querySelector("form").addEventListener("click", function (event) {
@@ -43,11 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Use const and let for variable declarations
 const images = []; // assuming you have an array of images
-
-function setDisplayMode(mode) {
-  window.location.href = `index.php?display_mode=${mode}`;
-}
-
 let currentImageIndex = 0; // Index of the currently displayed image
 
 // Function to open fullscreen with a specific image
@@ -76,15 +55,6 @@ function nextImage() {
   currentImageIndex = (currentImageIndex + 1) % images.length;
   openFullscreen(images[currentImageIndex]);
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  // Use querySelectorAll to select multiple elements and loop through them
-  document
-    .querySelectorAll(".search-form, .model-form, .slider-form")
-    .forEach(function (element) {
-      element.style.display = "none";
-    });
-});
 
 // Existing updateFormAction function
 function updateFormAction() {
@@ -133,6 +103,18 @@ function updateFormAction() {
   return true; // Allow the form to be submitted
 }
 
+function disableInput(input) {
+  console.log(input); // Add this line
+  input.setAttribute('readonly', 'true');
+  input.setAttribute('disabled', 'true');
+}
+
+function enableInput(input) {
+  console.log(input); // Add this line
+  input.removeAttribute('readonly');
+  input.removeAttribute('disabled');
+}
+
 // Modified handleFilterChange function to toggle visibility
 function handleFilterChange(selectedFilter) {
   const searchElement = document.querySelector(".search-form");
@@ -175,16 +157,4 @@ function handleFilterChange(selectedFilter) {
     default:
       break;
   }
-}
-
-function disableInput(input) {
-  console.log(input); // Add this line
-  input.setAttribute('readonly', 'true');
-  input.setAttribute('disabled', 'true');
-}
-
-function enableInput(input) {
-  console.log(input); // Add this line
-  input.removeAttribute('readonly');
-  input.removeAttribute('disabled');
 }
