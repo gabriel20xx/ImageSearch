@@ -148,9 +148,9 @@ function handleFilterChange(selectedFilter) {
   sliderElement.style.display = "none";
 
   // Disable and make readonly by default
-  disableInputs(searchInput);
-  disableInputs(modelInput);
-  disableInputs(sliderInput);
+  disableInput(searchInput);
+  disableInput(modelInput);
+  disableInput(sliderInput);
 
   // Set visibility based on the selected filter
   switch (selectedFilter) {
@@ -158,18 +158,18 @@ function handleFilterChange(selectedFilter) {
     case "NegativePrompt":
     case "Filename":
       searchElement.style.display = "block";
-      enableInputs(searchElement);
+      enableInput(searchElement);
       break;
 
     case "Model":
       modelElement.style.display = "block"
-      enableInputs(modelElement);
+      enableInput(modelElement);
       break;
 
     case "DenoisingStrength":
     case "NSFWProbability":
       sliderElement.style.display = "block"
-      enableInputs(sliderElement);
+      enableInput(sliderElement);
       break;
 
     default:
