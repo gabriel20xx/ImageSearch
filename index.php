@@ -2,7 +2,7 @@
 include 'includes/mysql.php';
 
 if (isset($_GET['search'])) {
-    require 'search.php';
+    require 'includes/search.php';
 }
 ?>
 
