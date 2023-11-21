@@ -46,7 +46,7 @@ include 'includes/mysql.php';
             </div>
 
             <!-- Min, Max, Range container -->
-            <div class="minmaxrange-form" id="min-max-range">
+            <div class="minmaxrange-form">
                 <label for="min-max-range" class="form-label">Min, Max or Range?</label>
                 <select id="min-max-range" class="minmaxrange-input form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
                     <option value="Min">Min</option>
