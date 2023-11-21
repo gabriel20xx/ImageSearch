@@ -23,6 +23,7 @@ include 'includes/mysql.php';
             <div class="mb-3">
                 <label for="filter" class="form-label">Select Filter</label>
                 <select id="filter" class="form-select" name="filter" onchange="handleFilterChange(this.value)">
+                    <option disabled>Select Filter</option>
                     <?php
                     $filterOptions = [
                         'FileName', 'Directory', 'FileSize', 'PositivePrompt', 'NegativePrompt',
@@ -53,7 +54,15 @@ include 'includes/mysql.php';
             <div class="model-form mb-3">
                 <label for="model" class="form-label">Choose Model</label>
                 <select class="form-control" id="model" name="model">
-                    <option value="URPM">URPM</option>
+                    <?php
+                    $modelOptions = [
+                        'URPM'
+                    ];
+
+                    foreach ($modelOptions as $option) {
+                        echo '<option value="' . $option . '">' . $option . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
         </div>
@@ -78,6 +87,7 @@ include 'includes/mysql.php';
         </div>
     </form>
 
+    <!-- Search results -->
     <?php
     if (isset($_GET['search'])) {
         $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
@@ -104,15 +114,6 @@ include 'includes/mysql.php';
     </div>
 
     <!-- Page indicator -->
-    <?php
-    $firstPage = 1;
-    $previousPage = ($currentPage != 1) ? $currentPage - 1 : "None";
-    $overPreviousPage = ($currentPage > 2) ? $currentPage - 2 : "None";
-    $nextPage = ($count > $countmax * $currentPage) ? $currentPage + 1 : "None";
-    $overNextPage = ($count > $countmax * ($currentPage - 1)) ? $currentPage + 2 : "None";
-    $lastPage = ceil($count / $countmax);
-    ?>
-
     <div>
         <ul class="pagination justify-content-center">
             <?php if ($count > $countmax && $currentPage != 1) : ?>

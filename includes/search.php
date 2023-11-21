@@ -17,7 +17,7 @@ if (isset($_GET['search'])) {
         $row = mysqli_fetch_assoc($resultCount);
         $totalCount = $row["count"];
         $count = $totalCount;
-        echo '<p class="text-center">Total number of rows matching the query: ' . $totalCount . '</p>';
+        echo '<p class="text-center">Total number of results: ' . $totalCount . '</p>';
 
         $sqlData = "SELECT * FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ? LIMIT $countmax OFFSET " . $countmax * ($currentPage - 1);
         $stmtData = mysqli_prepare($conn, $sqlData);
@@ -41,8 +41,8 @@ if (isset($_GET['search'])) {
                         <img src="' . "images" . "/" . $row['Directory'] . "/" . $row['FileName'] . ".png" . '" class="card-img-top" alt="Image">
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">' . substr($row['PositivePrompt'], 0, 50) . '</li>
-                                <li class="list-group-item">' . substr($row['NegativePrompt'], 0, 50) . '</li>
+                                <li class="list-group-item">' . substr($row['PositivePrompt'], 0, 80) . '</li>
+                                <li class="list-group-item">' . substr($row['NegativePrompt'], 0, 80) . '</li>
                                 <li class="list-group-item">' . $row['Model'] . '</li>
                             </ul>
                         </div>
@@ -64,4 +64,10 @@ if (isset($_GET['search'])) {
     // Close the database connection
     mysqli_close($conn);
 }
-?>
+
+$firstPage = 1;
+$previousPage = ($currentPage != 1) ? $currentPage - 1 : "None";
+$overPreviousPage = ($currentPage > 2) ? $currentPage - 2 : "None";
+$nextPage = ($count > $countmax * $currentPage) ? $currentPage + 1 : "None";
+$overNextPage = ($count > $countmax * ($currentPage - 1)) ? $currentPage + 2 : "None";
+$lastPage = ceil($count / $countmax);

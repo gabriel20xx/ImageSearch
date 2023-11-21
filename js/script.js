@@ -104,13 +104,11 @@ function updateFormAction() {
       searchVisible = true;
       break;
 
-    case "ModelHash":
     case "Model":
-    case "SeedResizeFrom":
-    case "DenoisingStrength":
       modelVisible = true;
       break;
 
+    case "DenoisingStrength":
     case "NSFWProbability":
       sliderVisible = true;
       break;
