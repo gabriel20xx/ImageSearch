@@ -158,18 +158,18 @@ function handleFilterChange(selectedFilter) {
     case "NegativePrompt":
     case "Filename":
       searchElement.style.display = "block";
-      enableInput(searchElement);
+      enableInput(searchInput);
       break;
 
     case "Model":
       modelElement.style.display = "block"
-      enableInput(modelElement);
+      enableInput(modelInput);
       break;
 
     case "DenoisingStrength":
     case "NSFWProbability":
       sliderElement.style.display = "block"
-      enableInput(sliderElement);
+      enableInput(sliderInput);
       break;
 
     default:
