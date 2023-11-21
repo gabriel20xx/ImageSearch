@@ -113,10 +113,10 @@ function handleFilterChange(selectedFilter) {
   const sliderInput2 = document.querySelector(".slider-input2");
 
   // Disable and make readonly by default
-  searchInput.setAttribute('disabled', 'true');
-  modelInput.setAttribute('disabled', 'true');
-  sliderInput1.setAttribute('disabled', 'true');
-  sliderInput2.setAttribute('disabled', 'true');
+  searchInput.disabled = true;
+  modelInput.disabled = true;
+  sliderInput1.disabled = true;
+  sliderInput2.disabled = true;
 
   // Set default visibility to false
   searchElement.style.display = "none";
@@ -129,19 +129,19 @@ function handleFilterChange(selectedFilter) {
     case "NegativePrompt":
     case "Filename":
       searchElement.style.display = "block";
-      searchInput.removeAttribute('disabled');
+      searchInput.disabled = false;
       break;
 
     case "Model":
       modelElement.style.display = "block"
-      modelInput.removeAttribute('disabled');
+      modelInput.disabled = false;
       break;
 
     case "DenoisingStrength":
     case "NSFWProbability":
       sliderElement.style.display = "block"
-      sliderInput1.removeAttribute('disabled');
-      sliderInput2.removeAttribute('disabled');
+      sliderInput1.disabled = false;
+      sliderInput2.disabled = false;
       break;
 
     default:
