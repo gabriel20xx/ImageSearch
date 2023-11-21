@@ -177,16 +177,12 @@ function handleFilterChange(selectedFilter) {
   }
 }
 
-/*function disableInput(input) {
-  if (input) {
-    input.disabled = true;
-    input.readOnly = true;
-  }
-}*/
+function disableInput(input) {
+  input.setAttribute('readonly', 'true');
+  input.setAttribute('disabled', 'true');
+}
 
 function enableInput(input) {
-  if (input) {
-    input.disabled = false;
-    input.readOnly = false;
-  }
+  input.removeAttribute('readonly');
+  input.removeAttribute('disabled');
 }
