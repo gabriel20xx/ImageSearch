@@ -46,7 +46,7 @@ include 'includes/mysql.php';
             </div>
 
             <!-- Min, Max, Range container -->
-            <div class="minmaxrange-form">
+            <div class="minmaxrange-form mb-3">
                 <label for="min-max-range" class="form-label">Min, Max or Range?</label>
                 <select id="min-max-range" class="minmaxrange-input form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
                     <option value="Min">Min</option>
@@ -56,13 +56,13 @@ include 'includes/mysql.php';
             </div>
 
             <!-- One Value container -->
-            <div class="oneValueForm">
+            <div class="oneValueForm mb-3">
                 <label for="one-value" class="form-label">Type in your Number...</label>
                 <input class="oneValueInput" id="one-value" name="one-value" type="number" step="0.01" value="<?php echo isset($_GET['one-value']) ? htmlentities($_GET['one-value']) : "0.5"; ?>">
             </div>
 
             <!-- Two Value container -->
-            <div class="twoValueForm">
+            <div class="twoValueForm mb-3">
                 <div>
                     <label for="lower-value" class="form-label">Type in your lower Number...</label>
                     <input class="lowerValueInput" id="lower-value" name="lower-value" type="number" step="0.01" value="<?php echo isset($_GET['lower-value']) ? htmlentities($_GET['lower-value']) : "0.25"; ?>">
