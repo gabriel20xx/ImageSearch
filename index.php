@@ -58,7 +58,7 @@ include 'includes/mysql.php';
                     ];
 
                     foreach ($modelOptions as $option) {
-                        echo '<option value="' . $option . '">' . $option . '</option>';
+                        echo '<option value="' . $option . '" ' . (isset($_GET['model']) && $_GET['model'] === $option ? 'selected' : '') . '>' . $option . '</option>';
                     }
                     ?>
                 </select>
