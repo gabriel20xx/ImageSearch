@@ -23,7 +23,6 @@ include 'includes/mysql.php';
             <div class="mb-3">
                 <label for="filter" class="form-label">Select Filter</label>
                 <select id="filter" class="form-select" name="filter" onchange="handleFilterChange(this.value)">
-                    <option disabled>Select Filter</option>
                     <?php
                     $filterOptions = [
                         'FileName', 'Directory', 'FileSize', 'PositivePrompt', 'NegativePrompt',

@@ -104,13 +104,11 @@ function updateFormAction() {
 }
 
 function disableInput(input) {
-  console.log(input); // Add this line
   input.setAttribute('readonly', 'true');
   input.setAttribute('disabled', 'true');
 }
 
 function enableInput(input) {
-  console.log(input); // Add this line
   input.removeAttribute('readonly');
   input.removeAttribute('disabled');
 }
