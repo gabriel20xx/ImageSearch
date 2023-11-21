@@ -86,6 +86,13 @@ include 'includes/mysql.php';
         </div>
     </form>
 
+    <!-- Search results -->
+    <?php
+    if (isset($_GET['search'])) {
+        require 'includes/search.php';
+    }
+    ?>
+
     <!-- Fullscreen Image Container -->
     <div class="fullscreen-container text-center" id="fullscreenContainer" style="display: none;">
         <span class="close-button" onclick="closeFullscreen()">&times;</span>
