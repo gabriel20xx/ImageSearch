@@ -18,7 +18,7 @@ include 'includes/mysql.php';
 <body>
     <h1>Horde Image Indexer</h1>
 
-    <form method="get" action="index.php" class="container" onsubmit="updateFormAction()">
+    <form method="get" action="index.php" class="container">
         <div>
             <div class="mb-3">
                 <label for="filter" class="form-label">Select Filter</label>
@@ -40,7 +40,8 @@ include 'includes/mysql.php';
 
             <div id="search" class="search-form mb-3">
                 <label for="search" class="form-label">Search</label>
-                <input type="text" name="search" class="form-control search-input" placeholder="Enter your search term">
+                <input type="text" name="search" class="form-control search-input" placeholder="<?php echo isset($_GET['search']) ? htmlentities($_GET['search']) : 'Enter your search term'; ?>">
+
             </div>
 
             <div id="slider" class="slider-form mb-3">

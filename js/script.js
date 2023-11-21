@@ -63,54 +63,6 @@ function nextImage() {
 console.log("Script loaded");
 
 
-// Existing updateFormAction function
-/*function updateFormAction() {
-  const form = document.querySelector("form");
-
-  // Set default values for form elements
-  let searchVisible = false;
-  let modelVisible = false;
-  let sliderVisible = false;
-
-  // Determine visibility based on the selected filter
-  const selectedFilter = form.filter.value;
-  switch (selectedFilter) {
-    case "PositivePrompt":
-    case "NegativePrompt":
-    case "FileName":
-      searchVisible = true;
-      break;
-
-    case "Model":
-      modelVisible = true;
-      break;
-
-    case "DenoisingStrength":
-    case "NSFWProbability":
-      sliderVisible = true;
-      break;
-
-    default:
-      break;
-  }
-
-  // Update the form's action URL based on visibility
-  form.action =
-    "index.php?" +
-    [
-      searchVisible ? "search=" + encodeURIComponent(form.search.value) : "",
-      modelVisible ? "model=" + encodeURIComponent(form.model.value) : "",
-      sliderVisible ? "range=" + encodeURIComponent(form.range.value) : "",
-      sliderVisible ? "range2=" + encodeURIComponent(form.range2.value) : "",
-      "filter=" + encodeURIComponent(selectedFilter),
-    ]
-      .filter(Boolean)
-      .join("&");
-
-  return true; // Allow the form to be submitted
-}*/
-
-
 // Modified handleFilterChange function to toggle visibility
 function handleFilterChange(selectedFilter) {
   const searchElement = document.querySelector(".search-form");
