@@ -1,8 +1,8 @@
+// Execute this on page load
 document.addEventListener("DOMContentLoaded", function () {
   var initialFilter = document.getElementById("filter").value;
   handleFilterChange(initialFilter);
 
-  // Use event delegation to handle click events on the form
   document.querySelector("form").addEventListener("click", function (event) {
     const target = event.target;
 
@@ -25,11 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Use const and let for variable declarations
-const images = []; // assuming you have an array of images
-let currentImageIndex = 0; // Index of the currently displayed image
 
-// Function to open fullscreen with a specific image
+// Fullscreen images
+const images = [];
+let currentImageIndex = 0;
+
 function openFullscreen(imageSrc) {
   const fullscreenContainer = document.getElementById("fullscreenContainer");
   const fullscreenImage = document.getElementById("fullscreenImage");
@@ -38,23 +38,21 @@ function openFullscreen(imageSrc) {
   fullscreenContainer.style.display = "grid";
 }
 
-// Function to close fullscreen
 function closeFullscreen() {
   const fullscreenContainer = document.getElementById("fullscreenContainer");
   fullscreenContainer.style.display = "none";
 }
 
-// Function to show the previous image
 function prevImage() {
   currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
   openFullscreen(images[currentImageIndex]);
 }
 
-// Function to show the next image
 function nextImage() {
   currentImageIndex = (currentImageIndex + 1) % images.length;
   openFullscreen(images[currentImageIndex]);
 }
+
 
 // Existing updateFormAction function
 function updateFormAction() {
@@ -103,15 +101,7 @@ function updateFormAction() {
   return true; // Allow the form to be submitted
 }
 
-function disableInput(input) {
-  input.setAttribute('readonly', 'true');
-  input.setAttribute('disabled', 'true');
-}
 
-function enableInput(input) {
-  input.removeAttribute('readonly');
-  input.removeAttribute('disabled');
-}
 
 // Modified handleFilterChange function to toggle visibility
 function handleFilterChange(selectedFilter) {
@@ -155,4 +145,14 @@ function handleFilterChange(selectedFilter) {
     default:
       break;
   }
+}
+
+function disableInput(input) {
+  input.setAttribute('readonly', 'true');
+  input.setAttribute('disabled', 'true');
+}
+
+function enableInput(input) {
+  input.removeAttribute('readonly');
+  input.removeAttribute('disabled');
 }
