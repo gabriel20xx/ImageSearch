@@ -118,12 +118,12 @@ include 'includes/mysql.php';
             <?php if ($count > $countmax && $currentPage != 1) : ?>
                 <li class='page-item'>
                     <a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $firstPage))) ?>' aria-label='First'>
-                        <span aria-hidden='true'>«</span>
+                        <span aria-hidden='true'>&lt;&lt;</span>
                     </a>
                 </li>
 
                 <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $previousPage))) ?>' aria-label='Previous'>
-                        &lt;&lt;</a>
+                        &lt;</a>
                 </li>
 
                 <?php if ($overPreviousPage != "None") : ?>
@@ -144,11 +144,11 @@ include 'includes/mysql.php';
                     <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $overNextPage))) ?>' aria-label='Previous'><?= $overNextPage ?></a></li>
                 <?php endif; ?>
 
-                <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $nextPage))) ?>' aria-label='Next'>></a></li>
+                <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $nextPage))) ?>' aria-label='Next'>&gt;</a></li>
 
                 <li class='page-item'>
                     <a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $lastPage))) ?>' aria-label='Last'>
-                        <span aria-hidden='true'>»</span>
+                        <span aria-hidden='true'>&gt;&gt;</span>
                     </a>
                 </li>
             <?php endif; ?>
