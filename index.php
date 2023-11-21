@@ -80,7 +80,7 @@ include 'includes/mysql.php';
 
     <?php
     if (isset($_GET['search'])) {
-        $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1; // Ensure $currentPage is defined
+        $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
         require 'includes/search.php';
     }
     ?>
