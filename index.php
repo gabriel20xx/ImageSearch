@@ -43,7 +43,7 @@ include 'includes/mysql.php';
                 <input type="text" name="search" class="form-control search-input" placeholder="Enter your search term..." value="<?php echo isset($_GET['search']) ? htmlentities($_GET['search']) : ''; ?>">
             </div>
 
-            <div id="min-max-range">
+            <div class="minmaxrange-form" id="min-max-range">
                 <label for="min-max-range" class="form-label">Min, Max or Range?</label>
                 <select id="min-max-range" class="minmaxrange-input form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
                     <option value="Min">Min</option>

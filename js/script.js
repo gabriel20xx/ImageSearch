@@ -75,7 +75,7 @@ function handleFilterChange(selectedFilter) {
   // Disable and make readonly by default
   searchInput.disabled = true;
   modelInput.disabled = true;
-  minmaxrangerInput.disabled = true;
+  minmaxrangeInput.disabled = true;
 
   // Set default visibility to false
   searchElement.style.display = "none";
