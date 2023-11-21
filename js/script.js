@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Fullscreen images
-const images = [];
+//const images = [];
 let currentImageIndex = 0;
 
 function openFullscreen(imageSrc) {
