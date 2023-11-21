@@ -58,18 +58,18 @@ include 'includes/mysql.php';
             <!-- One Value container -->
             <div class="oneValueForm mb-3">
                 <label for="one-value" class="form-label">Type in your Number...</label>
-                <input class="oneValueInput" id="one-value" name="one-value" type="number" step="0.01" value="<?php echo isset($_GET['one-value']) ? htmlentities($_GET['one-value']) : "0.5"; ?>">
+                <input class="form-control oneValueInput" id="one-value" name="one-value" type="number" step="0.01" value="<?php echo isset($_GET['one-value']) ? htmlentities($_GET['one-value']) : "0.5"; ?>">
             </div>
 
             <!-- Two Value container -->
             <div class="twoValueForm mb-3">
                 <div>
                     <label for="lower-value" class="form-label">Type in your lower Number...</label>
-                    <input class="lowerValueInput" id="lower-value" name="lower-value" type="number" step="0.01" value="<?php echo isset($_GET['lower-value']) ? htmlentities($_GET['lower-value']) : "0.25"; ?>">
+                    <input class="form-control lowerValueInput" id="lower-value" name="lower-value" type="number" step="0.01" value="<?php echo isset($_GET['lower-value']) ? htmlentities($_GET['lower-value']) : "0.25"; ?>">
                 </div>
                 <div>
                     <label for="upper-value" class="form-label">Type in your higher Number...</label>
-                    <input class="upperValueInput" id="upper-value" name="upper-value" type="number" step="0.01" value="<?php echo isset($_GET['upper-value']) ? htmlentities($_GET['upper-value']) : "0.75"; ?>">
+                    <input class="form-control upperValueInput" id="upper-value" name="upper-value" type="number" step="0.01" value="<?php echo isset($_GET['upper-value']) ? htmlentities($_GET['upper-value']) : "0.75"; ?>">
                 </div>
             </div>
 
