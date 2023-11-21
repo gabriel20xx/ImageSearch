@@ -20,6 +20,7 @@ include 'includes/mysql.php';
 
     <form method="get" action="index.php" class="container">
         <div>
+            <!-- Filter container -->
             <div class="mb-3">
                 <label for="filter" class="form-label">Select Filter</label>
                 <select id="filter" class="form-select" name="filter" onchange="handleFilterChange(this.value)">
@@ -38,11 +39,13 @@ include 'includes/mysql.php';
                 </select>
             </div>
 
+            <!-- Search container -->
             <div id="search" class="search-form mb-3">
                 <label for="search" class="form-label">Search</label>
                 <input type="text" name="search" class="form-control search-input" placeholder="Enter your search term..." value="<?php echo isset($_GET['search']) ? htmlentities($_GET['search']) : ''; ?>">
             </div>
 
+            <!-- Min, Max, Range container -->
             <div class="minmaxrange-form" id="min-max-range">
                 <label for="min-max-range" class="form-label">Min, Max or Range?</label>
                 <select id="min-max-range" class="minmaxrange-input form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
@@ -52,11 +55,13 @@ include 'includes/mysql.php';
                 </select>
             </div>
 
+            <!-- One Value container -->
             <div class="oneValueForm">
                 <label for="one-value" class="form-label">Type in your Number...</label>
                 <input class="oneValueInput" id="one-value" name="one-value" type="number" step="0.01" value="<?php echo isset($_GET['one-value']) ? htmlentities($_GET['one-value']) : "0.5"; ?>">
             </div>
 
+            <!-- Two Value container -->
             <div class="twoValueForm">
                 <div>
                     <label for="lower-value" class="form-label">Type in your lower Number...</label>
@@ -68,12 +73,7 @@ include 'includes/mysql.php';
                 </div>
             </div>
 
-            <!-- Remove this block -->
-            <div id="slider" class="slider-form mb-3">
-                <label for="range" class="form-label">Select Range</label>
-                <input class="slider-input" type="range" id="range" name="range" min="0" max="100" step="1" value="<?php echo isset($_GET['range']) ? htmlentities($_GET['range']) : "25"; ?>">
-            </div>
-
+            <!-- Model container -->
             <div class="model-form mb-3">
                 <label for="model" class="form-label">Choose Model</label>
                 <select class="form-control model-input" id="model" name="model">
