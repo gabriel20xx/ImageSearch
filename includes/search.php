@@ -51,10 +51,6 @@ if (isset($_GET['search'])) {
             echo
             '</div>
             </div>';
-
-            echo '<script>';
-            echo 'var jsImages = ' . json_encode($phpImages) . ';';
-            echo '</script>';
         } else {
             echo '<p class="text-center">Prepare statement failed for data retrieval.</p>';
         }
@@ -69,7 +65,7 @@ if (isset($_GET['search'])) {
     $nextPage = ($totalCount > $countmax * $currentPage) ? $currentPage + 1 : "None";
     $overNextPage = ($totalCount > $countmax * ($currentPage - 1)) ? $currentPage + 2 : "None";
     $lastPage = ceil($totalCount / $countmax);
-    ?>
+?>
 
     <!-- Fullscreen Image Container -->
     <div class="fullscreen-container text-center" id="fullscreenContainer" style="display: none;">
@@ -132,3 +128,7 @@ if (isset($_GET['search'])) {
         </ul>
     </div>
 <?php } ?>
+
+<script>
+    var jsImages = json_encode($phpImages);
+</script>

@@ -90,7 +90,6 @@ include 'includes/mysql.php';
         require 'includes/search.php';
     }
     ?>
-
 </body>
 
 </html>
