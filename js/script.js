@@ -1,3 +1,6 @@
+const jsImages = [];
+let currentImageIndex = 0;
+
 // Execute this on page load
 document.addEventListener("DOMContentLoaded", function () {
   var initialFilter = document.getElementById("filter").value;
@@ -27,9 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Fullscreen images
-const jsImages = [];
-let currentImageIndex = 0;
-
 function openFullscreen(imageSrc) {
   const fullscreenContainer = document.getElementById("fullscreenContainer");
   const fullscreenImage = document.getElementById("fullscreenImage");
