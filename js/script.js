@@ -84,17 +84,17 @@ function handleFilterChange(selectedFilter) {
   // Disable and make readonly by default
   searchInput.disabled = true;
   modelInput.disabled = true;
-  minmaxrangeInput.disabled = true;
   oneValueInput.disabled = true;
   lowerValueInput.disabled = true;
   upperValueInput.disabled = true;
+  minmaxrangeInput.disabled = true;
 
   // Set default visibility to false
   searchElement.style.display = "none";
   modelElement.style.display = "none";
-  minmaxrangeElement.style.display = "none";
   oneValueElement.style.display = "none";
   twoValueElement.style.display = "none";
+  minmaxrangeElement.style.display = "none";
 
   // Set visibility based on the selected filter
   switch (selectedFilter) {
@@ -123,8 +123,7 @@ function handleFilterChange(selectedFilter) {
 
 // Modified handleFilterChange function to toggle visibility
 function handleMinMaxRangeChange(selectedFilter) {
-
-  // Disable and make readonly by default
+  // Disable by default
   oneValueInput.disabled = true;
   lowerValueInput.disabled = true;
   upperValueInput.disabled = true;
