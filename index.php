@@ -45,7 +45,7 @@ include 'includes/mysql.php';
 
             <div id="slider" class="slider-form mb-3">
                 <label for="range" class="form-label">Select Range</label>
-                <input class="first-slider-input" type="range" id="range" name="range" min="0" max="100" step="1" value="25">
+                <input class="slider-input" type="range" id="range" name="range" min="0" max="100" step="1" value="25">
             </div>
 
             <div class="model-form mb-3">
