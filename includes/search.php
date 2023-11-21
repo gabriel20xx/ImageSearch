@@ -1,10 +1,11 @@
 <?php
 if (isset($_GET['search'])) {
-    include 'includes/mysql.php';
+    include 'mysql.php';
 
     $search = '%' . $_GET['search'] . '%';
     $filter = isset($_GET['filter']) ? $_GET['filter'] : 'PositivePrompt';
     $countmax = isset($_GET['count']) ? $_GET['count'] : 25;
+    $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
 
     $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE `" . mysqli_real_escape_string($conn, $filter) . "` LIKE ?";
     $stmtCount = mysqli_prepare($conn, $sqlCount);

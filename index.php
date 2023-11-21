@@ -2,15 +2,8 @@
 include 'includes/mysql.php';
 
 if (isset($_GET['search'])) {
+    $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1; // Ensure $currentPage is defined
     require 'includes/search.php';
-}
-?>
-
-<?php
-if (isset($_GET["page"])) {
-    $currentPage = $_GET["page"];
-} else {
-    $currentPage = 1;
 }
 ?>
 
