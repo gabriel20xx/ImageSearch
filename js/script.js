@@ -109,7 +109,8 @@ function handleFilterChange(selectedFilter) {
   const sliderElement = document.querySelector(".slider-form");
   const searchInput = document.querySelector(".search-input");
   const modelInput = document.querySelector(".model-input");
-  const sliderInput = document.querySelector(".slider-input");
+  const sliderInput1 = document.querySelector(".slider-input1");
+  const sliderInput2 = document.querySelector(".slider-input2");
 
   // Set default visibility to false
   searchElement.style.display = "none";
@@ -119,7 +120,8 @@ function handleFilterChange(selectedFilter) {
   // Disable and make readonly by default
   searchInput.setAttribute('disabled', 'true');
   modelInput.setAttribute('disabled', 'true');
-  sliderInput.setAttribute('disabled', 'true');
+  sliderInput1.setAttribute('disabled', 'true');
+  sliderInput2.setAttribute('disabled', 'true');
 
   // Set visibility based on the selected filter
   switch (selectedFilter) {
@@ -138,7 +140,8 @@ function handleFilterChange(selectedFilter) {
     case "DenoisingStrength":
     case "NSFWProbability":
       sliderElement.style.display = "block"
-      sliderInput.removeAttribute('disabled');
+      sliderInput1.removeAttribute('disabled');
+      sliderInput2.removeAttribute('disabled');
       break;
 
     default:
