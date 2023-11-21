@@ -178,11 +178,11 @@ function handleFilterChange(selectedFilter) {
 }
 
 function disableInput(input) {
-  input.setAttribute('readonly', 'true');
-  input.setAttribute('disabled', 'true');
+  input.readOnly = true;
+  input.disabled = true;
 }
 
 function enableInput(input) {
-  input.removeAttribute('readonly');
-  input.removeAttribute('disabled');
+  input.readOnly = false;
+  input.disabled = false;
 }
