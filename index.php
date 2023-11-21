@@ -87,7 +87,7 @@ include 'includes/mysql.php';
     <!-- Search results -->
     <?php
     if (isset($_GET['search'])) {
-        require 'includes/search.php';
+        require_once 'includes/search.php';
     }
     ?>
 </body>
