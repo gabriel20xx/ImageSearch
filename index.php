@@ -41,19 +41,19 @@ include 'includes/mysql.php';
 
             <div id="search" class="search-form mb-3">
                 <label for="search" class="form-label">Search</label>
-                <input type="text" name="search" class="form-control" placeholder="Enter your search term">
+                <input type="text" name="search" class="form-control search-input" placeholder="Enter your search term">
             </div>
 
             <div id="slider" class="slider-form mb-3">
                 <label for="range" class="form-label">Select Range</label>
-                <input type="range" id="range" name="range" min="0" max="100" step="1" value="25">
-                <input type="range" id="range2" name="range2" min="0" max="100" step="1" value="75">
+                <input class="slider-input" type="range" id="range" name="range" min="0" max="100" step="1" value="25">
+                <input class="slider-input" type="range" id="range2" name="range2" min="0" max="100" step="1" value="75">
                 <p>Selected Range: <span id="rangeValues"></span></p>
             </div>
 
             <div class="model-form mb-3">
                 <label for="model" class="form-label">Choose Model</label>
-                <select class="form-control" id="model" name="model">
+                <select class="form-control model-input" id="model" name="model">
                     <?php
                     $modelOptions = [
                         'URPM'

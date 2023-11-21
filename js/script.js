@@ -138,32 +138,57 @@ function handleFilterChange(selectedFilter) {
   const searchElement = document.querySelector(".search-form");
   const modelElement = document.querySelector(".model-form");
   const sliderElement = document.querySelector(".slider-form");
+  const searchInput = document.querySelector(".search-input");
+  const modelInput = document.querySelector(".model-input");
+  const sliderInput = document.querySelector(".slider-input");
 
   // Set default visibility to false
   searchElement.style.display = "none";
   modelElement.style.display = "none";
   sliderElement.style.display = "none";
 
+  // Disable and make readonly by default
+  disableInputs(searchInput);
+  disableInputs(modelInput);
+  disableInputs(sliderInput);
+
   // Set visibility based on the selected filter
   switch (selectedFilter) {
     case "PositivePrompt":
     case "NegativePrompt":
     case "Filename":
-      searchElement.style.display = "block";
+      searchElement.stile.display = "block";
+      enableInputs(searchElement);
       break;
 
-    case "ModelHash":
     case "Model":
-    case "SeedResizeFrom":
-    case "DenoisingStrength":
-      modelElement.style.display = "block";
+      modelElement.stile.display = "block"
+      enableInputs(modelElement);
       break;
 
+    case "DenoisingStrength":
     case "NSFWProbability":
-      sliderElement.style.display = "block";
+      sliderElement.stile.display = "block"
+      enableInputs(sliderElement);
       break;
 
     default:
       break;
   }
+}
+
+function disableInputs(container) {
+  const inputElements = container.querySelectorAll("input");
+  inputElements.forEach((input) => {
+    input.disabled = true;
+    input.readOnly = true;
+  });
+}
+
+function enableInputs(container) {
+  const inputElements = container.querySelectorAll("input");
+  inputElements.forEach((input) => {
+    input.disabled = false;
+    input.readOnly = false;
+  });
 }
