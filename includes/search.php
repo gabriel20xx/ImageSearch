@@ -53,7 +53,7 @@ if (isset($_GET['search'])) {
             </div>';
 
             echo '<script>';
-            echo 'var images = ' . json_encode($phpImages) . ';';
+            echo 'var jsImages = ' . json_encode($phpImages) . ';';
             echo '</script>';
         } else {
             echo '<p class="text-center">Prepare statement failed for data retrieval.</p>';
