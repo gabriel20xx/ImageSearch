@@ -1,4 +1,6 @@
-const jsImages = [];
+if (typeof jsImages === 'undefined') {
+  var jsImages = [];
+}
 let currentImageIndex = 0;
 
 // Execute this on page load
