@@ -1,10 +1,5 @@
 <?php
 include 'includes/mysql.php';
-
-if (isset($_GET['search'])) {
-    $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1; // Ensure $currentPage is defined
-    require 'includes/search.php';
-}
 ?>
 
 <!DOCTYPE html>
@@ -82,6 +77,13 @@ if (isset($_GET['search'])) {
             </div>
         </div>
     </form>
+
+    <?php
+    if (isset($_GET['search'])) {
+        $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1; // Ensure $currentPage is defined
+        require 'includes/search.php';
+    }
+    ?>
 
     <!-- Fullscreen Image Container -->
     <div class="fullscreen-container text-center" id="fullscreenContainer" style="display: none;">
