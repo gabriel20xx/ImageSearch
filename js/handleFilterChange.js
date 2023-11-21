@@ -12,6 +12,9 @@ function handleFilterChange(selectedFilter) {
     const oneValueInput = document.querySelector(".oneValueInput");
     const lowerValueInput = document.querySelector(".lowerValueInput");
     const upperValueInput = document.querySelector(".upperValueInput");
+
+    // Make subselects default
+    minmaxrangeInput.selectedIndex = 0;
   
     // Disable and make readonly by default
     searchInput.disabled = true;
