@@ -19,7 +19,7 @@ function handleFilterChange(selectedFilter) {
     });
     
     // Set the selected attribute for the default option
-    minmaxrangeInput.querySelector('option[value=""]').setAttribute('selected', 'selected');
+    minmaxrangeInput.querySelector('option[value=""]').setAttribute('selected');
   
     // Disable and make readonly by default
     searchInput.disabled = true;
