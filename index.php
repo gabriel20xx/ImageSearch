@@ -111,75 +111,55 @@ if (isset($_GET["page"])) {
     <!-- Page indicator -->
     <?php
     $firstPage = 1;
-
-    if ($currentPage != 1) {
-        $previousPage = $currentPage - 1;
-    } else {
-        $previousPage = "None";
-    }
-
-    if ($currentPage > 2) {
-        $overPreviousPage = $currentPage - 2;
-    } else {
-        $overPreviousPage = "None";
-    }
-
-    if ($count > $countmax * ($currentPage)) {
-        $nextPage = $currentPage + 1;
-    } else {
-        $nextPage = "None";
-    }
-
-    if ($count > $countmax * ($currentPage - 1)) {
-        $overNextPage = $currentPage + 2;
-    } else {
-        $overNextPage = "None";
-    }
-
+    $previousPage = ($currentPage != 1) ? $currentPage - 1 : "None";
+    $overPreviousPage = ($currentPage > 2) ? $currentPage - 2 : "None";
+    $nextPage = ($count > $countmax * $currentPage) ? $currentPage + 1 : "None";
+    $overNextPage = ($count > $countmax * ($currentPage - 1)) ? $currentPage + 2 : "None";
     $lastPage = ceil($count / $countmax);
     ?>
 
     <div>
         <ul class="pagination justify-content-center">
-            <?php
-            if ($count > $countmax && $currentPage != 1) {
-                echo "<li class='page-item'>
-            <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $firstPage))) . "' aria-label='First'>
-                <span aria-hidden='true'>«</span>
-            </a>
-        </li>";
+            <?php if ($count > $countmax && $currentPage != 1) : ?>
+                <li class='page-item'>
+                    <a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $firstPage))) ?>' aria-label='First'>
+                        <span aria-hidden='true'>«</span>
+                    </a>
+                </li>
 
-                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "' aria-label='Previous'><</a></li>";
+                <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $previousPage))) ?>' aria-label='Previous'>
+                        << /a>
+                </li>
 
-                if ($overPreviousPage != "None") {
-                    echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $overPreviousPage))) . "' aria-label='Previous'>$overPreviousPage</a></li>";
-                }
+                <?php if ($overPreviousPage != "None") : ?>
+                    <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $overPreviousPage))) ?>' aria-label='Previous'><?= $overPreviousPage ?></a></li>
+                <?php endif; ?>
 
-                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $previousPage))) . "' aria-label='Previous'>$previousPage</a></li>";
-            }
+                <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $previousPage))) ?>' aria-label='Previous'><?= $previousPage ?></a></li>
+            <?php endif; ?>
 
-            if (isset($_GET['search'])) {
-                echo "<li class='page-item active'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $currentPage))) . "'>$currentPage</a></li>";
-            }
+            <?php if (isset($_GET['search'])) : ?>
+                <li class='page-item active'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $currentPage))) ?>'><?= $currentPage ?></a></li>
+            <?php endif; ?>
 
-            if ($count > $countmax * ($currentPage)) {
-                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "' aria-label='Next'>$nextPage</a></li>";
+            <?php if ($count > $countmax * $currentPage) : ?>
+                <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $nextPage))) ?>' aria-label='Next'><?= $nextPage ?></a></li>
 
-                if ($overNextPage != "None") {
-                    echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $overNextPage))) . "' aria-label='Previous'>$overNextPage</a></li>";
-                }
+                <?php if ($overNextPage != "None") : ?>
+                    <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $overNextPage))) ?>' aria-label='Previous'><?= $overNextPage ?></a></li>
+                <?php endif; ?>
 
-                echo "<li class='page-item'><a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $nextPage))) . "' aria-label='Next'>></a></li>";
+                <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $nextPage))) ?>' aria-label='Next'>></a></li>
 
-                echo "<li class='page-item'>
-            <a class='page-link' href='?" . http_build_query(array_merge($_GET, array('page' => $lastPage))) . "' aria-label='Last'>
-                <span aria-hidden='true'>»</span>
-            </a>
-        </li>";
-            }
-            ?>
+                <li class='page-item'>
+                    <a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $lastPage))) ?>' aria-label='Last'>
+                        <span aria-hidden='true'>»</span>
+                    </a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
+
 </body>
 
 </html>
