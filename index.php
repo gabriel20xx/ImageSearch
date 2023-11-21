@@ -123,7 +123,7 @@ include 'includes/mysql.php';
                 </li>
 
                 <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $previousPage))) ?>' aria-label='Previous'>
-                        << /a>
+                        &lt;&lt;</a>
                 </li>
 
                 <?php if ($overPreviousPage != "None") : ?>
