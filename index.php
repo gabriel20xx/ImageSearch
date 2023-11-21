@@ -88,6 +88,10 @@ include 'includes/mysql.php';
     <?php
     if (isset($_GET['search'])) {
         require_once 'includes/search.php';
+
+        echo '<script>';
+        echo 'var jsImages = ' . json_encode($phpImages) . ';';
+        echo '</script>';
     }
     ?>
 </body>

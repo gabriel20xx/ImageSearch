@@ -128,7 +128,3 @@ if (isset($_GET['search'])) {
         </ul>
     </div>
 <?php } ?>
-
-<script>
-    var jsImages = json_encode($phpImages);
-</script>
