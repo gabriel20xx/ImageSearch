@@ -55,7 +55,7 @@ function nextImage() {
 
 
 // Existing updateFormAction function
-function updateFormAction() {
+/*function updateFormAction() {
   const form = document.querySelector("form");
 
   // Set default values for form elements
@@ -99,8 +99,7 @@ function updateFormAction() {
       .join("&");
 
   return true; // Allow the form to be submitted
-}
-
+}*/
 
 
 // Modified handleFilterChange function to toggle visibility
