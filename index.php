@@ -49,9 +49,13 @@ include 'includes/mysql.php';
             <div class="minmaxrange-form mb-3">
                 <label for="min-max-range" class="form-label">Min, Max or Range?</label>
                 <select id="min-max-range" class="minmaxrange-input form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
-                    <option value="Min">Min</option>
-                    <option value="Max">Max</option>
-                    <option value="Range">Range</option>
+                    <?php
+                    $minMaxRangeOptions = ['Min', 'Max', 'Range'];
+
+                    foreach ($minMaxRangeOptions as $option) {
+                        echo '<option value="' . $option . '" ' . (isset($_GET['min-max-range']) && $_GET['min-max-range'] === $option ? 'selected' : '') . '>' . $option . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
 
