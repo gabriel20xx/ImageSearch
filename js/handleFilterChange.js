@@ -14,7 +14,12 @@ function handleFilterChange(selectedFilter) {
     const upperValueInput = document.querySelector(".upperValueInput");
 
     // Make subselects default
-    minmaxrangeInput.value = '';
+    minmaxrangeInput.querySelectorAll('option').forEach(option => {
+        option.removeAttribute('selected');
+    });
+    
+    // Set the selected attribute for the default option
+    minmaxrangeInput.querySelector('option[value=""]').setAttribute('selected', 'selected');
   
     // Disable and make readonly by default
     searchInput.disabled = true;
