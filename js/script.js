@@ -117,9 +117,9 @@ function handleFilterChange(selectedFilter) {
   sliderElement.style.display = "none";
 
   // Disable and make readonly by default
-  disableInput(searchInput);
-  disableInput(modelInput);
-  disableInput(sliderInput);
+  searchInput.setAttribute('disabled', 'true');
+  modelInput.setAttribute('disabled', 'true');
+  sliderInput.setAttribute('disabled', 'true');
 
   // Set visibility based on the selected filter
   switch (selectedFilter) {
@@ -127,31 +127,21 @@ function handleFilterChange(selectedFilter) {
     case "NegativePrompt":
     case "Filename":
       searchElement.style.display = "block";
-      enableInput(searchInput);
+      searchInput.removeAttribute('disabled');
       break;
 
     case "Model":
       modelElement.style.display = "block"
-      enableInput(modelInput);
+      modelInput.removeAttribute('disabled');
       break;
 
     case "DenoisingStrength":
     case "NSFWProbability":
       sliderElement.style.display = "block"
-      enableInput(sliderInput);
+      sliderInput.removeAttribute('disabled');
       break;
 
     default:
       break;
   }
-}
-
-function disableInput(input) {
-  input.setAttribute('readonly', 'true');
-  input.setAttribute('disabled', 'true');
-}
-
-function enableInput(input) {
-  input.removeAttribute('readonly');
-  input.removeAttribute('disabled');
 }
