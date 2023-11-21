@@ -157,18 +157,18 @@ function handleFilterChange(selectedFilter) {
     case "PositivePrompt":
     case "NegativePrompt":
     case "Filename":
-      searchElement.stile.display = "block";
+      searchElement.style.display = "block";
       enableInputs(searchElement);
       break;
 
     case "Model":
-      modelElement.stile.display = "block"
+      modelElement.style.display = "block"
       enableInputs(modelElement);
       break;
 
     case "DenoisingStrength":
     case "NSFWProbability":
-      sliderElement.stile.display = "block"
+      sliderElement.style.display = "block"
       enableInputs(sliderElement);
       break;
 
@@ -177,18 +177,12 @@ function handleFilterChange(selectedFilter) {
   }
 }
 
-function disableInputs(container) {
-  const inputElements = container.querySelectorAll("input");
-  inputElements.forEach((input) => {
-    input.disabled = true;
-    input.readOnly = true;
-  });
+function disableInput(input) {
+  input.disabled = true;
+  input.readOnly = true;
 }
 
-function enableInputs(container) {
-  const inputElements = container.querySelectorAll("input");
-  inputElements.forEach((input) => {
-    input.disabled = false;
-    input.readOnly = false;
-  });
+function enableInput(input) {
+  input.disabled = false;
+  input.readOnly = false;
 }
