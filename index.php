@@ -52,7 +52,7 @@ include 'includes/mysql.php';
             <!-- Min, Max, Range container -->
             <div id="minmaxrange-form" class="mb-3">
                 <label for="min-max-range" class="form-label">Min, Max or Range?</label>
-                <select id="min-max-range" class="minmaxrange-input form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
+                <select id="minmaxrange-input" class="form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
                     <option value="" disabled selected>Select an option</option>
                     <?php
                     $minMaxRangeOptions = ['Min', 'Max', 'Range'];
