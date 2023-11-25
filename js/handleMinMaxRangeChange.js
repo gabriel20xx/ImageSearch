@@ -1,10 +1,10 @@
 // Modified handleFilterChange function to toggle visibility
 function handleMinMaxRangeChange(selectedFilter) {
-    const oneValueElement = document.querySelector(".oneValueForm");
-    const twoValueElement = document.querySelector(".twoValueForm");
-    const oneValueInput = document.querySelector(".oneValueInput");
-    const lowerValueInput = document.querySelector(".lowerValueInput");
-    const upperValueInput = document.querySelector(".upperValueInput");
+    const oneValueElement = document.getElementById("#oneValueForm");
+    const twoValueElement = document.getElementById("#twoValueForm");
+    const oneValueInput = document.getElementById("#oneValueInput");
+    const lowerValueInput = document.getElementById("#lowerValueInput");
+    const upperValueInput = document.getElementById("#upperValueInput");
   
     // Disable and make readonly by default
     oneValueInput.disabled = true;

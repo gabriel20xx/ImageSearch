@@ -44,13 +44,13 @@ include 'includes/mysql.php';
             </div>
 
             <!-- Search container -->
-            <div id="search" class="search-form mb-3">
+            <div id="search-form" class="mb-3">
                 <label for="search" class="form-label">Search</label>
-                <input type="text" name="search" class="form-control search-input" placeholder="Enter your search term..." value="<?php echo isset($_GET['search']) ? htmlentities($_GET['search']) : ''; ?>">
+                <input type="text" name="search" id="search-input" class="form-control" placeholder="Enter your search term..." value="<?php echo isset($_GET['search']) ? htmlentities($_GET['search']) : ''; ?>">
             </div>
 
             <!-- Min, Max, Range container -->
-            <div class="minmaxrange-form mb-3">
+            <div id="minmaxrange-form" class="mb-3">
                 <label for="min-max-range" class="form-label">Min, Max or Range?</label>
                 <select id="min-max-range" class="minmaxrange-input form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
                     <option value="" disabled selected>Select an option</option>

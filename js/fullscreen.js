@@ -1,5 +1,6 @@
 // Fullscreen images
 let currentImageIndex = 0;
+let autoAdvanceEnabled = true;
 function openFullscreen(imageSrc) {
   const fullscreenContainer = document.getElementById("fullscreenContainer");
   const fullscreenImage = document.getElementById("fullscreenImage");
@@ -8,6 +9,9 @@ function openFullscreen(imageSrc) {
   fullscreenContainer.style.display = "grid";
 
   console.log("Opened fullscreen with image: " + imageSrc);
+  if (autoAdvanceEnabled) {
+    setTimeout(nextImage, 3000);
+  }
 }
 
 function closeFullscreen() {

@@ -83,6 +83,12 @@ if (isset($_GET['search'])) {
                 <button class="btn btn-primary btn-block" onclick="nextImage()">Next</button>
             </div>
         </div>
+        <!-- Toggle Auto-Advance Button -->
+        <div class="row mt-2 d-flex justify-content-center">
+            <div class="col-6">
+                <button class="btn btn-primary btn-block" onclick="toggleAutoAdvance()">Toggle Auto-Advance</button>
+            </div>
+        </div>
     </div>
 
     <!-- Page indicator -->
