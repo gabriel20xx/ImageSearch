@@ -86,7 +86,7 @@ if (isset($_GET['search'])) {
         <!-- Toggle Auto-Advance Button -->
         <div class="row mt-2 d-flex justify-content-center">
             <div class="col-6">
-                <button class="btn btn-primary btn-block" onclick="toggleAutoAdvance()">Enable/Disable Auto-Advance</button>
+                <button id="toggleAutoAdvanceButton" class="btn btn-primary btn-block" onclick="toggleAutoAdvance()">Enable/Disable Auto-Advance</button>
             </div>
         </div>
     </div>
