@@ -59,9 +59,9 @@ h1 {
 }
 
 .button-container .col-2, .button-container .col-4 {
-    flex: 0 0 20%; /* Make each column take up 20% of the container width */
+    flex: 0 0 10%; /* Make each column take up 20% of the container width */
 }
 
 .button-container .col-4 {
-    flex: 0 0 60%; /* Make this column take up 60% of the container width */
+    flex: 0 0 80%; /* Make this column take up 60% of the container width */
 }
