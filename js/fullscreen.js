@@ -1,6 +1,7 @@
 // Fullscreen images
 let currentImageIndex = 0;
 let autoAdvanceEnabled = true;
+let autoAdvanceTimeout;
 function openFullscreen(imageSrc) {
   const fullscreenContainer = document.getElementById("fullscreenContainer");
   const fullscreenImage = document.getElementById("fullscreenImage");
@@ -17,6 +18,8 @@ function openFullscreen(imageSrc) {
 function closeFullscreen() {
   const fullscreenContainer = document.getElementById("fullscreenContainer");
   fullscreenContainer.style.display = "none";
+
+  clearTimeout(autoAdvanceTimeout);
 
   console.log("Closed fullscreen");
 }
