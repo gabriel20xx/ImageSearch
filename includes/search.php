@@ -75,18 +75,20 @@ if (isset($_GET['search'])) {
                 <img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage">
             </div>
         </div>
-        <div class="row mt-2 d-flex justify-content-center">
-            <div class="col-6">
-                <button class="btn btn-primary btn-block" onclick="prevImage()">Previous</button>
+        <!-- Button Container -->
+        <div class="button-container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-6">
+                    <button class="btn btn-primary btn-block" onclick="prevImage()">Previous</button>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-primary btn-block" onclick="nextImage()">Next</button>
+                </div>
             </div>
-            <div class="col-6">
-                <button class="btn btn-primary btn-block" onclick="nextImage()">Next</button>
-            </div>
-        </div>
-        <!-- Toggle Auto-Advance Button -->
-        <div class="row mt-2 d-flex justify-content-center">
-            <div class="col-6">
-                <button id="toggleAutoAdvanceButton" class="btn btn-primary btn-block" onclick="toggleAutoAdvance()">Enable Auto-Advance</button>
+            <div class="row mt-2 d-flex justify-content-center">
+                <div class="col-6">
+                    <button id="toggleAutoAdvanceButton" class="btn btn-primary btn-block" onclick="toggleAutoAdvance()">Enable Auto-Advance</button>
+                </div>
             </div>
         </div>
     </div>

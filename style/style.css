@@ -52,10 +52,10 @@ h1 {
 }
 
 .button-container {
-    display: flex;
-    justify-content: center; /* Center the buttons horizontally */
+    position: absolute;
+    bottom: 10px; /* Adjust the distance from the bottom as needed */
     width: 100%;
-    margin-top: 10px;
+    text-align: center;
 }
 
 .button-container .col-6 {
