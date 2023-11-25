@@ -1,6 +1,6 @@
 // Fullscreen images
 let currentImageIndex = 0;
-let autoAdvanceEnabled = true;
+let autoAdvanceEnabled = false;
 let autoAdvanceTimeout;
 function openFullscreen(imageSrc) {
   const fullscreenContainer = document.getElementById("fullscreenContainer");
