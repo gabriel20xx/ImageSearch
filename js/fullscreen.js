@@ -40,7 +40,7 @@ function nextImage() {
 
 function toggleAutoAdvance() {
   autoAdvanceEnabled = !autoAdvanceEnabled;
-  const toggleButton = document.querySelector("#toggleAutoAdvanceButton");
+  const toggleButton = document.getElementById("#toggleAutoAdvanceButton");
   toggleButton.textContent = autoAdvanceEnabled ? "Disable Auto-Advance" : "Enable Auto-Advance";
   console.log("Auto-Advance " + (autoAdvanceEnabled ? "enabled" : "disabled"));
 }
