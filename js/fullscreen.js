@@ -35,4 +35,11 @@ function nextImage() {
   console.log("Next Image. New Index: " + currentImageIndex);
 }
 
+function toggleAutoAdvance() {
+  autoAdvanceEnabled = !autoAdvanceEnabled;
+  const toggleButton = document.querySelector("#toggleAutoAdvanceButton");
+  toggleButton.textContent = autoAdvanceEnabled ? "Disable Auto-Advance" : "Enable Auto-Advance";
+  console.log("Auto-Advance " + (autoAdvanceEnabled ? "enabled" : "disabled"));
+}
+
 console.log("Script loaded");
