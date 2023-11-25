@@ -1,17 +1,17 @@
 // Modified handleFilterChange function to toggle visibility
 function handleFilterChange(selectedFilter) {
-    const searchElement = document.getElementById("#search-form");
-    const modelElement = document.getElementById("#model-form");
-    const minmaxrangeElement = document.getElementById("#minmaxrange-form");
-    const oneValueElement = document.getElementById("#oneValueForm");
-    const twoValueElement = document.getElementById("#twoValueForm");
+    const searchElement = document.getElementById("search-form");
+    const modelElement = document.getElementById("model-form");
+    const minmaxrangeElement = document.getElementById("minmaxrange-form");
+    const oneValueElement = document.getElementById("oneValueForm");
+    const twoValueElement = document.getElementById("twoValueForm");
   
-    const searchInput = document.getElementById("#search-input");
-    const modelInput = document.getElementById("#model-input");
-    const minmaxrangeInput = document.getElementById("#minmaxrange-input");
-    const oneValueInput = document.getElementById("#oneValueInput");
-    const lowerValueInput = document.getElementById("#lowerValueInput");
-    const upperValueInput = document.getElementById("#upperValueInput");
+    const searchInput = document.getElementById("search-input");
+    const modelInput = document.getElementById("model-input");
+    const minmaxrangeInput = document.getElementById("minmaxrange-input");
+    const oneValueInput = document.getElementById("oneValueInput");
+    const lowerValueInput = document.getElementById("lowerValueInput");
+    const upperValueInput = document.getElementById("upperValueInput");
 
     // Make subselects default
     minmaxrangeInput.querySelectorAll('option').forEach(option => {
