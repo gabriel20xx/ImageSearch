@@ -58,6 +58,10 @@ h1 {
     text-align: center;
 }
 
+.button-container .col-2, .button-container .col-4 {
+    flex: 0 0 20%; /* Make each column take up 20% of the container width */
+}
+
 .button-container .col-4 {
-    flex: 20% 60% 20%; /* Make each column take up 33.33% of the container width */
+    flex: 0 0 60%; /* Make this column take up 60% of the container width */
 }
