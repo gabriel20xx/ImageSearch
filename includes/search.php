@@ -21,7 +21,7 @@ if (isset($_GET['search'])) {
         $value = 'BETWEEN ? AND ?';
     }
 
-    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE `$filter` ?";
+    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE `$filter` $value";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
     if ($stmtCount) {
