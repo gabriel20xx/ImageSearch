@@ -26,6 +26,7 @@ if (isset($_GET['search'])) {
             mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
         } else if ($filter == 'Model') {
             mysqli_stmt_bind_param($stmtCount, "s", $model);
+            $filter = 'NSFW';
         } else {
             mysqli_stmt_bind_param($stmtCount, "s", $search);
         }
