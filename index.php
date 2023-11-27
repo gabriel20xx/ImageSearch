@@ -45,13 +45,13 @@ include 'includes/mysql.php';
 
             <!-- Search container -->
             <div id="search-form" class="mb-3">
-                <label for="search" class="form-label">Search</label>
+                <label for="search-input" class="form-label">Search</label>
                 <input type="text" name="search" id="search-input" class="form-control" placeholder="Enter your search term..." value="<?php echo isset($_GET['search']) ? htmlentities($_GET['search']) : ''; ?>">
             </div>
 
             <!-- Min, Max, Range container -->
             <div id="minmaxrange-form" class="mb-3">
-                <label for="min-max-range" class="form-label">Min, Max or Range?</label>
+                <label for="minmaxrange-input" class="form-label">Min, Max or Range?</label>
                 <select id="minmaxrange-input" class="form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
                     <option value="" disabled selected>Select an option</option>
                     <?php
@@ -66,25 +66,25 @@ include 'includes/mysql.php';
 
             <!-- One Value container -->
             <div id="oneValueForm" class="mb-3">
-                <label for="one-value" class="form-label">Type in your Number...</label>
-                <input class="form-control oneValueInput" id="one-value" name="one-value" type="number" step="0.01" value="<?php echo isset($_GET['one-value']) ? htmlentities($_GET['one-value']) : "0.5"; ?>">
+                <label for="oneValueInput" class="form-label">Type in your Number...</label>
+                <input class="form-control" id="oneValueInput" name="one-value" type="number" step="0.01" value="<?php echo isset($_GET['one-value']) ? htmlentities($_GET['one-value']) : "0.5"; ?>">
             </div>
 
             <!-- Two Value container -->
             <div id="twoValueForm" class="mb-3">
                 <div>
-                    <label for="lower-value" class="form-label">Type in your lower Number...</label>
+                    <label for="lowerValueInput" class="form-label">Type in your lower Number...</label>
                     <input class="form-control" id="lowerValueInput" name="lower-value" type="number" step="0.01" value="<?php echo isset($_GET['lower-value']) ? htmlentities($_GET['lower-value']) : "0.25"; ?>">
                 </div>
                 <div>
-                    <label for="upper-value" class="form-label">Type in your higher Number...</label>
+                    <label for="upperValueInput" class="form-label">Type in your higher Number...</label>
                     <input class="form-control" id="upperValueInput" name="upper-value" type="number" step="0.01" value="<?php echo isset($_GET['upper-value']) ? htmlentities($_GET['upper-value']) : "0.75"; ?>">
                 </div>
             </div>
 
             <!-- Model container -->
             <div id="model-form" class="mb-3">
-                <label for="model" class="form-label">Model</label>
+                <label for="model-input" class="form-label">Model</label>
                 <select class="form-control" id="model-input" name="model">
                     <?php
                     $modelOptions = ['URPM'];
@@ -98,7 +98,7 @@ include 'includes/mysql.php';
 
             <!-- Sort container -->
             <div id="sortForm" class="mb-3">
-                <label for="sort" class="form-label">Sort</label>
+                <label for="sort-input" class="form-label">Sort</label>
                 <select class="form-control" id="sort-input" name="sort">
                     <?php
                     $sortOptions = ['ASC','DESC'];
