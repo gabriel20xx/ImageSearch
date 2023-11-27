@@ -27,8 +27,10 @@ if (isset($_GET['search'])) {
     if ($stmtCount) {
         if ($filter == 'NSFWProbability') {
             mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
+        } else if ($filter == 'Model') {
+            mysqli_stmt_bind_param($stmtCount, "s", $model);
         } else {
-            mysqli_stmt_bind_param($stmtCount, "s", $value);
+            mysqli_stmt_bind_param($stmtCount, "s", $search);
         }
 
         mysqli_stmt_execute($stmtCount);
@@ -43,8 +45,10 @@ if (isset($_GET['search'])) {
         if ($stmtData) {
             if ($filter == 'NSFWProbability') {
                 mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
+            } else if ($filter == 'Model') {
+                mysqli_stmt_bind_param($stmtData, "sii", $model, $countmax, $offset);
             } else {
-                mysqli_stmt_bind_param($stmtData, "sii", $value, $countmax, $offset);
+                mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $offset);
             }
 
             mysqli_stmt_execute($stmtData);
