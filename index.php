@@ -15,6 +15,7 @@ include 'includes/mysql.php';
     <script src="js/fullscreen.js"></script>
     <script src="js/handleFilterChange.js"></script>
     <script src="js/handleMinMaxRangeChange.js"></script>
+    <script src="js/duplicateForm.js"></script>
     <script src="js/onLoad.js"></script>
 </head>
 
@@ -110,7 +111,7 @@ include 'includes/mysql.php';
         </div>
         <div>
             <div class="mb-3">
-                <input type="button" class="btn btn-success add-row" value="Add Row">
+                <input type="button" class="btn btn-success add-row" value="Add Row" onclick="duplicateForm()">
                 <input type="submit" class="btn btn-primary" value="Search">
             </div>
 
