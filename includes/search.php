@@ -49,6 +49,7 @@ if (isset($_GET['search'])) {
             } else {
                 mysqli_stmt_bind_param($stmtData, "sssii", $filter, $search, $sort, $countmax, $offset);
             }
+            echo "Search Query: $sqlData\n";
 
             mysqli_stmt_execute($stmtData);
             $resultData = mysqli_stmt_get_result($stmtData);
