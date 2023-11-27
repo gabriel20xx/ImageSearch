@@ -12,12 +12,10 @@ if (isset($_GET['search'])) {
     $currentPage = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
     $offset = $countmax * ($currentPage - 1);
 
-    if ($filter == 'PositivePrompt' || $filter == 'NegativePrompt') {
-        $value = 'LIKE ?';
-    } else if ($filter == 'Model') {
-        $value = 'LIKE ?';
-    } else if ($filter == 'NSFWProbability') {
+    if ($filter == 'NSFWProbability') {
         $value = 'BETWEEN ? AND ?';
+    } else {
+        $value = 'LIKE ?';
     }
 
     $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter $value";
