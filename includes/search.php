@@ -20,16 +20,16 @@ if (isset($_GET['search'])) {
         $value = 'BETWEEN ? AND ?';
     }
 
-    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE ? $value";
+    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter $value";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
     if ($stmtCount) {
         if ($filter == 'NSFWProbability') {
-            mysqli_stmt_bind_param($stmtCount, "sdd", $filter, $min, $max);
+            mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
         } else if ($filter == 'Model') {
-            mysqli_stmt_bind_param($stmtCount, "ss", $filter, $model);
+            mysqli_stmt_bind_param($stmtCount, "s", $model);
         } else {
-            mysqli_stmt_bind_param($stmtCount, "ss", $filter, $search);
+            mysqli_stmt_bind_param($stmtCount, "s", $search);
         }
 
         mysqli_stmt_execute($stmtCount);
@@ -38,16 +38,16 @@ if (isset($_GET['search'])) {
         $totalCount = $row["count"];
         echo '<p class="text-center">Total number of results: ' . $totalCount . '</p>';
 
-        $sqlData = "SELECT * FROM Metadata WHERE ? $value ORDER BY id ? LIMIT ? OFFSET ?";
+        $sqlData = "SELECT * FROM Metadata WHERE $filter $value ORDER BY id $sort LIMIT ? OFFSET ?";
         $stmtData = mysqli_prepare($conn, $sqlData);
 
         if ($stmtData) {
             if ($filter == 'NSFWProbability') {
-                mysqli_stmt_bind_param($stmtData, "sddsii", $filter, $min, $max, $sort, $countmax, $offset);
+                mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
             } else if ($filter == 'Model') {
-                mysqli_stmt_bind_param($stmtData, "sssii", $filter, $model, $sort, $countmax, $offset);
+                mysqli_stmt_bind_param($stmtData, "sii", $model, $countmax, $offset);
             } else {
-                mysqli_stmt_bind_param($stmtData, "sssii", $filter, $search, $sort, $countmax, $offset);
+                mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $offset);
             }
             echo '<p class="text-center">Search Query: ' . $sqlData . '</p>';
 
