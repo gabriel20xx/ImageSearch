@@ -4,6 +4,7 @@ if (isset($_GET['search'])) {
 
     $search = '%' . mysqli_real_escape_string($conn, $_GET['search']) . '%';
     $filter = isset($_GET['filter']) ? mysqli_real_escape_string($conn, $_GET['filter']) : 'PositivePrompt';
+    $sort = isset($_GET['count']) ? $_GET['count'] : 'ASC';
     $countmax = isset($_GET['count']) ? $_GET['count'] : 25;
     $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
 
@@ -18,7 +19,7 @@ if (isset($_GET['search'])) {
         $totalCount = $row["count"];
         echo '<p class="text-center">Total number of results: ' . $totalCount . '</p>';
 
-        $sqlData = "SELECT * FROM Metadata WHERE `$filter` LIKE ? LIMIT $countmax OFFSET " . $countmax * ($currentPage - 1);
+        $sqlData = "SELECT * FROM Metadata WHERE `$filter` LIKE ? ORDER BY id $sort LIMIT $countmax OFFSET " . $countmax * ($currentPage - 1);
         $stmtData = mysqli_prepare($conn, $sqlData);
 
         if ($stmtData) {

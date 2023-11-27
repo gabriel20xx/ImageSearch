@@ -87,12 +87,24 @@ include 'includes/mysql.php';
                 <label for="model" class="form-label">Choose Model</label>
                 <select class="form-control" id="model-input" name="model">
                     <?php
-                    $modelOptions = [
-                        'URPM'
-                    ];
+                    $modelOptions = ['URPM'];
 
                     foreach ($modelOptions as $option) {
                         echo '<option value="' . $option . '" ' . (isset($_GET['model']) && $_GET['model'] === $option ? 'selected' : '') . '>' . $option . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <!-- Sort container -->
+            <div id="sortForm" class="mb-3">
+                <label for="sort" class="form-label">Sort</label>
+                <select class="form-control" id="sort-input" name="sort">
+                    <?php
+                    $sortOptions = ['ASC','DESC'];
+
+                    foreach ($sortOptions as $option) {
+                        echo '<option value="' . $option . '" ' . (isset($_GET['sort']) && $_GET['sort'] === $option ? 'selected' : '') . '>' . $option . '</option>';
                     }
                     ?>
                 </select>
