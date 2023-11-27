@@ -11,6 +11,7 @@ if (isset($_GET['search'])) {
     $max = isset($_GET['upper-value']) ? $_GET['upper-value'] : 10;
     $countmax = isset($_GET['count']) ? $_GET['count'] : 25;
     $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
+    $offset = $countmax * ($currentPage - 1);
 
     if ($filter == 'PositivePrompt' || $filter == 'NegativePrompt') {
         $value = 'LIKE ?';
@@ -41,9 +42,9 @@ if (isset($_GET['search'])) {
 
         if ($stmtData) {
             if ($filter == 'NSFWProbability') {
-                mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $countmax * ($currentPage - 1));
+                mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
             } else {
-                mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $countmax * ($currentPage - 1));
+                mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $offset);
             }
 
             mysqli_stmt_execute($stmtData);
