@@ -4,15 +4,22 @@ if (isset($_GET['search'])) {
 
     $search = '%' . mysqli_real_escape_string($conn, $_GET['search']) . '%';
     $filter = isset($_GET['filter']) ? mysqli_real_escape_string($conn, $_GET['filter']) : 'PositivePrompt';
+    $model = isset($_GET['model']) ? $_GET['model'] : 'URPM';
     $sort = isset($_GET['sort']) ? $_GET['sort'] : 'ASC';
     $countmax = isset($_GET['count']) ? $_GET['count'] : 25;
     $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
 
+    if ($filter == 'PositivePrompt' || $filter == 'NegativePrompt') {
+        $value = $search;
+    } else if ($filter == 'Model') {
+        $value = $model;
+    }
+    
     $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE `$filter` LIKE ?";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
     if ($stmtCount) {
-        mysqli_stmt_bind_param($stmtCount, "s", $search);
+        mysqli_stmt_bind_param($stmtCount, "s", $value);
         mysqli_stmt_execute($stmtCount);
         $resultCount = mysqli_stmt_get_result($stmtCount);
         $row = mysqli_fetch_assoc($resultCount);
@@ -23,7 +30,7 @@ if (isset($_GET['search'])) {
         $stmtData = mysqli_prepare($conn, $sqlData);
 
         if ($stmtData) {
-            mysqli_stmt_bind_param($stmtData, "s", $search);
+            mysqli_stmt_bind_param($stmtData, "s", $value);
             mysqli_stmt_execute($stmtData);
             $resultData = mysqli_stmt_get_result($stmtData);
             mysqli_stmt_close($stmtData);
