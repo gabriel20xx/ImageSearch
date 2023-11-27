@@ -2,14 +2,14 @@
 if (isset($_GET['search'])) {
     include 'mysql.php';
 
-    $filter = isset($_GET['filter']) ? $_GET['filter'] : 'PositivePrompt';
-    $search = '%' . isset($_GET['search']) ? $_GET['search'] : "" . '%';
-    $model = isset($_GET['model']) ? $_GET['model'] : 'URPM';
-    $sort = isset($_GET['sort']) ? $_GET['sort'] : 'ASC';
-    $min = isset($_GET['lower-value']) ? $_GET['lower-value'] : 0;
-    $max = isset($_GET['upper-value']) ? $_GET['upper-value'] : 10;
-    $countmax = isset($_GET['count']) ? $_GET['count'] : 25;
-    $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
+    $filter = isset($_GET['filter']) ? mysqli_real_escape_string($conn, $_GET['filter']) : 'PositivePrompt';
+    $search = '%' . (isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : "") . '%';
+    $model = isset($_GET['model']) ? mysqli_real_escape_string($conn, $_GET['model']) : 'URPM';
+    $sort = isset($_GET['sort']) ? mysqli_real_escape_string($conn, $_GET['sort']) : 'ASC';
+    $min = isset($_GET['lower-value']) ? (int)$_GET['lower-value'] : 0;
+    $max = isset($_GET['upper-value']) ? (int)$_GET['upper-value'] : 10;
+    $countmax = isset($_GET['count']) ? (int)$_GET['count'] : 25;
+    $currentPage = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
     $offset = $countmax * ($currentPage - 1);
 
     if ($filter == 'PositivePrompt' || $filter == 'NegativePrompt') {
@@ -49,7 +49,6 @@ if (isset($_GET['search'])) {
             } else {
                 mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $offset);
             }
-            echo '<p class="text-center">Search Query: ' . $sqlData . '</p>';
 
             mysqli_stmt_execute($stmtData);
             $resultData = mysqli_stmt_get_result($stmtData);
