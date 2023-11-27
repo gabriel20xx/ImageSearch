@@ -4,7 +4,7 @@ if (isset($_GET['search'])) {
 
     $search = '%' . mysqli_real_escape_string($conn, $_GET['search']) . '%';
     $filter = isset($_GET['filter']) ? mysqli_real_escape_string($conn, $_GET['filter']) : 'PositivePrompt';
-    $sort = isset($_GET['count']) ? $_GET['count'] : 'ASC';
+    $sort = isset($_GET['sort']) ? $_GET['sort'] : 'ASC';
     $countmax = isset($_GET['count']) ? $_GET['count'] : 25;
     $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
 
