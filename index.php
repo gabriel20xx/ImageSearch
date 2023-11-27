@@ -86,7 +86,7 @@ include 'includes/mysql.php';
                 <label for="model-input" class="form-label">Model</label>
                 <select class="form-control" id="model-input" name="model">
                     <?php
-                    $modelOptions = ['URPM'];
+                    $modelOptions = ['URPM', 'ChilloutMix', 'PFG', 'RealBiter', 'PPP', 'HRL'];
 
                     foreach ($modelOptions as $option) {
                         echo '<option value="' . $option . '" ' . (isset($_GET['model']) && $_GET['model'] === $option ? 'selected' : '') . '>' . $option . '</option>';
@@ -100,7 +100,7 @@ include 'includes/mysql.php';
                 <label for="sort-input" class="form-label">Sort</label>
                 <select class="form-control" id="sort-input" name="sort">
                     <?php
-                    $sortOptions = ['ASC','DESC'];
+                    $sortOptions = ['ASC', 'DESC'];
 
                     foreach ($sortOptions as $option) {
                         echo '<option value="' . $option . '" ' . (isset($_GET['sort']) && $_GET['sort'] === $option ? 'selected' : '') . '>' . $option . '</option>';
