@@ -2,7 +2,7 @@
 if (isset($_GET['search'])) {
     include 'mysql.php';
 
-    
+
     $filter = isset($_GET['filter']) ? mysqli_real_escape_string($conn, $_GET['filter']) : 'PositivePrompt';
     $search = '%' . mysqli_real_escape_string($conn, $_GET['search']) . '%';
     $model = isset($_GET['model']) ? $_GET['model'] : 'URPM';
@@ -20,11 +20,16 @@ if (isset($_GET['search'])) {
         $value = 'BETWEEN ? AND ?';
     }
 
-    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE `$filter` LIKE ?";
+    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE `$filter` $value";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
     if ($stmtCount) {
-        mysqli_stmt_bind_param($stmtCount, "s", $value);
+        if ($filter == 'NSFWProbability') {
+            mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
+        } else {
+            mysqli_stmt_bind_param($stmtCount, "s", $search);
+        }
+
         mysqli_stmt_execute($stmtCount);
         $resultCount = mysqli_stmt_get_result($stmtCount);
         $row = mysqli_fetch_assoc($resultCount);
@@ -33,14 +38,14 @@ if (isset($_GET['search'])) {
 
         $sqlData = "SELECT * FROM Metadata WHERE `$filter` $value ORDER BY id $sort LIMIT ? OFFSET ?";
         $stmtData = mysqli_prepare($conn, $sqlData);
-        
+
         if ($stmtData) {
             if ($filter == 'NSFWProbability') {
                 mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $countmax * ($currentPage - 1));
             } else {
                 mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $countmax * ($currentPage - 1));
             }
-        
+
             mysqli_stmt_execute($stmtData);
             $resultData = mysqli_stmt_get_result($stmtData);
             mysqli_stmt_close($stmtData);
