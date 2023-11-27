@@ -2,9 +2,8 @@
 if (isset($_GET['search'])) {
     include 'mysql.php';
 
-
     $filter = isset($_GET['filter']) ? $_GET['filter'] : 'PositivePrompt';
-    $search = '%' . isset($_GET['filter']) ? $_GET['search'] : "" . '%';
+    $search = '%' . isset($_GET['search']) ? $_GET['search'] : "" . '%';
     $model = isset($_GET['model']) ? $_GET['model'] : 'URPM';
     $sort = isset($_GET['sort']) ? $_GET['sort'] : 'ASC';
     $min = isset($_GET['lower-value']) ? $_GET['lower-value'] : 0;
