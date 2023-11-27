@@ -27,7 +27,6 @@ include 'includes/mysql.php';
             <div class="mb-3">
                 <label for="filter" class="form-label">Filter</label>
                 <select id="filter" class="form-select" name="filter" onchange="handleFilterChange(this.value)">
-                    <option value="" disabled selected>Select a filter</option>
                     <?php
                     $filterOptions = [
                         'FileName', 'Directory', 'FileSize', 'PositivePrompt', 'NegativePrompt',
@@ -53,7 +52,6 @@ include 'includes/mysql.php';
             <div id="minmaxrange-form" class="mb-3">
                 <label for="minmaxrange-input" class="form-label">Min, Max or Range?</label>
                 <select id="minmaxrange-input" class="form-select" name="min-max-range" onchange="handleMinMaxRangeChange(this.value)">
-                    <option value="" disabled selected>Select an option</option>
                     <?php
                     $minMaxRangeOptions = ['Min', 'Max', 'Range'];
 
