@@ -43,11 +43,11 @@ if (isset($_GET['search'])) {
 
         if ($stmtData) {
             if ($filter == 'NSFWProbability') {
-                mysqli_stmt_bind_param($stmtData, "sddii", $filter, $min, $max, $sort, $countmax, $offset);
+                mysqli_stmt_bind_param($stmtData, "sddsii", $filter, $min, $max, $sort, $countmax, $offset);
             } else if ($filter == 'Model') {
-                mysqli_stmt_bind_param($stmtData, "ssii", $filter, $model, $sort, $countmax, $offset);
+                mysqli_stmt_bind_param($stmtData, "sssii", $filter, $model, $sort, $countmax, $offset);
             } else {
-                mysqli_stmt_bind_param($stmtData, "ssii", $filter, $search, $sort, $countmax, $offset);
+                mysqli_stmt_bind_param($stmtData, "sssii", $filter, $search, $sort, $countmax, $offset);
             }
 
             mysqli_stmt_execute($stmtData);
