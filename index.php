@@ -25,7 +25,7 @@ include 'includes/mysql.php';
         <div>
             <!-- Filter container -->
             <div class="mb-3">
-                <label for="filter" class="form-label">Select Filter</label>
+                <label for="filter" class="form-label">Filter</label>
                 <select id="filter" class="form-select" name="filter" onchange="handleFilterChange(this.value)">
                     <option value="" disabled selected>Select a filter</option>
                     <?php
@@ -84,7 +84,7 @@ include 'includes/mysql.php';
 
             <!-- Model container -->
             <div id="model-form" class="mb-3">
-                <label for="model" class="form-label">Choose Model</label>
+                <label for="model" class="form-label">Model</label>
                 <select class="form-control" id="model-input" name="model">
                     <?php
                     $modelOptions = ['URPM'];
