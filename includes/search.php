@@ -2,19 +2,24 @@
 if (isset($_GET['search'])) {
     include 'mysql.php';
 
-    $search = '%' . mysqli_real_escape_string($conn, $_GET['search']) . '%';
+    
     $filter = isset($_GET['filter']) ? mysqli_real_escape_string($conn, $_GET['filter']) : 'PositivePrompt';
+    $search = '%' . mysqli_real_escape_string($conn, $_GET['search']) . '%';
     $model = isset($_GET['model']) ? $_GET['model'] : 'URPM';
     $sort = isset($_GET['sort']) ? $_GET['sort'] : 'ASC';
+    $min = isset($_GET['lower-value']) ? $_GET['lower-value'] : 0;
+    $max = isset($_GET['upper-value']) ? $_GET['upper-value'] : 10;
     $countmax = isset($_GET['count']) ? $_GET['count'] : 25;
     $currentPage = isset($_GET["page"]) ? $_GET["page"] : 1;
 
     if ($filter == 'PositivePrompt' || $filter == 'NegativePrompt') {
-        $value = $search;
+        $value = 'LIKE ?';
     } else if ($filter == 'Model') {
-        $value = $model;
+        $value = 'LIKE ?';
+    } else if ($filter == 'NSFWProbability') {
+        $value = 'BETWEEN ? AND ?';
     }
-    
+
     $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE `$filter` LIKE ?";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
@@ -26,11 +31,16 @@ if (isset($_GET['search'])) {
         $totalCount = $row["count"];
         echo '<p class="text-center">Total number of results: ' . $totalCount . '</p>';
 
-        $sqlData = "SELECT * FROM Metadata WHERE `$filter` LIKE ? ORDER BY id $sort LIMIT $countmax OFFSET " . $countmax * ($currentPage - 1);
+        $sqlData = "SELECT * FROM Metadata WHERE `$filter` $value ORDER BY id $sort LIMIT ? OFFSET ?";
         $stmtData = mysqli_prepare($conn, $sqlData);
-
+        
         if ($stmtData) {
-            mysqli_stmt_bind_param($stmtData, "s", $value);
+            if ($filter == 'NSFWProbability') {
+                mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $countmax * ($currentPage - 1));
+            } else {
+                mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $countmax * ($currentPage - 1));
+            }
+        
             mysqli_stmt_execute($stmtData);
             $resultData = mysqli_stmt_get_result($stmtData);
             mysqli_stmt_close($stmtData);
