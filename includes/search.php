@@ -20,7 +20,7 @@ if (isset($_GET['search'])) {
         $value = 'BETWEEN ? AND ?';
     }
 
-    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE ? $value";
+    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE ? '$value'";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
     if ($stmtCount) {
@@ -38,7 +38,7 @@ if (isset($_GET['search'])) {
         $totalCount = $row["count"];
         echo '<p class="text-center">Total number of results: ' . $totalCount . '</p>';
 
-        $sqlData = "SELECT * FROM Metadata WHERE ? $value ORDER BY id $sort LIMIT ? OFFSET ?";
+        $sqlData = "SELECT * FROM Metadata WHERE ? '$value' ORDER BY id '$sort' LIMIT ? OFFSET ?";
         $stmtData = mysqli_prepare($conn, $sqlData);
 
         if ($stmtData) {
