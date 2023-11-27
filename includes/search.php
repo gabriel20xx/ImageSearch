@@ -21,14 +21,14 @@ if (isset($_GET['search'])) {
         $value = 'BETWEEN ? AND ?';
     }
 
-    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE `$filter` $value";
+    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE `$filter` ?";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
     if ($stmtCount) {
         if ($filter == 'NSFWProbability') {
             mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
         } else {
-            mysqli_stmt_bind_param($stmtCount, "s", $search);
+            mysqli_stmt_bind_param($stmtCount, "s", $value);
         }
 
         mysqli_stmt_execute($stmtCount);
@@ -44,7 +44,7 @@ if (isset($_GET['search'])) {
             if ($filter == 'NSFWProbability') {
                 mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
             } else {
-                mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $offset);
+                mysqli_stmt_bind_param($stmtData, "sii", $value, $countmax, $offset);
             }
 
             mysqli_stmt_execute($stmtData);
