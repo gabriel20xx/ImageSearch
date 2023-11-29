@@ -6,6 +6,8 @@ if (isset($_GET['filter'])) {
     $search = '%' . (isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : "") . '%';
     $model = isset($_GET['model']) ? mysqli_real_escape_string($conn, $_GET['model']) : 'URPM';
     $sort = isset($_GET['sort']) ? mysqli_real_escape_string($conn, $_GET['sort']) : 'ASC';
+    $minmaxrange = isset($_GET['min-max-range']) ? (int)$_GET['min-max-range'] : 'Min';
+    $oneValue = isset($_GET['one-value']) ? (int)$_GET['one-value'] : 0;
     $min = isset($_GET['lower-value']) ? (int)$_GET['lower-value'] : 0;
     $max = isset($_GET['upper-value']) ? (int)$_GET['upper-value'] : 10;
     $countmax = isset($_GET['count']) ? (int)$_GET['count'] : 25;
@@ -31,7 +33,14 @@ if (isset($_GET['filter'])) {
 
     if ($stmtCount) {
         if ($filter == 'NSFWProbability') {
-            mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
+            if ($minmaxrange == 'Min') {
+                mysqli_stmt_bind_param($stmtCount, "dd", $oneValue, $max);
+            } else if ($minmaxrange == 'Max') {
+                mysqli_stmt_bind_param($stmtCount, "dd", $min, $oneValue);
+            } else {
+                mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
+            }
+            
         } else if ($filter == 'Model') {
             mysqli_stmt_bind_param($stmtCount, "s", $model);
         } else {
@@ -49,7 +58,13 @@ if (isset($_GET['filter'])) {
 
         if ($stmtData) {
             if ($filter == 'NSFWProbability') {
-                mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
+                if ($minmaxrange == 'Min') {
+                    mysqli_stmt_bind_param($stmtData, "ddii", $oneValue, $max, $countmax, $offset);
+                } else if ($minmaxrange == 'Max') {
+                    mysqli_stmt_bind_param($stmtData, "ddii", $min, $oneValue, $countmax, $offset);
+                } else {
+                    mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
+                }
             } else if ($filter == 'Model') {
                 mysqli_stmt_bind_param($stmtData, "sii", $model, $countmax, $offset);
             } else {
