@@ -59,9 +59,9 @@ if (isset($_GET['filter'])) {
             if ($filter == 'NSFWProbability') {
                 if ($minmaxrange == 'Min') {
                     echo 'Test';
-                    mysqli_stmt_bind_param($stmtData, "ddii", $oneValue, $max, $countmax, $offset);
+                    mysqli_stmt_bind_param($stmtData, "ddii", $oneValue, 1, $countmax, $offset);
                 } else if ($minmaxrange == 'Max') {
-                    mysqli_stmt_bind_param($stmtData, "ddii", $min, $oneValue, $countmax, $offset);
+                    mysqli_stmt_bind_param($stmtData, "ddii", 0, $oneValue, $countmax, $offset);
                 } else {
                     mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
                 }
