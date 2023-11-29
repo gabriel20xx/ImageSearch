@@ -4,7 +4,7 @@ if (isset($_GET['search'])) {
 
     $filter = isset($_GET['filter']) ? mysqli_real_escape_string($conn, $_GET['filter']) : 'PositivePrompt';
     $search = '%' . (isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : "") . '%';
-    $model = isset($_GET['model']) ? mysqli_real_escape_string($conn, $_GET['model']) : 'URPM';
+    $model = "'" . isset($_GET['model']) ? mysqli_real_escape_string($conn, $_GET['model']) : 'URPM' . "'";
     $sort = isset($_GET['sort']) ? mysqli_real_escape_string($conn, $_GET['sort']) : 'ASC';
     $min = isset($_GET['lower-value']) ? (int)$_GET['lower-value'] : 0;
     $max = isset($_GET['upper-value']) ? (int)$_GET['upper-value'] : 10;
@@ -36,14 +36,14 @@ if (isset($_GET['search'])) {
         $totalCount = $row["count"];
         echo '<p class="text-center">Total number of results: ' . $totalCount . '</p>';
 
-        $sqlData = "SELECT * FROM Metadata WHERE $filter '$value' ORDER BY id $sort LIMIT ? OFFSET ?";
+        $sqlData = "SELECT * FROM Metadata WHERE $filter $value ORDER BY id $sort LIMIT ? OFFSET ?";
         $stmtData = mysqli_prepare($conn, $sqlData);
 
         if ($stmtData) {
             if ($filter == 'NSFWProbability') {
                 mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
             } else if ($filter == 'Model') {
-                mysqli_stmt_bind_param($stmtData, "sii", "$model", $countmax, $offset);
+                mysqli_stmt_bind_param($stmtData, "sii", $model, $countmax, $offset);
             } else {
                 mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $offset);
             }
