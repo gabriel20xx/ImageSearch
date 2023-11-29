@@ -75,7 +75,9 @@ if (isset($_GET['filter'])) {
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">' . substr($row['PositivePrompt'], 0, 80) . '</li>
                                 <li class="list-group-item">' . substr($row['NegativePrompt'], 0, 80) . '</li>
+                                <li class="list-group-item">' . $row['Steps'] . '</li>
                                 <li class="list-group-item">' . $row['Model'] . '</li>
+                                <li class="list-group-item">' . $row['NSFWProbability'] . '</li>
                             </ul>
                         </div>
                     </div>
