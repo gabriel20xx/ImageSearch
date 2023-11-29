@@ -46,7 +46,6 @@ if (isset($_GET['filter'])) {
                 mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
             } else if ($filter == 'Model') {
                 mysqli_stmt_bind_param($stmtData, "sii", $model, $countmax, $offset);
-                echo "Model: $model, CountMax: $countmax, Offset: $offset";
             } else {
                 mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $offset);
             }
@@ -62,7 +61,6 @@ if (isset($_GET['filter'])) {
             <div class="container-fluid">
             <div class="row">';
             while ($row = mysqli_fetch_assoc($resultData)) {
-                print_r($row);
                 $phpImages[] = 'images/' . $row['Directory'] . '/' . $row['FileName'] . '.png';
                 echo
                 '<div class="col-sm-6 col-md-4 col-lg-2 col-xl-1 mb-4">
