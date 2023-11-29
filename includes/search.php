@@ -9,7 +9,7 @@ if (isset($_GET['filter'])) {
     $minmaxrange = isset($_GET['min-max-range']) ? (int)$_GET['min-max-range'] : 'Min';
     $oneValue = isset($_GET['one-value']) ? (int)$_GET['one-value'] : 0;
     $min = isset($_GET['lower-value']) ? (int)$_GET['lower-value'] : 0;
-    $max = isset($_GET['upper-value']) ? (int)$_GET['upper-value'] : 10;
+    $max = isset($_GET['upper-value']) ? (int)$_GET['upper-value'] : 1;
     $countmax = isset($_GET['count']) ? (int)$_GET['count'] : 25;
     $currentPage = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
     $offset = $countmax * ($currentPage - 1);
@@ -34,9 +34,9 @@ if (isset($_GET['filter'])) {
     if ($stmtCount) {
         if ($filter == 'NSFWProbability') {
             if ($minmaxrange == 'Min') {
-                mysqli_stmt_bind_param($stmtCount, "dd", $oneValue, $max);
+                mysqli_stmt_bind_param($stmtCount, "dd", $oneValue, 1);
             } else if ($minmaxrange == 'Max') {
-                mysqli_stmt_bind_param($stmtCount, "dd", $min, $oneValue);
+                mysqli_stmt_bind_param($stmtCount, "dd", 0, $oneValue);
             } else {
                 mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
             } 
