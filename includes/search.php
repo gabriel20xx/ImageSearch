@@ -162,7 +162,7 @@ if (isset($_GET['filter'])) {
                 <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $previousPage))) ?>' aria-label='Previous'><?= $previousPage ?></a></li>
             <?php endif; ?>
 
-            <?php if (isset($_GET['search'])) : ?>
+            <?php if (isset($_GET['filter'])) : ?>
                 <li class='page-item active'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $currentPage))) ?>'><?= $currentPage ?></a></li>
             <?php endif; ?>
 
