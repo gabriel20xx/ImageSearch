@@ -48,6 +48,7 @@ if (isset($_GET['search'])) {
             } else {
                 mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $offset);
             }
+            echo "Debug SQL: $sqlData";
 
             mysqli_stmt_execute($stmtData);
             $resultData = mysqli_stmt_get_result($stmtData);
