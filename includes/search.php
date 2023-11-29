@@ -22,6 +22,8 @@ if (isset($_GET['filter'])) {
     $stmtAllCount = mysqli_prepare($conn, $sqlAllCount);
     mysqli_stmt_execute($stmtAllCount);
     $resultAllCount = mysqli_stmt_get_result($stmtAllCount);
+    $row = mysqli_fetch_assoc($resultCount);
+    $totalAllCount = $row["allcount"];
     mysqli_stmt_close($stmtAllCount);
 
     $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter $value";
@@ -40,7 +42,7 @@ if (isset($_GET['filter'])) {
         $resultCount = mysqli_stmt_get_result($stmtCount);
         $row = mysqli_fetch_assoc($resultCount);
         $totalCount = $row["count"];
-        echo '<p class="text-center">Total number of results: ' . $totalCount . ' of ' . $resultAllCount["allcount"] . '</p>';
+        echo '<p class="text-center">Total number of results: ' . $totalCount . ' of ' . $totalAllCount . '</p>';
 
         $sqlData = "SELECT * FROM Metadata WHERE $filter $value ORDER BY id $sort LIMIT ? OFFSET ?";
         $stmtData = mysqli_prepare($conn, $sqlData);
