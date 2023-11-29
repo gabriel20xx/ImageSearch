@@ -33,14 +33,14 @@ if (isset($_GET['filter'])) {
 
     if ($stmtCount) {
         if ($filter == 'NSFWProbability') {
+            echo 'Test';
             if ($minmaxrange == 'Min') {
                 mysqli_stmt_bind_param($stmtCount, "dd", $oneValue, $max);
             } else if ($minmaxrange == 'Max') {
                 mysqli_stmt_bind_param($stmtCount, "dd", $min, $oneValue);
             } else {
                 mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
-            }
-            
+            } 
         } else if ($filter == 'Model') {
             mysqli_stmt_bind_param($stmtCount, "s", $model);
         } else {
