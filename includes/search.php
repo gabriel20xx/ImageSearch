@@ -37,8 +37,7 @@ if (isset($_GET['filter'])) {
         $resultCount = mysqli_stmt_get_result($stmtCount);
         $row = mysqli_fetch_assoc($resultCount);
         $totalCount = $row["count"];
-        $totalAllCount = $row["allcount"];
-        echo '<p class="text-center">Total number of results: ' . $totalCount . ' of ' . $totalAllCount . '</p>';
+        echo '<p class="text-center">Total number of results: ' . $totalCount . ' of ' . $resultAllCount["allcount"] . '</p>';
 
         $sqlData = "SELECT * FROM Metadata WHERE $filter $value ORDER BY id $sort LIMIT ? OFFSET ?";
         $stmtData = mysqli_prepare($conn, $sqlData);
@@ -51,7 +50,6 @@ if (isset($_GET['filter'])) {
             } else {
                 mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $offset);
             }
-            echo "Debug SQL: $sqlData";
 
             mysqli_stmt_execute($stmtData);
             $resultData = mysqli_stmt_get_result($stmtData);
