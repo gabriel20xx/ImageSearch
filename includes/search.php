@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET['search'])) {
+if (isset($_GET['filter'])) {
     include 'mysql.php';
 
     $filter = isset($_GET['filter']) ? mysqli_real_escape_string($conn, $_GET['filter']) : 'PositivePrompt';
