@@ -22,7 +22,7 @@ include 'includes/mysql.php';
 <body>
     <h1>Horde Image Indexer</h1>
 
-    <form method="get" action="index.php" class="container">
+    <form method="get" action="search.php" class="container">
         <div>
             <!-- Filter container -->
             <div class="mb-3">
