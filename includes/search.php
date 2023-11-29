@@ -92,7 +92,7 @@ if (isset($_GET['filter'])) {
                                 <li class="list-group-item">' . substr($row['NegativePrompt'], 0, 80) . '</li>
                                 <li class="list-group-item">' . $row['Steps'] . '</li>
                                 <li class="list-group-item">' . $row['Model'] . '</li>
-                                <li class="list-group-item">' . $row['NSFWProbability'] . '</li>
+                                <li class="list-group-item">' . $row['NSFW'] . '</li>
                             </ul>
                         </div>
                     </div>
