@@ -19,6 +19,7 @@ if (isset($_GET['search'])) {
     }
 
     $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter $value";
+    echo "$sqlData";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
     if ($stmtCount) {
