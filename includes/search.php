@@ -19,8 +19,11 @@ if (isset($_GET['filter'])) {
     }
 
     $sqlAllCount = "SELECT COUNT(*) as allcount FROM Metadata";
-    $resultAllCount = mysqli_query($conn, $sqlAllCount);
-    
+    $stmtAllCount = mysqli_prepare($conn, $sqlAllCount);
+    mysqli_stmt_execute($stmtAllCount);
+    $resultAllCount = mysqli_stmt_get_result($stmtAllCount);
+    mysqli_stmt_close($stmtAllCount);
+
     $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter $value";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
