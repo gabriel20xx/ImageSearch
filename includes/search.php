@@ -22,7 +22,7 @@ if (isset($_GET['filter'])) {
     $stmtAllCount = mysqli_prepare($conn, $sqlAllCount);
     mysqli_stmt_execute($stmtAllCount);
     $resultAllCount = mysqli_stmt_get_result($stmtAllCount);
-    $row = mysqli_fetch_assoc($resultCount);
+    $row = mysqli_fetch_assoc($resultAllCount);
     $totalAllCount = $row["allcount"];
     mysqli_stmt_close($stmtAllCount);
 
