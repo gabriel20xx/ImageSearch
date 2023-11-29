@@ -18,8 +18,9 @@ if (isset($_GET['filter'])) {
         $value = 'LIKE ?';
     }
 
-    $sqlallcount = "SELECT COUNT(*) as allcount FROM Metadata";
-
+    $sqlAllCount = "SELECT COUNT(*) as allcount FROM Metadata";
+    $resultAllCount = mysqli_query($conn, $sql);
+    
     $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter $value";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
@@ -36,7 +37,7 @@ if (isset($_GET['filter'])) {
         $resultCount = mysqli_stmt_get_result($stmtCount);
         $row = mysqli_fetch_assoc($resultCount);
         $totalCount = $row["count"];
-        echo '<p class="text-center">Total number of results: ' . $totalCount . ' of ' . $sqlallcount . '</p>';
+        echo '<p class="text-center">Total number of results: ' . $totalCount . ' of ' . $resultAllCount . '</p>';
 
         $sqlData = "SELECT * FROM Metadata WHERE $filter $value ORDER BY id $sort LIMIT ? OFFSET ?";
         $stmtData = mysqli_prepare($conn, $sqlData);
