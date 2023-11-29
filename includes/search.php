@@ -18,7 +18,7 @@ if (isset($_GET['search'])) {
         $value = 'LIKE ?';
     }
 
-    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter '$value'";
+    $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter $value";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
     if ($stmtCount) {
@@ -43,7 +43,7 @@ if (isset($_GET['search'])) {
             if ($filter == 'NSFWProbability') {
                 mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
             } else if ($filter == 'Model') {
-                mysqli_stmt_bind_param($stmtData, "sii", $model, $countmax, $offset);
+                mysqli_stmt_bind_param($stmtData, "sii", "$model", $countmax, $offset);
             } else {
                 mysqli_stmt_bind_param($stmtData, "sii", $search, $countmax, $offset);
             }
