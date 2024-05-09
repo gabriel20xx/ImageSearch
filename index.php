@@ -33,7 +33,7 @@ include 'includes/mysql.php';
                         'FileName', 'Directory', 'FileSize', 'PositivePrompt', 'NegativePrompt',
                         'Steps', 'Sampler', 'CFGScale', 'Seed', 'ImageSize', 'ModelHash',
                         'Model', 'SeedResizeFrom', 'DenoisingStrength', 'Version',
-                        'NSFWProbability', 'SHA1', 'SHA256', 'MD5'
+                        'NSFWProbability', 'SHA1', 'SHA256', 'MD5', 'CreatedAt'
                     ];
 
                     foreach ($filterOptions as $option) {
