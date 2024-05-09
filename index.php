@@ -86,7 +86,7 @@ include 'includes/mysql.php';
                 <label for="model-input" class="form-label">Model</label>
                 <select class="form-control" id="model-input" name="model">
                     <?php
-                    $modelOptions = ['AbsoluteReality', 'AnalogMadness', 'BRA', 'ChilloutMix', 'EdgeOfRealism', 'HenmixReal', 'Hassanblend', 'HRL', 'Juggernaut_XL', 'Liberty', 'majicMIXrealistic', 'Neurogen', 'PFG', 'Photon', 'PPP', 'RealBiter', 'RealDosMix', 'Realisian', 'RealisticVision', 'URPM', 'ZeipherFemaleModel'];
+                    $modelOptions = ['AbsoluteReality', 'AnalogMadness', 'braBeautifulRealistic', 'ChilloutMix', 'EdgeOfRealism', 'HenmixReal', 'Hassanblend', 'HRL', 'Juggernaut_XL', 'Liberty', 'majicMIXrealistic', 'Neurogen', 'PFG', 'Photon', 'PPP', 'RealBiter', 'RealDosMix', 'Realisian', 'RealisticVision', 'URPM', 'F222'];
 
                     foreach ($modelOptions as $option) {
                         echo '<option value="' . $option . '" ' . (isset($_GET['model']) && $_GET['model'] === $option ? 'selected' : '') . '>' . $option . '</option>';
