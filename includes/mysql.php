@@ -1,7 +1,7 @@
 <?php
 
 // Access the values from the decoded data
-$host = '192.168.1.17';
+$host = '192.168.2.60';
 $username = 'gabriel';
 $password = 'KingPong31:)';
 $database = 'HordeImages';
