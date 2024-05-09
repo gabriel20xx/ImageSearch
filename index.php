@@ -132,7 +132,7 @@ include 'includes/mysql.php';
 
     <!-- Search results -->
     <?php
-    if (isset($_GET['search'])) {
+    if (isset($_GET['filter'])) {
         require_once 'includes/search.php';
 
         echo '<script>';

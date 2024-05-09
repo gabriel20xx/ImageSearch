@@ -1,13 +1,15 @@
 <?php
-if (isset($_GET['search'])) {
+if (isset($_GET['filter'])) {
     include 'mysql.php';
 
     $filter = isset($_GET['filter']) ? mysqli_real_escape_string($conn, $_GET['filter']) : 'PositivePrompt';
     $search = '%' . (isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : "") . '%';
     $model = isset($_GET['model']) ? mysqli_real_escape_string($conn, $_GET['model']) : 'URPM';
     $sort = isset($_GET['sort']) ? mysqli_real_escape_string($conn, $_GET['sort']) : 'ASC';
+    $minmaxrange = isset($_GET['min-max-range']) ? (int)$_GET['min-max-range'] : 'Min';
+    $oneValue = isset($_GET['one-value']) ? (int)$_GET['one-value'] : 0;
     $min = isset($_GET['lower-value']) ? (int)$_GET['lower-value'] : 0;
-    $max = isset($_GET['upper-value']) ? (int)$_GET['upper-value'] : 10;
+    $max = isset($_GET['upper-value']) ? (int)$_GET['upper-value'] : 1;
     $countmax = isset($_GET['count']) ? (int)$_GET['count'] : 25;
     $currentPage = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
     $offset = $countmax * ($currentPage - 1);
@@ -18,12 +20,26 @@ if (isset($_GET['search'])) {
         $value = 'LIKE ?';
     }
 
+    $sqlAllCount = "SELECT COUNT(*) as allcount FROM Metadata";
+    $stmtAllCount = mysqli_prepare($conn, $sqlAllCount);
+    mysqli_stmt_execute($stmtAllCount);
+    $resultAllCount = mysqli_stmt_get_result($stmtAllCount);
+    $row = mysqli_fetch_assoc($resultAllCount);
+    $totalAllCount = $row["allcount"];
+    mysqli_stmt_close($stmtAllCount);
+
     $sqlCount = "SELECT COUNT(*) as count FROM Metadata WHERE $filter $value";
     $stmtCount = mysqli_prepare($conn, $sqlCount);
 
     if ($stmtCount) {
         if ($filter == 'NSFWProbability') {
-            mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
+            if ($minmaxrange == 'Min') {
+                mysqli_stmt_bind_param($stmtCount, "dd", $oneValue, 1);
+            } else if ($minmaxrange == 'Max') {
+                mysqli_stmt_bind_param($stmtCount, "dd", 0, $oneValue);
+            } else {
+                mysqli_stmt_bind_param($stmtCount, "dd", $min, $max);
+            } 
         } else if ($filter == 'Model') {
             mysqli_stmt_bind_param($stmtCount, "s", $model);
         } else {
@@ -34,14 +50,21 @@ if (isset($_GET['search'])) {
         $resultCount = mysqli_stmt_get_result($stmtCount);
         $row = mysqli_fetch_assoc($resultCount);
         $totalCount = $row["count"];
-        echo '<p class="text-center">Total number of results: ' . $totalCount . '</p>';
+        echo '<p class="text-center">Total number of results: ' . $totalCount . ' of ' . $totalAllCount . '</p>';
 
         $sqlData = "SELECT * FROM Metadata WHERE $filter $value ORDER BY id $sort LIMIT ? OFFSET ?";
         $stmtData = mysqli_prepare($conn, $sqlData);
 
         if ($stmtData) {
             if ($filter == 'NSFWProbability') {
-                mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
+                if ($minmaxrange == 'Min') {
+                    echo 'Test';
+                    mysqli_stmt_bind_param($stmtData, "ddii", $oneValue, 1, $countmax, $offset);
+                } else if ($minmaxrange == 'Max') {
+                    mysqli_stmt_bind_param($stmtData, "ddii", 0, $oneValue, $countmax, $offset);
+                } else {
+                    mysqli_stmt_bind_param($stmtData, "ddii", $min, $max, $countmax, $offset);
+                }
             } else if ($filter == 'Model') {
                 mysqli_stmt_bind_param($stmtData, "sii", $model, $countmax, $offset);
             } else {
@@ -67,7 +90,9 @@ if (isset($_GET['search'])) {
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">' . substr($row['PositivePrompt'], 0, 80) . '</li>
                                 <li class="list-group-item">' . substr($row['NegativePrompt'], 0, 80) . '</li>
+                                <li class="list-group-item">' . $row['Steps'] . '</li>
                                 <li class="list-group-item">' . $row['Model'] . '</li>
+                                <li class="list-group-item">' . $row['NSFWProbability'] . '</li>
                             </ul>
                         </div>
                     </div>
@@ -137,7 +162,7 @@ if (isset($_GET['search'])) {
                 <li class='page-item'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $previousPage))) ?>' aria-label='Previous'><?= $previousPage ?></a></li>
             <?php endif; ?>
 
-            <?php if (isset($_GET['search'])) : ?>
+            <?php if (isset($_GET['filter'])) : ?>
                 <li class='page-item active'><a class='page-link' href='?<?= http_build_query(array_merge($_GET, array('page' => $currentPage))) ?>'><?= $currentPage ?></a></li>
             <?php endif; ?>
 
