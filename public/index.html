@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horde Image Indexer (Node)</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style/style.css" />
+  <script src="/app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Horde Image Indexer</h1>
+    <form id="search-form" class="row g-3">
+      <div class="col-md-3">
+        <label class="form-label">Filter</label>
+        <select id="filter" class="form-select">
+          <option>PositivePrompt</option>
+          <option>NegativePrompt</option>
+          <option>FileName</option>
+          <option>Directory</option>
+          <option>Model</option>
+          <option>NSFWProbability</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Search</label>
+        <input id="search-input" class="form-control" />
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Model</label>
+        <select id="model-input" class="form-select">
+          <option>URPM</option>
+          <option>RealisticVision</option>
+          <option>Liberty</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Sort</label>
+        <select id="sort-input" class="form-select"><option>ASC</option><option>DESC</option></select>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">Results</label>
+        <select id="count-select" class="form-select"><option>12</option><option>24</option><option>48</option><option>96</option><option>192</option></select>
+      </div>
+      <div class="col-12">
+        <div class="row g-2">
+          <div class="col-md-2"><label class="form-label">Min/Max/Range</label><select id="minmaxrange-input" class="form-select"><option>Min</option><option>Max</option><option>Range</option></select></div>
+          <div class="col-md-2"><label class="form-label">One Value</label><input id="oneValueInput" type="number" step="0.01" class="form-control" value="0.5" /></div>
+          <div class="col-md-2"><label class="form-label">Lower</label><input id="lowerValueInput" type="number" step="0.01" class="form-control" value="0.25" /></div>
+          <div class="col-md-2"><label class="form-label">Upper</label><input id="upperValueInput" type="number" step="0.01" class="form-control" value="0.75" /></div>
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Search</button>
+      </div>
+    </form>
+    <p id="total-count" class="text-center mt-3"></p>
+    <div id="results" class="container-fluid mt-4"></div>
+    <ul id="pagination" class="pagination justify-content-center mt-3"></ul>
+  </div>
+  <div class="fullscreen-container text-center" id="fullscreenContainer" style="display:none;">
+    <span class="close-button" onclick="closeFullscreen()">&times;</span>
+    <div class="row"><div class="col-12"><img src="" alt="Fullscreen Image" class="fullscreen-image" id="fullscreenImage"></div></div>
+    <div class="button-container"><div class="row d-flex justify-content-center">
+      <div class="col-4"><button class="btn btn-primary btn-block" onclick="prevImage()">Previous</button></div>
+      <div class="col-4"><button id="toggleAutoAdvanceButton" class="btn btn-primary btn-block" onclick="toggleAutoAdvance()">Enable Auto-Advance</button></div>
+      <div class="col-4"><button class="btn btn-primary btn-block" onclick="nextImage()">Next</button></div>
+    </div></div>
+  </div>
+</body>
+</html>
